@@ -1,6 +1,5 @@
 import { Container, Box } from "@mui/system";
 import { AppBar, Toolbar, Typography } from "@mui/material";
-import Image from "next/image";
 import LanguageSelect from "./language-select";
 import cn from "classnames/bind";
 import styles from "styles/common/navbar.module.scss";
@@ -31,7 +30,7 @@ export default function Navbar({}) {
           <Box display="flex" alignItems="center">
             <Link href="/">
               <a>
-                <Image
+                <img
                   src="/images/common/kawaiiverse.png"
                   height={41}
                   width={191}
