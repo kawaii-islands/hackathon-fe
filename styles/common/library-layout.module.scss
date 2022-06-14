@@ -1,0 +1,30 @@
+.library-layout {
+  width: 100%;
+  margin-top: 70px;
+  font-family: "Josefin Sans";
+  font-style: normal;
+  min-height: calc(100vh - 70px);
+  background: #f7f3ed;
+
+  .sub-header {
+    background: #fff8ed;
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      height: 60px;
+      .link {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 20px;
+        color: #fd8970;
+        margin-right: 22px;
+        cursor: pointer;
+        &:last-child {
+          margin: 0;
+        }
+      }
+    }
+  }
+}

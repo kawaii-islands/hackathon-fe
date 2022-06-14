@@ -1,0 +1,27 @@
+.breadcrumb {
+  padding: 30px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: "Josefin Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 16px;
+  color: #484848;
+  height: 24px;
+
+  .text {
+    margin: 0 6px;
+  }
+
+  .active {
+    color: #fd8970;
+    font-weight: 700;
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+}
