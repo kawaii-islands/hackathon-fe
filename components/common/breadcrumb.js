@@ -5,13 +5,10 @@ import styles from "styles/common/breadcrumb.module.scss";
 import { useRouter } from "next/router";
 
 const cx = cn.bind(styles);
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
 
 export default function Breadcrumb() {
   const router = useRouter();
-  const routerName = capitalizeFirstLetter(router.pathname.replace("/", ""));
+  const routerName = router.pathname.replace("/", "");
 
   return (
     <Container>
