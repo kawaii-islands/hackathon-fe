@@ -1,0 +1,101 @@
+$sm: 600px;
+$md: 900px;
+.list-news {
+  flex: 1;
+  font-family: "Josefin Sans";
+  font-style: normal;
+  padding-bottom: 15px;
+
+  .title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 150%;
+    color: #403e3e;
+    margin-bottom: 14px;
+  }
+
+  .news {
+    display: flex;
+    flex-direction: column-reverse;
+    border-bottom: 1px solid rgba(167, 169, 172, 0.25);
+    margin-bottom: 22px;
+    padding-bottom: 12px;
+
+    @media (min-width: $md) {
+      flex-direction: row;
+      max-height: 200px;
+      width: 100%;
+      overflow-y: hidden;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .content {
+      flex: 1;
+      padding-right: 15px;
+      .title {
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 150%;
+        color: #f8a629;
+        margin-bottom: 4px;
+        cursor: pointer;
+        &.isLatest {
+          color: #575757;
+          font-size: 15px;
+        }
+        @media (min-width: $md) {
+          font-size: 20px;
+          color: #f8a629;
+          margin-bottom: 11px;
+          cursor: pointer;
+          &.isLatest {
+            color: #575757;
+            font-size: 24px;
+          }
+        }
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      .date {
+        font-style: italic;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 150%;
+        color: #939598;
+        margin-bottom: 10px;
+        @media (min-width: $md) {
+          font-size: 16px;
+          margin-bottom: 14px;
+        }
+      }
+      .description {
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 150%;
+        color: #575757;
+        @media (min-width: $md) {
+          font-size: 16px;
+        }
+      }
+    }
+    img {
+      width: 100%;
+      margin-bottom: 16px;
+      @media (min-width: $md) {
+        max-width: 280px;
+        max-height: 100%;
+        margin-bottom: 0;
+      }
+
+      &.isLatest {
+        @media (min-width: $md) {
+          max-width: 200px;
+        }
+      }
+    }
+  }
+}

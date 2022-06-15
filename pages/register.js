@@ -13,10 +13,7 @@ const schema = yup
   .object()
   .shape({
     name: yup.string().required("Name is required"),
-    phone: yup
-      .number()
-      .required("Phone is required")
-      .typeError("Phone is required"),
+    country: yup.string().required("Country is required"),
     email: yup.string().email("Invalid email").required("Email is required"),
     password: yup
       .string()
@@ -71,7 +68,7 @@ export default function Register() {
                 <img src="/icons/user.svg" />
               </InputAdornment>
             }
-            placeholder="Name"
+            placeholder={t("register.name")}
             {...register("name")}
           />
           {errors.name && firstError === "name" && (
@@ -81,14 +78,14 @@ export default function Register() {
             className={cx("input")}
             startAdornment={
               <InputAdornment position="start">
-                <img src="/icons/phone.svg" />
+                <img src="/icons/country.svg" />
               </InputAdornment>
             }
-            placeholder="Phone"
-            {...register("phone")}
+            placeholder={t("register.country")}
+            {...register("country")}
           />
-          {errors.phone && firstError === "phone" && (
-            <div className={cx("error")}>{errors.phone.message}</div>
+          {errors.country && firstError === "country" && (
+            <div className={cx("error")}>{errors.country.message}</div>
           )}
           <OutlinedInput
             className={cx("input")}
@@ -97,7 +94,7 @@ export default function Register() {
                 <img src="/icons/mail.svg" />
               </InputAdornment>
             }
-            placeholder="Email"
+            placeholder={t("register.email")}
             {...register("email")}
           />
           {errors.email && firstError === "email" && (
@@ -111,7 +108,7 @@ export default function Register() {
                 <img src="/icons/lock.svg" />
               </InputAdornment>
             }
-            placeholder="Password"
+            placeholder={t("register.password")}
             {...register("password")}
           />
           {errors.password && firstError === "password" && (
@@ -125,17 +122,18 @@ export default function Register() {
                 <img src="/icons/unlock.svg" />
               </InputAdornment>
             }
-            placeholder="Confirm password"
+            placeholder={t("register.confirm")}
             {...register("confirmPassword")}
           />
           {errors.confirmPassword && firstError === "confirmPassword" && (
             <div className={cx("error")}>{errors.confirmPassword.message}</div>
           )}
           <Button className={cx("submit")} type="submit">
-            Register
+            {t("footer.register")}
           </Button>
           <div className={cx("footer")}>
-            Already have an account? <Link href="/login">Log in</Link>
+            {t("register.already")}{" "}
+            <Link href="/login">{t("footer.login")}</Link>
           </div>
         </form>
       </Paper>

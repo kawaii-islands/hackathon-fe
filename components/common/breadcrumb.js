@@ -3,20 +3,29 @@ import { Container } from "@mui/system";
 import cn from "classnames/bind";
 import styles from "styles/common/breadcrumb.module.scss";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
+import Link from "next/link";
 
 const cx = cn.bind(styles);
 
 export default function Breadcrumb() {
+  const { t } = useTranslation();
   const router = useRouter();
-  const routerName = router.pathname.replace("/", "");
+  const routerName = router.pathname.replace("/", "").split("/")[0];
 
   return (
     <Container>
       <Toolbar className={cx("breadcrumb")}>
         <img src="/icons/home.svg" style={{ marginBottom: 4 }} />
-        <div className={cx("text")}>Homepage</div>
+        <Link href="/">
+          <div className={cx("text")}>{t("breadcrumb.homepage")}</div>
+        </Link>
         <img src="/icons/forward.svg" />
-        <div className={cx("text", "active")}>{routerName}</div>
+        <Link href={`/${routerName}`}>
+          <div className={cx("text", "active")}>
+            {t(`breadcrumb.${routerName}`)}
+          </div>
+        </Link>
       </Toolbar>
     </Container>
   );

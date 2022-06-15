@@ -1,12 +1,15 @@
 /* eslint-disable react/jsx-no-target-blank */
-import { Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import { Container } from "@mui/system";
 import styles from "styles/common/footer.module.scss";
 import cn from "classnames/bind";
+import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 const cx = cn.bind(styles);
 
 export default function Footer() {
+  const { t } = useTranslation();
   return (
     <div className={cx("footer")}>
       <Container>
@@ -27,7 +30,7 @@ export default function Footer() {
               around the world, join us in developing our Anime Metaverse, where
               everyone play, create, connect and earn.
             </div>
-            <div className={cx("organized")}>ORGANIZED BY</div>
+            <div className={cx("organized")}>{t("footer.host")}</div>
             <div className={cx("logos")}>
               <a href="https://imba.co/" target="_blank">
                 <img src="/images/common/imba.png" />
@@ -39,22 +42,30 @@ export default function Footer() {
             </div>
           </Grid>
           <Grid item lg={2} md={3} xs={6}>
-            <div className={cx("label")}>Ecosystem</div>
-            <a href="https://kawaii.global/" target="_blank">
+            <div className={cx("label")}>{t("footer.ecosystem")}</div>
+            <a
+              href="https://blog.kawaii.global/tagged/kawaiiverse"
+              target="_blank"
+            >
               Kawaiiverse
             </a>
-            <a href="https://play.kawaii.global/" target="_blank">
+            <a
+              href="https://kawaii.global/?shortlink=social&pid=social"
+              target="_blank"
+            >
               Kawaii Islands
             </a>
-            <a href="">Kawaii Fishing Saga</a>
+            <a href="https://blog.kawaii.global/tagged/kfs">
+              Kawaii Fishing Saga
+            </a>
             <a href="https://marketplace.kawaii.global/" target="_blank">
               Marketplace
             </a>
           </Grid>
           <Grid item lg={1} md={3} xs={6}>
-            <div className={cx("label")}>Resources</div>
+            <div className={cx("label")}>{t("footer.resource")}</div>
             <a href="https://docs.kawaii.global/litepaper" target="_blank">
-              Litepaper
+              {t("footer.litepaper")}
             </a>
             <a href="https://kawaii.global/media-kit" target="_blank">
               Media Kit
@@ -64,28 +75,28 @@ export default function Footer() {
               Blog
             </a>
             <a href="https://docs.kawaii.global/" target="_blank">
-              Instruction
+              {t("footer.instruction")}
             </a>
           </Grid>
           <Grid item lg={2} md={6} xs={6}>
-            <div className={cx("label", "fourth-col")}>Terms</div>
+            <div className={cx("label", "fourth-col")}>{t("footer.term")}</div>
             <a
               href="https://kawaii.global/terms"
               target="_blank"
               className={cx("fourth-col")}
             >
-              Terms of use
+              {t("footer.use")}
             </a>
             <a
               href="https://kawaii.global/privacy"
               target="_blank"
               className={cx("fourth-col")}
             >
-              Privacy Policy
+              {t("footer.privacy")}
             </a>
           </Grid>
           <Grid item lg={3} md={6} xs={12}>
-            <div className={cx("label")}>SOCIAL MEDIA</div>
+            <div className={cx("label")}>{t("footer.social")}</div>
             <div className={cx("social")}>
               <a href="">
                 <img src="/images/common/medium.svg" />
@@ -98,8 +109,12 @@ export default function Footer() {
               </a>
             </div>
             <div className={cx("buttons")}>
-              <button className={cx("login")}>Log in</button>
-              <button className={cx("apply")}>Apply now</button>
+              <Link href="/login">
+                <button className={cx("login")}>{t("footer.login")}</button>
+              </Link>
+              <Link href="/apply">
+                <button className={cx("apply")}>{t("footer.apply")}</button>
+              </Link>
             </div>
           </Grid>
         </Grid>

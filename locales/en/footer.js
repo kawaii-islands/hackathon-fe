@@ -1,0 +1,15 @@
+export default {
+  "footer.host": "ORGANIZED BY",
+  "footer.ecosystem": "Ecosystem",
+  "footer.resource": "Resources",
+  "footer.litepaper": "Litepaper",
+  "footer.contact": "Contact",
+  "footer.instruction": "Instruction",
+  "footer.term": "Terms",
+  "footer.use": "Terms of use",
+  "footer.privacy": "Privacy Policy",
+  "footer.social": "Social Media",
+  "footer.login": "Log in",
+  "footer.apply": "Apply",
+  "footer.register": "Register",
+};

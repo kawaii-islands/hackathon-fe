@@ -1,18 +1,28 @@
+$md: 900px;
+
 .breadcrumb {
-  padding: 30px 24px;
+  padding: 20px 0 !important;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-start !important;
   font-family: "Josefin Sans";
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
-  line-height: 16px;
   color: #484848;
-  height: 24px;
+  height: 16px;
+  font-size: 13px;
+  line-height: 13px;
+
+  @media (min-width: $md) {
+    padding: 30px 24px !important;
+    font-size: 16px;
+    line-height: 16px;
+    height: 24px;
+  }
 
   .text {
     margin: 0 6px;
+    cursor: pointer;
   }
 
   .active {
@@ -21,7 +31,11 @@
   }
 
   img {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
+    @media (min-width: $md) {
+      width: 20px;
+      height: 20px;
+    }
   }
 }

@@ -1,28 +1,44 @@
+import React from "react";
 import { Container, Box } from "@mui/system";
-import { AppBar, Toolbar, Typography } from "@mui/material";
+import { AppBar, Toolbar, MenuItem, Fade, Menu } from "@mui/material";
 import LanguageSelect from "./language-select";
 import cn from "classnames/bind";
 import styles from "styles/common/navbar.module.scss";
 import Link from "next/link";
+import { useMediaQuery } from "@mui/material";
+import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 
 const cx = cn.bind(styles);
 
-const links = [
+export const links = [
   {
-    name: "Apply",
-    href: "/",
+    name: "apply",
+    href: "/apply",
   },
   {
-    name: "Log in",
+    name: "login",
     href: "/login",
   },
   {
-    name: "Register",
+    name: "register",
     href: "/register",
   },
 ];
 
 export default function Navbar({}) {
+  const { t } = useTranslation();
+  const router = useRouter();
+  const isDesktop = useMediaQuery("(min-width:900px)");
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <AppBar>
       <Container>
@@ -32,26 +48,67 @@ export default function Navbar({}) {
               <a>
                 <img
                   src="/images/common/kawaiiverse.png"
-                  height={41}
-                  width={191}
+                  className={cx("logo")}
                   alt="logo"
                 />
               </a>
             </Link>
             <LanguageSelect />
           </Box>
-          <div className={cx("nav-links")}>
-            {links.map((link) => (
-              <div
-                className={cx("link", {
-                  apply: link.name === "Apply",
-                })}
-                key={link.name}
+          {isDesktop ? (
+            <div className={cx("nav-links")}>
+              {links.map((link) => (
+                <div
+                  className={cx("link", {
+                    apply: link.name === "apply",
+                  })}
+                  key={link.name}
+                >
+                  <Link href={link.href}>{t(`footer.${link.name}`)}</Link>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <>
+              <img
+                src="/icons/menu.svg"
+                className={cx("toggle")}
+                id="fade-button"
+                aria-controls={open ? "fade-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? "true" : undefined}
+                onClick={handleClick}
+              />
+              <Menu
+                id="fade-menu"
+                MenuListProps={{
+                  "aria-labelledby": "fade-button",
+                }}
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                TransitionComponent={Fade}
+                TransitionProps={{ timeout: 700 }}
               >
-                <Link href={link.href}>{link.name}</Link>
-              </div>
-            ))}
-          </div>
+                <MenuItem
+                  onClick={() => {
+                    handleClose();
+                    router.push("/");
+                  }}
+                >
+                  Kawaiiverse Hackathon
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    handleClose();
+                    router.push("/library");
+                  }}
+                >
+                  Library
+                </MenuItem>
+              </Menu>
+            </>
+          )}
         </Toolbar>
       </Container>
     </AppBar>

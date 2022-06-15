@@ -1,12 +1,16 @@
+$md: 900px;
+
 .register {
-  min-height: calc(100vh - 70px);
+  min-height: calc(100vh - 42px);
   background: #f7f3ed;
   font-family: "Josefin Sans";
   font-style: normal;
-  margin-top: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (min-width: $md) {
+    min-height: calc(100vh - 70px);
+  }
 
   .form {
     max-width: 449px;

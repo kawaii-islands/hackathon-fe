@@ -1,20 +1,43 @@
+$sm: 600px;
+$md: 900px;
+$lg: 1200px;
+
 .language-select {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-left: 22px;
-  width: 93px;
-  height: 32px;
+  margin-left: 20px;
+  width: 63px;
+  height: 22px;
   background: #e5eaf0;
   border-radius: 4px;
+  @media (min-width: $md) {
+    margin-left: 22px;
+    width: 93px;
+    height: 32px;
+  }
 
   .item {
-    width: 40px;
-    height: 26px;
+    width: 27px;
+    height: 18px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+
+    @media (min-width: $md) {
+      width: 40px;
+      height: 26px;
+    }
+
+    img {
+      width: 21px;
+      height: 14px;
+      @media (min-width: $md) {
+        width: 32px;
+        height: 20px;
+      }
+    }
 
     &:global(.active) {
       background: #ffffff;

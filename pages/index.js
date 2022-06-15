@@ -1,6 +1,7 @@
 import styles from "styles/home/index.module.scss";
 import cn from "classnames/bind";
 import Slider from "react-slick";
+import { useTranslation } from "react-i18next";
 
 const cx = cn.bind(styles);
 
@@ -46,66 +47,19 @@ const secondSettings = {
 };
 
 export default function Home() {
+  const { t } = useTranslation();
   return (
     <div className={cx("home")}>
       <Slider {...settings}>
         <div>
-          <div className={cx("banner")}>
-            <div className={cx("logos")}>
-              <img
-                src="/images/home/kawaii.png"
-                alt="kawaii-logo"
-                className={cx("left")}
-              />
-              <img src="/images/home/separate.svg" />
-              <img
-                src="/images/common/kawaiiverse.png"
-                alt="kawaii-logo"
-                className={cx("right")}
-              />
-            </div>
-            <div className={cx("sub-title")}>KAWAIIVERSE</div>
-            <div className={cx("title")}>HACKATHON 2022</div>
-            <div className={cx("description")}>
-              Building the Kawaiiverse gaming ecosystem
-            </div>
-            <div className={cx("prize")}>
-              <span className={cx("yellow")}>$5,000</span> FOR EACH CHOSEN TEAM
-              AND CHANCES FOR PRIVATE DEALS
-            </div>
-            <div className={cx("date")}>21/06/2022 - 21/08/2022</div>
-          </div>
+          <img className={cx("banner")} src="/images/home/big-banner.png" />
         </div>
         <div>
-          <div className={cx("banner")}>
-            <div className={cx("logos")}>
-              <img
-                src="/images/home/kawaii.png"
-                alt="kawaii-logo"
-                className={cx("left")}
-              />
-              <img src="/images/home/separate.svg" />
-              <img
-                src="/images/common/kawaiiverse.png"
-                alt="kawaii-logo"
-                className={cx("right")}
-              />
-            </div>
-            <div className={cx("sub-title")}>KAWAIIVERSE</div>
-            <div className={cx("title")}>HACKATHON 2022</div>
-            <div className={cx("description")}>
-              Building the Kawaiiverse gaming ecosystem
-            </div>
-            <div className={cx("prize")}>
-              <span className={cx("yellow")}>$5,000</span> FOR EACH CHOSEN TEAM
-              AND CHANCES FOR PRIVATE DEALS
-            </div>
-            <div className={cx("date")}>21/06/2022 - 21/08/2022</div>
-          </div>
+          <img className={cx("banner")} src="/images/home/big-banner.png" />
         </div>
       </Slider>
       <div className={cx("explore")}>
-        <div className={cx("title")}>Explore Kawaiiverse Hackathon</div>
+        <div className={cx("title")}>{t("home.explore")}</div>
         <Slider {...secondSettings}>
           <div>
             <div className={cx("slider-item")}></div>

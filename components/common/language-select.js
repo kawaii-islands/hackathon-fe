@@ -14,13 +14,13 @@ export default function LanguageSelect({}) {
         className={cx("item", locale === "vi" && "active")}
         onClick={() => changeLocale("vi")}
       >
-        <img src="/images/common/vi.svg" width={32} height={20} />
+        <img src="/images/common/vi.svg" />
       </div>
       <div
         className={cx("item", locale === "en" && "active")}
         onClick={() => changeLocale("en")}
       >
-        <img src="/images/common/us.svg" width={32} height={20} />
+        <img src="/images/common/us.svg" />
       </div>
     </Box>
   );

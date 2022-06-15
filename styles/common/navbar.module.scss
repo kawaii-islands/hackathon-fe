@@ -1,5 +1,17 @@
+$sm: 600px;
+$md: 900px;
+$lg: 1200px;
+
 .navbar {
   display: flex;
+
+  .logo {
+    height: 21px;
+    @media (min-width: $md) {
+      width: 191px;
+      height: 41px;
+    }
+  }
 
   .nav-links {
     display: flex;
@@ -24,5 +36,9 @@
       border-radius: 6px;
       color: #ffffff;
     }
+  }
+
+  .toggle {
+    cursor: pointer;
   }
 }

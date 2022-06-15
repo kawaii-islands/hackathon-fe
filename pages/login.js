@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useTranslation } from "react-i18next";
 
 const cx = cn.bind(styles);
 const schema = yup
@@ -17,6 +18,7 @@ const schema = yup
   .required();
 
 export default function Register() {
+  const { t } = useTranslation();
   const {
     setFocus,
     register,
@@ -47,7 +49,7 @@ export default function Register() {
           onSubmit={handleSubmit((values) => console.log(values))}
           autoComplete="off"
         >
-          <div className={cx("title")}>Log in</div>
+          <div className={cx("title")}>{t("footer.login")}</div>
           <OutlinedInput
             className={cx("input")}
             startAdornment={
@@ -55,7 +57,7 @@ export default function Register() {
                 <img src="/icons/mail.svg" />
               </InputAdornment>
             }
-            placeholder="Email"
+            placeholder={t("register.email")}
             {...register("email")}
           />
           {errors.email && firstError === "email" && (
@@ -69,17 +71,18 @@ export default function Register() {
                 <img src="/icons/lock.svg" />
               </InputAdornment>
             }
-            placeholder="Password"
+            placeholder={t("register.password")}
             {...register("password")}
           />
           {errors.password && firstError === "password" && (
             <div className={cx("error")}>{errors.password.message}</div>
           )}
           <Button className={cx("submit")} type="submit">
-            Login
+            {t("footer.login")}
           </Button>
           <div className={cx("footer")}>
-            Not a member? <Link href="/register">Register now</Link>
+            {t("register.member")}{" "}
+            <Link href="/register">{t("register.register")}</Link>
           </div>
         </form>
       </Paper>

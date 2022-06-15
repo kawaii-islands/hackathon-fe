@@ -2,7 +2,9 @@ import { createTheme } from "@mui/material";
 const white = "#ffffff";
 const textColor = "#231F20";
 
-const theme = createTheme({
+let theme = createTheme();
+
+theme = createTheme(theme, {
   palette: {
     type: "light",
   },
@@ -13,6 +15,9 @@ const theme = createTheme({
           background: white,
           height: 70,
           color: textColor,
+          [theme.breakpoints.down("md")]: {
+            height: 42,
+          },
         },
       },
     },
@@ -21,6 +26,11 @@ const theme = createTheme({
         root: {
           height: 70,
           justifyContent: "space-between",
+          padding: "0!important",
+          [theme.breakpoints.down("md")]: {
+            height: 42,
+            minHeight: 42,
+          },
         },
       },
     },
@@ -28,6 +38,20 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: 0,
+        },
+      },
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          color: "#FD8970",
+          fontFamily: "Josefin Sans",
+          fontStyle: "normal",
+          fontWeight: 600,
+          fontSize: 12,
+          lineHeight: "12px",
+          paddingTop: "15px",
+          paddingBottom: "15px",
         },
       },
     },

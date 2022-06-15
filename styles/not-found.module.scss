@@ -1,0 +1,11 @@
+$md: 900px;
+
+.not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 42px);
+  @media (min-width: $md) {
+    min-height: calc(100vh - 70px);
+  }
+}
