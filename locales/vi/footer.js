@@ -9,7 +9,4 @@ export default {
   "footer.use": "Điều khoản sử dụng",
   "footer.privacy": "Chính sách bảo mật thông tin",
   "footer.social": "Kết nối cùng Kawaiiverse",
-  "footer.login": "Đăng nhập",
-  "footer.apply": "Gửi dự án",
-  "footer.register": "Đăng ký",
 };

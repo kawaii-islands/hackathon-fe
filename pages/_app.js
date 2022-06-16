@@ -7,6 +7,8 @@ import { ThemeProvider } from "@mui/material";
 import "locales/i18n";
 import Head from "next/head";
 import { useState, useEffect } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function MyApp({ Component, pageProps }) {
   const [showChild, setShowChild] = useState(false);
@@ -31,6 +33,7 @@ function MyApp({ Component, pageProps }) {
           <title>Kawaiiverse Hackathon 2022</title>
           <meta name="description" content="Kawaiiverse Hackathon 2022" />
         </Head>
+        <ToastContainer />
         <Component {...pageProps} />
       </Layout>
     </ThemeProvider>

@@ -8,4 +8,9 @@ export default {
   "register.already": "Already have an account?",
   "register.member": "Not a member?",
   "register.register": "Register now",
+  "register.forgot": "Forgot password",
+  "register.send": "Send",
+  "register.reset": "Reset password",
+  "register.change": "Change password",
+  "register.currentPassword": "Current password",
 };

@@ -9,7 +9,4 @@ export default {
   "footer.use": "Terms of use",
   "footer.privacy": "Privacy Policy",
   "footer.social": "Social Media",
-  "footer.login": "Log in",
-  "footer.apply": "Apply",
-  "footer.register": "Register",
 };

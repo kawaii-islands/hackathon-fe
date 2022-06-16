@@ -2,6 +2,7 @@ import cn from "classnames/bind";
 import styles from "styles/common/list-news.module.scss";
 import listNews from "news";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 const cx = cn.bind(styles);
 
@@ -31,6 +32,7 @@ function News({ news, isLatest }) {
 }
 
 export default function ListNews({ isLatest }) {
+  const { t } = useTranslation();
   let data = listNews.reverse();
   if (isLatest) data = listNews.reverse().slice(0, 3);
 
@@ -38,7 +40,7 @@ export default function ListNews({ isLatest }) {
     <div className={cx("list-news")}>
       {isLatest && (
         <>
-          <div className={cx("title")}>Latest News</div>
+          <div className={cx("title")}>{t("news.latest")}</div>
           {data.map((news) => (
             <News news={news} isLatest={isLatest} key={news.url} />
           ))}

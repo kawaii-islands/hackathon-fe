@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import { Paper, OutlinedInput, InputAdornment, Button } from "@mui/material";
 import styles from "styles/register/index.module.scss";
 import cn from "classnames/bind";
-import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -17,13 +16,11 @@ const schema = yup
   .object()
   .shape({
     email: yup.string().email("Invalid email").required("Email is required"),
-    password: yup.string().required("Password is required"),
   })
   .required();
 
 export default function Register() {
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
   const { t } = useTranslation();
   const {
     setFocus,
@@ -51,16 +48,8 @@ export default function Register() {
   const login = async (values) => {
     try {
       setLoading(true);
-      const res = await axios.post(`${ENDPOINT}/auth/login`, values);
-      if (res.data.user) {
-        window.localStorage.setItem("user", JSON.stringify(res.data.user));
-        window.localStorage.setItem("token", res.data.tokens.access.token);
-        window.localStorage.setItem(
-          "refresh-token",
-          res.data.tokens.refresh.token
-        );
-        router.push("/");
-      }
+      await axios.post(`${ENDPOINT}/auth/forgot-password`, values);
+      toast.success("Check your email");
     } catch (error) {
       let message = error.message;
       if (error?.response?.data?.message) message = error.response.data.message;
@@ -74,7 +63,9 @@ export default function Register() {
     <div className={cx("register")}>
       <Paper className={cx("form")}>
         <form onSubmit={handleSubmit((values) => login(values))}>
-          <div className={cx("title")}>{t("common.login")}</div>
+          <div className={cx("title")} style={{ fontSize: 32 }}>
+            {t("register.forgot")}
+          </div>
           <OutlinedInput
             className={cx("input")}
             startAdornment={
@@ -88,30 +79,9 @@ export default function Register() {
           {errors.email && firstError === "email" && (
             <div className={cx("error")}>{errors.email.message}</div>
           )}
-          <OutlinedInput
-            type="password"
-            className={cx("input")}
-            startAdornment={
-              <InputAdornment position="start">
-                <img src="/icons/lock.svg" />
-              </InputAdornment>
-            }
-            placeholder={t("register.password")}
-            {...register("password")}
-          />
-          {errors.password && firstError === "password" && (
-            <div className={cx("error")}>{errors.password.message}</div>
-          )}
-          <Link href="/forgot-password">
-            <div className={cx("forgot-password")}>Forgot the password?</div>
-          </Link>
           <Button className={cx("submit")} type="submit" disabled={loading}>
-            {t("common.login")}
+            {t("register.send")}
           </Button>
-          <div className={cx("footer")}>
-            {t("register.member")}{" "}
-            <Link href="/register">{t("register.register")}</Link>
-          </div>
         </form>
       </Paper>
     </div>

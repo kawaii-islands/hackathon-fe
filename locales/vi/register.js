@@ -8,4 +8,9 @@ export default {
   "register.already": "Bạn đã có tài khoản?",
   "register.member": "Bạn chưa có tài khoản?",
   "register.register": "Đăng ký ngay",
+  "register.forgot": "Quên mật khẩu",
+  "register.send": "Gửi",
+  "register.reset": "Đổi mật khẩu",
+  "register.change": "Đổi mật khẩu",
+  "register.currentPassword": "Mật khẩu hiện tại",
 };

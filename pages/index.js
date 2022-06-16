@@ -2,6 +2,7 @@ import styles from "styles/home/index.module.scss";
 import cn from "classnames/bind";
 import Slider from "react-slick";
 import { useTranslation } from "react-i18next";
+import Link from "next/link";
 
 const cx = cn.bind(styles);
 
@@ -23,8 +24,11 @@ function CustomPrevArrow({ className, onClick }) {
 
 const settings = {
   dots: false,
-  infinite: false,
+  infinite: true,
+  autoplay: true,
+  autoplaySpeed: 5000,
   speed: 500,
+  cssEase: "linear",
   slidesToShow: 1,
   slidesToScroll: 1,
   arrows: true,
@@ -59,7 +63,9 @@ export default function Home() {
         </div>
       </Slider>
       <div className={cx("explore")}>
-        <div className={cx("title")}>{t("home.explore")}</div>
+        <Link href="/library">
+          <div className={cx("title")}>{t("home.explore")}</div>
+        </Link>
         <Slider {...secondSettings}>
           <div>
             <div className={cx("slider-item")}></div>

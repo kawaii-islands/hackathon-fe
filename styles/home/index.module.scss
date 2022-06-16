@@ -1,3 +1,4 @@
+$md: 900px;
 .home {
   .banner {
     width: 100%;
@@ -5,14 +6,19 @@
 
   .arrow {
     z-index: 100;
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(10px);
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media (min-width: $md) {
+      width: 60px;
+      height: 60px;
+    }
 
     &::before {
       display: none !important;
@@ -24,7 +30,13 @@
     transform: translateY(-50%);
 
     img {
-      margin-right: 4px;
+      margin-right: 2px;
+      height: 13px;
+
+      @media (min-width: $md) {
+        height: 20px;
+        margin-right: 4px;
+      }
     }
   }
 
@@ -33,7 +45,13 @@
     transform: translateY(-50%);
 
     img {
-      margin-left: 4px;
+      height: 13px;
+      margin-left: 2px;
+
+      @media (min-width: $md) {
+        height: 20px;
+        margin-left: 4px;
+      }
     }
   }
 
@@ -51,6 +69,9 @@
       color: #fd8970;
       margin-bottom: 90px;
       cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
     }
 
     .slider-item {

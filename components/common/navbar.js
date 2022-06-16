@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Box } from "@mui/system";
-import { AppBar, Toolbar, MenuItem, Fade, Menu } from "@mui/material";
+import { AppBar, Toolbar, MenuItem, Fade, Menu, Popover } from "@mui/material";
 import LanguageSelect from "./language-select";
 import cn from "classnames/bind";
 import styles from "styles/common/navbar.module.scss";
@@ -8,6 +8,8 @@ import Link from "next/link";
 import { useMediaQuery } from "@mui/material";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
+import useAuth from "hooks/useAuth";
+import ProfileNavbar from "./profile-navbar";
 
 const cx = cn.bind(styles);
 
@@ -39,6 +41,8 @@ export default function Navbar({}) {
     setAnchorEl(null);
   };
 
+  const isAuth = useAuth();
+
   return (
     <AppBar>
       <Container>
@@ -57,16 +61,23 @@ export default function Navbar({}) {
           </Box>
           {isDesktop ? (
             <div className={cx("nav-links")}>
-              {links.map((link) => (
-                <div
-                  className={cx("link", {
-                    apply: link.name === "apply",
-                  })}
-                  key={link.name}
-                >
-                  <Link href={link.href}>{t(`footer.${link.name}`)}</Link>
-                </div>
-              ))}
+              {links.map((link) => {
+                if (isAuth && link.name === "register")
+                  return <div key={link.name}></div>;
+                if (isAuth && link.name === "login")
+                  return <ProfileNavbar key={link.name} />;
+                return (
+                  <Link href={link.href} key={link.name}>
+                    <div
+                      className={cx("link", {
+                        apply: link.name === "apply",
+                      })}
+                    >
+                      {t(`common.${link.name}`)}
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           ) : (
             <>

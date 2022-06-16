@@ -63,6 +63,21 @@ $md: 900px;
       margin-bottom: 12px;
     }
 
+    .forgot-password {
+      font-style: italic;
+      font-weight: 600;
+      font-size: 13px;
+      line-height: 24px;
+      letter-spacing: -0.01em;
+      color: #9a9fa5;
+      margin-bottom: 16px;
+      text-align: right;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
     .submit {
       background: #f25c41;
       border-radius: 12px;
@@ -90,6 +105,61 @@ $md: 900px;
 
     a {
       color: #f25c41 !important;
+    }
+  }
+
+  .verify {
+    max-width: 449px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .title {
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 48px;
+      letter-spacing: -0.03em;
+      color: #1a1d1f;
+      margin-bottom: 35px;
+    }
+
+    img {
+      width: 88px;
+      height: 88px;
+      margin-bottom: 40px;
+    }
+
+    .text {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+      text-align: center;
+      letter-spacing: -0.01em;
+      color: #1a1d1f;
+      margin-bottom: 40px;
+    }
+
+    .email {
+      color: #f8a629;
+    }
+
+    .resend {
+      width: 260px;
+      height: 48px;
+      background: #f25c41;
+      border-radius: 8px;
+      border: none;
+      font-weight: 700;
+      font-size: 15px;
+      line-height: 24px;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      cursor: pointer;
     }
   }
 }

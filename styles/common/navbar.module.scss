@@ -42,3 +42,22 @@ $lg: 1200px;
     cursor: pointer;
   }
 }
+
+.profile {
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  line-height: 16px;
+  color: #484848;
+  cursor: pointer;
+  margin-left: 0;
+  font-size: 12px;
+  @media (min-width: $md) {
+    margin-left: 34px;
+    font-size: 16px;
+  }
+
+  img {
+    margin-right: 5px;
+  }
+}

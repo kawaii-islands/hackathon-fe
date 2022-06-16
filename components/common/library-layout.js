@@ -7,10 +7,13 @@ import Breadcrumb from "./breadcrumb";
 import ListNews from "./list-news";
 import { links } from "./navbar";
 import { useTranslation } from "react-i18next";
+import useAuth from "hooks/useAuth";
+import ProfileNavbar from "./profile-navbar";
 
 const cx = cn.bind(styles);
 
 export default function LibraryLayout({ title, date, children }) {
+  const isAuth = useAuth();
   const { t } = useTranslation();
   const isDesktop = useMediaQuery("(min-width:900px)");
   return (
@@ -29,16 +32,22 @@ export default function LibraryLayout({ title, date, children }) {
               </>
             ) : (
               <>
-                {links.map((link) => (
-                  <div
-                    className={cx("link", {
-                      apply: link.name === "apply",
-                    })}
-                    key={link.name}
-                  >
-                    <Link href={link.href}>{t(`footer.${link.name}`)}</Link>
-                  </div>
-                ))}
+                {links.map((link) => {
+                  if (isAuth && link.name === "register")
+                    return <div key={link.name}></div>;
+                  if (isAuth && link.name === "login")
+                    return <ProfileNavbar key={link.name} />;
+                  return (
+                    <div
+                      className={cx("link", {
+                        apply: link.name === "apply",
+                      })}
+                      key={link.name}
+                    >
+                      <Link href={link.href}>{t(`common.${link.name}`)}</Link>
+                    </div>
+                  );
+                })}
               </>
             )}
           </Toolbar>

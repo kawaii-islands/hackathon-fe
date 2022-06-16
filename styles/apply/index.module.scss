@@ -1,0 +1,80 @@
+$md: 900px;
+.apply {
+  padding: 40px 0;
+  width: 100%;
+  min-height: calc(100vh - 42px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Josefin Sans";
+  font-style: normal;
+  background: #f7f3ed;
+  @media (min-width: 900px) {
+    min-height: calc(100vh - 70px);
+  }
+
+  .container {
+    padding: 40px 70px;
+    background: #ffffff;
+    border-radius: 10px;
+
+    .title {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 130%;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: #f8a629;
+      margin-bottom: 20px;
+    }
+
+    .sub-title {
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 130%;
+      letter-spacing: -0.02em;
+      color: #ce7847;
+      margin-bottom: 12px;
+    }
+
+    .label {
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 130%;
+      letter-spacing: -0.02em;
+      color: #000000;
+      margin-bottom: 8px;
+    }
+
+    .input {
+      border: 1px solid rgba(160, 160, 160, 0.3);
+      border-radius: 4px;
+      height: 40px;
+      width: 100%;
+      padding: 8px 0;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 130%;
+      letter-spacing: -0.02em;
+      margin-bottom: 15px;
+
+      :global(.MuiOutlinedInput-notchedOutline) {
+        border: none;
+      }
+    }
+
+    .submit {
+      background: #f25c41;
+      border-radius: 6px;
+      width: 355px;
+      height: 50px;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 16px;
+      color: #ffffff;
+      margin: 0 auto;
+      border: none;
+      cursor: pointer;
+    }
+  }
+}

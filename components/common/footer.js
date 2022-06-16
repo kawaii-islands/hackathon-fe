@@ -5,10 +5,12 @@ import styles from "styles/common/footer.module.scss";
 import cn from "classnames/bind";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
+import useAuth from "hooks/useAuth";
 
 const cx = cn.bind(styles);
 
 export default function Footer() {
+  const isAuth = useAuth();
   const { t } = useTranslation();
   return (
     <div className={cx("footer")}>
@@ -70,7 +72,7 @@ export default function Footer() {
             <a href="https://kawaii.global/media-kit" target="_blank">
               Media Kit
             </a>
-            <a href="mailto:contact@kawaii.global">Contact</a>
+            <a href="mailto:contact@kawaii.global">{t("footer.contact")}</a>
             <a href="https://blog.kawaii.global" target="_blank">
               Blog
             </a>
@@ -109,11 +111,13 @@ export default function Footer() {
               </a>
             </div>
             <div className={cx("buttons")}>
-              <Link href="/login">
-                <button className={cx("login")}>{t("footer.login")}</button>
-              </Link>
+              {isAuth || (
+                <Link href="/login">
+                  <button className={cx("login")}>{t("common.login")}</button>
+                </Link>
+              )}
               <Link href="/apply">
-                <button className={cx("apply")}>{t("footer.apply")}</button>
+                <button className={cx("apply")}>{t("common.apply")}</button>
               </Link>
             </div>
           </Grid>
