@@ -38,8 +38,7 @@ export default function VerifyEmail() {
       router.replace("/login");
     } catch (error) {
       toast.error(error.message);
-      if (error?.response?.data?.code === 401)
-        refreshToken(() => sendVerify(token));
+      if (error?.response?.data?.code === 401) toast.error("Expired token");
       else toast.error(error?.response?.data?.message);
     }
   };

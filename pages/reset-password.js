@@ -69,8 +69,7 @@ export default function Register() {
       toast.success("Reset password successfully");
       router.replace("/login");
     } catch (error) {
-      if (error?.response?.data?.code === 401)
-        refreshToken(() => login(values));
+      if (error?.response?.data?.code === 401) toast.error("Expired token");
       else toast.error(error?.response?.data?.message);
     } finally {
       setLoading(false);
