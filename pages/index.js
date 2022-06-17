@@ -48,6 +48,15 @@ const secondSettings = {
   cssEase: "linear",
   nextArrow: <CustomNextArrow />,
   prevArrow: <CustomPrevArrow />,
+  responsive: [
+    {
+      breakpoint: 900,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
 };
 
 export default function Home() {

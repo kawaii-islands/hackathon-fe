@@ -1,6 +1,6 @@
 $md: 900px;
 .apply {
-  padding: 40px 0;
+  padding: 40px 10px;
   width: 100%;
   min-height: calc(100vh - 42px);
   display: flex;
@@ -57,10 +57,79 @@ $md: 900px;
       line-height: 130%;
       letter-spacing: -0.02em;
       margin-bottom: 15px;
+      font-family: "Josefin Sans";
+      font-style: normal;
 
       :global(.MuiOutlinedInput-notchedOutline) {
         border: none;
       }
+
+      :-webkit-autofill,
+      :-webkit-autofill:hover,
+      :-webkit-autofill:focus,
+      :-webkit-autofill:active {
+        transition: background-color 5000s ease-in-out 0s;
+      }
+    }
+
+    .file {
+      display: none;
+      &::-webkit-file-upload-button {
+        visibility: hidden;
+      }
+      &::before {
+        content: "Select some files";
+        display: inline-block;
+        background: linear-gradient(to top, #f9f9f9, #e3e3e3);
+        border: 1px solid #999;
+        border-radius: 3px;
+        padding: 5px 8px;
+        outline: none;
+        white-space: nowrap;
+        -webkit-user-select: none;
+        cursor: pointer;
+        text-shadow: 1px 1px #fff;
+        font-weight: 700;
+        font-size: 10pt;
+      }
+    }
+
+    label {
+      border: 1px solid rgba(160, 160, 160, 0.3);
+      border-radius: 4px;
+      height: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      width: 100%;
+      padding: 8px 12px;
+      font-weight: 400;
+      font-size: 16px;
+      letter-spacing: -0.02em;
+      margin-bottom: 15px;
+      color: #bdbec1;
+    }
+
+    .textarea {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 8px 12px;
+      border: 1px solid rgba(160, 160, 160, 0.3);
+      border-radius: 4px;
+      font-size: 16px;
+      font-family: "Josefin Sans";
+      font-style: normal;
+
+      &:focus-visible {
+        outline: none;
+      }
+    }
+
+    .error {
+      color: red;
+      font-size: 13px;
+      margin-bottom: 12px;
     }
 
     .submit {

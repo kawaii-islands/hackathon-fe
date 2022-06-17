@@ -1,0 +1,17 @@
+export default {
+  "apply.info": "general information",
+  "apply.team.members": "team members",
+  "apply.teamName": "Team name",
+  "apply.teamEmail": "Team email",
+  "apply.noOfMembers": "No. of members",
+  "apply.country": "Country",
+  "apply.story": "Team story (on game development)",
+  "apply.idea": "Game Idea",
+  "apply.document": "Supporting document/art",
+  "apply.team.no": "No.",
+  "apply.team.name": "Name/Nickname",
+  "apply.team.position": "Position",
+  "apply.team.username": "Discord username",
+  "apply.upload": "Upload file",
+  "apply.update": "Update",
+};

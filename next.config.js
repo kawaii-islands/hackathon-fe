@@ -3,13 +3,13 @@
 const path = require("path");
 
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   webpack: (config) => {
     config.resolve.modules.push(path.resolve("./"));
 
     return config;
   },
-  exportTrailingSlash: true,
+  trailingSlash: true,
 };
 
 module.exports = nextConfig;

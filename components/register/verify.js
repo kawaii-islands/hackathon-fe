@@ -4,13 +4,14 @@ import { Paper } from "@mui/material";
 import { ENDPOINT } from "consts";
 import axios from "axios";
 import { useState } from "react";
+import refreshToken from "utils/refresh-token";
+import { toast } from "react-toastify";
 
 const cx = cn.bind(styles);
 
 export default function Verify() {
   const [loading, setLoading] = useState(false);
   const user = JSON.parse(window.localStorage.getItem("user"));
-  const token = window.localStorage.getItem("token");
 
   const resend = async () => {
     try {
@@ -21,12 +22,13 @@ export default function Verify() {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + token,
+            Authorization: "Bearer " + window.localStorage.getItem("token"),
           },
         }
       );
     } catch (error) {
-      console.error(error.message);
+      if (error?.response?.data?.code === 401) refreshToken(resend);
+      else toast.error(error?.response?.data?.message);
     } finally {
       setLoading(false);
     }

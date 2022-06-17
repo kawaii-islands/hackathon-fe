@@ -1,3 +1,4 @@
+$md: 900px;
 .news {
   flex: 1;
   font-weight: 500;
@@ -18,18 +19,34 @@
 
   .title {
     font-weight: 700;
-    font-size: 32px;
+    font-size: 16px;
     line-height: 150%;
     color: #f8a629;
-    margin-bottom: 24px;
+    margin-bottom: 8px;
+
+    @media (min-width: 900px) {
+      font-size: 32px;
+      margin-bottom: 24px;
+    }
   }
 
   .date {
     font-style: italic;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 12px;
     line-height: 150%;
     color: #939598;
     margin-bottom: 16px;
+
+    @media (min-width: 900px) {
+      font-size: 18px;
+    }
+  }
+
+  p {
+    font-size: 12px;
+    @media (min-width: 900px) {
+      font-size: 16px;
+    }
   }
 }

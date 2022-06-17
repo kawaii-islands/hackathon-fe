@@ -4,6 +4,7 @@ import { CircularProgress } from "@mui/material";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { ENDPOINT } from "consts";
+import refreshToken from "utils/refresh-token";
 
 export default function VerifyEmail() {
   const router = useRouter();
@@ -26,14 +27,20 @@ export default function VerifyEmail() {
         }
       );
       const user = JSON.parse(window.localStorage.getItem("user"));
-      window.localStorage.setItem("user", {
-        ...user,
-        isEmailVerified: true,
-      });
+      window.localStorage.setItem(
+        "user",
+        JSON.stringify({
+          ...user,
+          isEmailVerified: true,
+        })
+      );
       toast.success("Verify successfully!!");
       router.replace("/login");
     } catch (error) {
       toast.error(error.message);
+      if (error?.response?.data?.code === 401)
+        refreshToken(() => sendVerify(token));
+      else toast.error(error?.response?.data?.message);
     }
   };
 

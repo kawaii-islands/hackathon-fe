@@ -4,6 +4,7 @@ import breadcrumb from "./breadcrumb";
 import home from "./home";
 import footer from "./footer";
 import news from "./news";
+import apply from "./apply";
 
 export default {
   ...common,
@@ -12,4 +13,5 @@ export default {
   ...home,
   ...footer,
   ...news,
+  ...apply,
 };

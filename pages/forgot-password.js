@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { ENDPOINT } from "consts";
+import refreshToken from "utils/refresh-token";
 
 const cx = cn.bind(styles);
 const schema = yup
@@ -51,9 +52,9 @@ export default function Register() {
       await axios.post(`${ENDPOINT}/auth/forgot-password`, values);
       toast.success("Check your email");
     } catch (error) {
-      let message = error.message;
-      if (error?.response?.data?.message) message = error.response.data.message;
-      toast.error(message);
+      if (error?.response?.data?.code === 401)
+        refreshToken(() => login(values));
+      else toast.error(error?.response?.data?.message);
     } finally {
       setLoading(false);
     }

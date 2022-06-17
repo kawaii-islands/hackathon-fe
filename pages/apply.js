@@ -1,49 +1,149 @@
-import { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState, useRef, useEffect } from "react";
 import cn from "classnames/bind";
 import styles from "styles/apply/index.module.scss";
 import { Container } from "@mui/system";
-import { Grid, OutlinedInput } from "@mui/material";
-import { useForm } from "react-hook-form";
+import { Grid, OutlinedInput, TextareaAutosize } from "@mui/material";
+import { useForm, useFieldArray } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import useAuth from "hooks/useAuth";
+import { useTranslation } from "react-i18next";
+import axios from "axios";
+import { ENDPOINT } from "consts";
+import refreshToken from "utils/refresh-token";
+import { toast } from "react-toastify";
 
 const cx = cn.bind(styles);
-const schema = yup
-  .object()
-  .shape({
-    name: yup.string().required("Name is required"),
-    country: yup.string().required("Country is required"),
-    email: yup.string().email("Invalid email").required("Email is required"),
-    password: yup
-      .string()
-      .min(8, "Password min length is 8")
-      .required("Password is required"),
-    confirmPassword: yup
-      .string()
-      .min(8, "Confirm password min length is 8")
-      .oneOf([yup.ref("password"), null], "Password must match")
-      .required("Confirm password is required"),
-  })
-  .required();
 
 export default function Apply() {
+  const user = JSON.parse(window.localStorage.getItem("user"));
+  const [loading, setLoading] = useState(false);
+  const [attachment, setAttachment] = useState(0);
+  const [currentTeam, setCurrentTeam] = useState({
+    email: user.email,
+    country: "",
+    gameIdea: "",
+    name: "",
+    story: "",
+    members: [
+      {
+        discordUsername: "asd",
+        name: "asd",
+        position: "asd",
+      },
+    ],
+  });
+  const schema = yup
+    .object()
+    .shape({
+      name: yup.string().required("Team name is required"),
+      email: yup
+        .string()
+        .email("Invalid email")
+        .required("Team email is required"),
+      noOfMembers: yup
+        .number()
+        .integer("Must be an integer")
+        .min(1, "Must gte 1")
+        .max(6, "Must lte 6")
+        .required("Email is required"),
+      country: yup.string().required("Country is required"),
+      story: yup.string().required("Story is required"),
+      gameIdea: yup.string().required("Idea is required"),
+      attachment: yup.mixed().test({
+        message: "Document is required",
+        test: (file) => {
+          return currentTeam.name || file.length;
+        },
+      }),
+      members: yup.array().of(
+        yup.object().shape({
+          name: yup.string().required("Name is required"),
+          position: yup.string().required("Position is required"),
+          discordUsername: yup
+            .string()
+            .required("Discord username is required"),
+        })
+      ),
+    })
+    .required();
+
   const {
     setFocus,
     register,
     handleSubmit,
+    control,
+    watch,
+    setValue,
+    getValues,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
+    defaultValues: {
+      noOfMembers: currentTeam.members.length,
+      email: currentTeam.email,
+      country: currentTeam.country,
+      gameIdea: currentTeam.gameIdea,
+      name: currentTeam.name,
+      story: currentTeam.story,
+    },
   });
+  const { t } = useTranslation();
+  const noOfMembers = watch("noOfMembers");
+  const attachmentRef = watch("attachment");
+  const olfNoOfMembers = useRef();
+
+  const { fields, append, remove } = useFieldArray({
+    name: "members",
+    control,
+  });
+
+  useEffect(() => {
+    if (noOfMembers === olfNoOfMembers.current) return;
+    const newVal = parseInt(noOfMembers || 0);
+    if (newVal > 6 || newVal < 1)
+      return setValue("noOfMembers", olfNoOfMembers.current);
+    olfNoOfMembers.current = noOfMembers;
+    const oldVal = fields.length;
+    if (newVal > oldVal) {
+      for (let i = oldVal; i < newVal; i++) {
+        append({ name: "", position: "", discordUsername: "" });
+      }
+    } else {
+      for (let i = oldVal; i > newVal; i--) {
+        remove(i - 1);
+      }
+    }
+  }, [noOfMembers]);
+
+  useEffect(() => {
+    setAttachment(getValues("attachment"));
+  }, [attachmentRef]);
 
   const firstError = useMemo(
     () =>
       Object.keys(errors).reduce((field, a) => {
+        if (a === "members") {
+          let index;
+          let field;
+          const isError = errors.members.some((member, idx) => {
+            if (Object.keys(member).length) {
+              index = idx;
+              field = Object.keys(member)[0];
+              return true;
+            }
+            return false;
+          });
+          if (isError) return `members.${index}.${field}`;
+        }
         return !!errors[field] ? field : a;
       }, null),
     [errors]
   );
+
+  useEffect(() => {
+    getCurrentTeam();
+  }, []);
 
   useEffect(() => {
     if (firstError) {
@@ -51,50 +151,221 @@ export default function Apply() {
     }
   }, [firstError]);
 
+  const getCurrentTeam = async () => {
+    try {
+      const res = await axios.get(`${ENDPOINT}/teams`, {
+        headers: {
+          Authorization: "Bearer " + window.localStorage.getItem("token"),
+        },
+      });
+      setCurrentTeam(res.data);
+      delete res.data.createdBy;
+      delete res.data.id;
+      Object.keys(res.data).forEach((key) => {
+        if (key === "attachment") {
+        } else if (key === "members") {
+          setValue("noOfMembers", res.data[key].length);
+          const members = getValues("members");
+          console.log(members);
+          members.forEach((_, idx) => remove(idx));
+          res.data[key].forEach((item, idx) => {
+            append({
+              name: item.name,
+              position: item.position,
+              discordUsername: item.discordUsername,
+            });
+            // setValue(`members.${idx}.name`, item.name);
+            // setValue(`members.${idx}.position`, item.position);
+            // setValue(`members.${idx}.discordUsername`, item.discordUsername);
+          });
+        } else {
+          setValue(key, res.data[key]);
+        }
+      });
+    } catch (error) {
+      if (error?.response?.data?.code === 401) refreshToken(getCurrentTeam);
+      else if (error?.response?.data?.code !== 404) {
+        toast.error(error?.response?.data?.message);
+      }
+    }
+  };
+
+  const onSubmit = async (values) => {
+    try {
+      const body = { ...values };
+      setLoading(true);
+      delete body.noOfMembers;
+
+      if (body?.attachment?.length) {
+        body.attachment = body.attachment[0];
+      } else delete body.attachment;
+      body.members = JSON.stringify(body.members);
+
+      const formData = new FormData();
+      Object.entries(body).forEach(([key, value]) =>
+        formData.append(key, value)
+      );
+      let res;
+      if (currentTeam.name) {
+        res = await axios.put(`${ENDPOINT}/teams`, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data; boundary=something",
+            Authorization: "Bearer " + window.localStorage.getItem("token"),
+          },
+        });
+        toast.success("Update successfully");
+      } else {
+        res = await axios.post(`${ENDPOINT}/teams`, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data; boundary=something",
+            Authorization: "Bearer " + window.localStorage.getItem("token"),
+          },
+        });
+        toast.success("Apply successfully");
+      }
+      setLoading(false);
+    } catch (error) {
+      console.error(error);
+      if (error?.response?.data?.code === 401)
+        refreshToken(() => onSubmit(values));
+      else {
+        toast.error(error?.response?.data?.message);
+        setLoading(false);
+      }
+    }
+  };
+
   const isAuth = useAuth(true);
 
   if (!isAuth) return <></>;
-
   return (
     <div className={cx("apply")}>
       <Container className={cx("container")}>
-        <Grid container spacing={6}>
-          <Grid item lg={6}>
-            <div className={cx("title")}>general information</div>
-            <div className={cx("label")}>Team name</div>
-            <OutlinedInput className={cx("input")} />
-            <div className={cx("label")}>Team email</div>
-            <OutlinedInput className={cx("input")} />
-            <div className={cx("label")}>No. of members</div>
-            <OutlinedInput
-              className={cx("input")}
-              type="number"
-              inputProps={{
-                min: 1,
-                max: 6,
-              }}
-            />
-            <div className={cx("label")}>Country</div>
-            <OutlinedInput className={cx("input")} />
-            <div className={cx("label")}>Team story (on game development)</div>
-            <OutlinedInput className={cx("input")} />
-            <div className={cx("label")}>Game Idea</div>
-            <OutlinedInput className={cx("input")} />
-            <div className={cx("label")}>Supporting document/art</div>
-            <OutlinedInput className={cx("input")} />
+        <form onSubmit={handleSubmit((values) => onSubmit(values))}>
+          <Grid container spacing={6}>
+            <Grid item lg={6}>
+              <div className={cx("title")}>{t("apply.info")}</div>
+              <div className={cx("label")}>{t("apply.teamName")}</div>
+              <OutlinedInput className={cx("input")} {...register(`name`)} />
+              {errors.name && firstError === "name" && (
+                <div className={cx("error")}>{errors.name.message}</div>
+              )}
+              <div className={cx("label")}>{t("apply.teamEmail")}</div>
+              <OutlinedInput
+                className={cx("input")}
+                {...register(`email`)}
+                readOnly
+              />
+              {errors.email && firstError === "email" && (
+                <div className={cx("error")}>{errors.email.message}</div>
+              )}
+              <div className={cx("label")}>{t("apply.noOfMembers")}</div>
+              <OutlinedInput
+                className={cx("input")}
+                type="number"
+                inputProps={{
+                  min: 1,
+                  max: 6,
+                }}
+                {...register(`noOfMembers`)}
+              />
+              {errors.noOfMembers && firstError === "noOfMembers" && (
+                <div className={cx("error")}>{errors.noOfMembers.message}</div>
+              )}
+              <div className={cx("label")}>{t("apply.country")}</div>
+              <OutlinedInput className={cx("input")} {...register(`country`)} />
+              {errors.country && firstError === "country" && (
+                <div className={cx("error")}>{errors.country.message}</div>
+              )}
+              <div className={cx("label")}>{t("apply.story")}</div>
+              <TextareaAutosize
+                className={cx("textarea")}
+                minRows={5}
+                {...register(`story`)}
+              />
+              {errors.story && firstError === "story" && (
+                <div className={cx("error")}>{errors.story.message}</div>
+              )}
+              <div className={cx("label")}>{t("apply.idea")}</div>
+              <TextareaAutosize
+                className={cx("textarea")}
+                minRows={5}
+                {...register(`gameIdea`)}
+              />
+              {errors.gameIdea && firstError === "gameIdea" && (
+                <div className={cx("error")}>{errors.gameIdea.message}</div>
+              )}
+              <div className={cx("label")}>{t("apply.document")}</div>
+              <input
+                id="file"
+                className={cx("file")}
+                {...register(`attachment`)}
+                type="file"
+                accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/png,image/jpeg"
+              />
+              <label htmlFor="file">
+                <div>
+                  {currentTeam.attachment
+                    ? currentTeam.attachment.origin
+                    : attachment?.[0]
+                    ? attachment[0].name
+                    : t("apply.upload")}
+                </div>
+                <img src="/icons/upload.svg" />
+              </label>
+              {errors.attachment && firstError === "attachment" && (
+                <div className={cx("error")}>{errors.attachment.message}</div>
+              )}
+            </Grid>
+            <Grid item lg={6}>
+              <div className={cx("title")}>{t("apply.team.members")}</div>
+              {fields.map((_, idx) => (
+                <React.Fragment key={idx}>
+                  <div className={cx("sub-title")}>
+                    {t("apply.team.no")}
+                    {idx + 1}
+                  </div>
+                  <div className={cx("label")}>{t("apply.team.name")}</div>
+                  <OutlinedInput
+                    className={cx("input")}
+                    {...register(`members.${idx}.name`)}
+                  />
+                  {errors?.members?.[idx]?.name &&
+                    firstError === `members.${idx}.name` && (
+                      <div className={cx("error")}>
+                        {errors.members[idx].name.message}
+                      </div>
+                    )}
+                  <div className={cx("label")}>{t("apply.team.position")}</div>
+                  <OutlinedInput
+                    className={cx("input")}
+                    {...register(`members.${idx}.position`)}
+                  />
+                  {errors?.members?.[idx]?.position &&
+                    firstError === `members.${idx}.position` && (
+                      <div className={cx("error")}>
+                        {errors.members[idx].position.message}
+                      </div>
+                    )}
+                  <div className={cx("label")}>{t("apply.team.username")}</div>
+                  <OutlinedInput
+                    className={cx("input")}
+                    {...register(`members.${idx}.discordUsername`)}
+                  />
+                  {errors?.members?.[idx]?.discordUsername &&
+                    firstError === `members.${idx}.discordUsername` && (
+                      <div className={cx("error")}>
+                        {errors.members[idx].discordUsername.message}
+                      </div>
+                    )}
+                </React.Fragment>
+              ))}
+            </Grid>
+            <button className={cx("submit")} disabled={loading}>
+              {currentTeam.name ? t("apply.update") : t("common.apply")}
+            </button>
           </Grid>
-          <Grid item lg={6}>
-            <div className={cx("title")}>team members</div>
-            <div className={cx("sub-title")}>No.1</div>
-            <div className={cx("label")}>Name/Nickname</div>
-            <OutlinedInput className={cx("input")} />
-            <div className={cx("label")}>Position</div>
-            <OutlinedInput className={cx("input")} />
-            <div className={cx("label")}>Discord username</div>
-            <OutlinedInput className={cx("input")} />
-          </Grid>
-          <button className={cx("submit")}>Apply</button>
-        </Grid>
+        </form>
       </Container>
     </div>
   );

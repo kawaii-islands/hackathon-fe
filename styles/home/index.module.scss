@@ -63,12 +63,16 @@ $md: 900px;
       font-family: "Josefin Sans";
       font-style: normal;
       font-weight: 700;
-      font-size: 40px;
-      line-height: 40px;
+      font-size: 16px;
+      line-height: 16px;
       text-align: center;
       color: #fd8970;
       margin-bottom: 90px;
       cursor: pointer;
+      @media (min-width: $md) {
+        font-size: 40px;
+        line-height: 40px;
+      }
       &:hover {
         text-decoration: underline;
       }
@@ -82,7 +86,10 @@ $md: 900px;
         #ff8569 100%
       );
       border-radius: 20px;
-      height: 350px;
+      height: 150px;
+      @media(min-width: $md){
+        height: 350px;
+      }
     }
   }
 
