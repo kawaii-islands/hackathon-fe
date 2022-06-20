@@ -29,6 +29,11 @@ export default function NewsDetail({}) {
       <div className={cx("news")}>
         <div className={cx("title")}>{news.title}</div>
         <div className={cx("date")}>{news.date}</div>
+        <div className={cx("description")}>{news.description}</div>
+        <div className={cx("image-box")}>
+          <img src={news.image} alt="banner" className={cx("image")} />
+        </div>
+
         {news.content}
       </div>
     </LibraryLayout>

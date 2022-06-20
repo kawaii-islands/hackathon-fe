@@ -23,7 +23,7 @@ $md: 900px;
 
     @media (min-width: $md) {
       flex-direction: row;
-      max-height: 200px;
+    //   max-height: 200px;
       width: 100%;
       overflow-y: hidden;
     }
@@ -81,6 +81,11 @@ $md: 900px;
           font-size: 16px;
         }
       }
+
+	  .image {
+		width: 100%;
+		height: auto;
+	  }
     }
     img {
       width: 100%;

@@ -5,8 +5,10 @@ $md: 900px;
   font-size: 16px;
   line-height: 150%;
   color: #403e3e;
-  padding-right: 30px;
+//   padding-right: 30px;
   text-align: justify;
+  max-width: 1080px;
+  margin: 0 auto;
 
   p {
     &:first-child {
@@ -49,4 +51,21 @@ $md: 900px;
       font-size: 16px;
     }
   }
+}
+
+.description {
+  font-weight: 500;
+  font-size: 14px;
+  font-style: italic;
+  color: #575757;
+}
+
+.image-box {
+	width: 100%;
+	margin: 30px auto;
+	text-align: center;
+}
+
+.image {
+	width: 60%;
 }

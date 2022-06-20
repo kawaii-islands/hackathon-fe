@@ -73,7 +73,7 @@ $md: 900px;
       line-height: 16px;
       text-align: center;
       color: #fd8970;
-      margin-bottom: 90px;
+      margin-bottom: 60px;
       cursor: pointer;
 
       @media (min-width: $md) {
@@ -86,7 +86,7 @@ $md: 900px;
     }
 
     .slider-item {
-      margin: 0 18px;
+      margin: 0 auto;
       background: radial-gradient(
         88.79% 88.79% at 50% 45.5%,
         #ffffff 0%,
@@ -94,8 +94,16 @@ $md: 900px;
       );
       border-radius: 20px;
       height: 150px;
+      width: 50%;
+	  cursor: pointer;
+
       @media (min-width: $md) {
         height: 350px;
+        width: 50%;
+      }
+
+      .banner {
+        border-radius: 20px;
       }
     }
   }

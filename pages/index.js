@@ -44,7 +44,7 @@ const secondSettings = {
   autoplay: true,
   autoplaySpeed: 2000,
   speed: 1000,
-  slidesToShow: 3,
+  //   slidesToShow: 3,
   slidesToScroll: 1,
   arrows: true,
   cssEase: "linear",
@@ -99,21 +99,14 @@ export default function Home() {
           <div className={cx("title")}>{t("home.explore")}</div>
         </Link>
         <Slider {...secondSettings}>
-          <div>
-            <div className={cx("slider-item")}></div>
-          </div>
-          <div>
-            <div className={cx("slider-item")}></div>
-          </div>
-          <div>
-            <div className={cx("slider-item")}></div>
-          </div>
-          <div>
-            <div className={cx("slider-item")}></div>
-          </div>
-          <div>
-            <div className={cx("slider-item")}></div>
-          </div>
+          <Link href="/library">
+            <div className={cx("slider-item")}>
+              <img
+                className={cx("banner")}
+                src={`/images/home/kawaii-hackathon-banner.jpg`}
+              />
+            </div>
+          </Link>
         </Slider>
       </div>
 
