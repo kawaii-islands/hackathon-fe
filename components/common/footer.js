@@ -112,7 +112,7 @@ export default function Footer() {
               </a>
             </div>
             <div className={cx("buttons")}>
-              {authStatus !== AUTH_STATUS.NOT_AUTH && (
+              {authStatus === AUTH_STATUS.NOT_AUTH && (
                 <Link href="/login">
                   <button className={cx("login")}>{t("common.login")}</button>
                 </Link>
