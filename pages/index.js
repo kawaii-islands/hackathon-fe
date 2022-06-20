@@ -60,15 +60,22 @@ const secondSettings = {
 };
 
 export default function Home() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
   return (
     <div className={cx("home")}>
       <Slider {...settings}>
         <div>
-          <img className={cx("banner")} src="/images/home/big-banner.png" />
+          <img
+            className={cx("banner")}
+            src={`/images/home/big-banner-${i18n.language}.png`}
+          />
         </div>
         <div>
-          <img className={cx("banner")} src="/images/home/big-banner.png" />
+          <img
+            className={cx("banner")}
+            src={`/images/home/big-banner-${i18n.language}.png`}
+          />
         </div>
       </Slider>
       <div className={cx("explore")}>
