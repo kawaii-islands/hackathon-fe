@@ -14,11 +14,6 @@ export default function useAuth(isRedirect) {
   useEffect(() => {
     if (router.isReady && isRedirect) {
       if (!user) router.push("/login");
-      else if (
-        user &&
-        (router.pathname === "/login" || router.pathname === "/register")
-      )
-        router.push("/");
       else if (!user.isEmailVerified) router.push("/register?verify");
     }
   }, [router]);

@@ -11,8 +11,6 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { ENDPOINT } from "consts";
-import useAuth from "hooks/useAuth";
-import { AUTH_STATUS } from "hooks/useAuth";
 
 const cx = cn.bind(styles);
 const schema = yup
@@ -25,7 +23,6 @@ const schema = yup
 
 export default function Register() {
   const [loading, setLoading] = useState(false);
-  const authStatus = useAuth(true);
   const router = useRouter();
   const { t } = useTranslation();
   const {
@@ -72,8 +69,6 @@ export default function Register() {
       setLoading(false);
     }
   };
-
-  if (authStatus !== AUTH_STATUS.NOT_AUTH) return <></>;
 
   return (
     <div className={cx("register")}>
