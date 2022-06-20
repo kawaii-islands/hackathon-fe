@@ -24,7 +24,7 @@ function CustomPrevArrow({ className, onClick }) {
 
 const settings = {
   dots: false,
-  infinite: true,
+  infinite: false,
   autoplay: true,
   autoplaySpeed: 5000,
   speed: 500,
