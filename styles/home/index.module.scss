@@ -57,7 +57,11 @@ $md: 900px;
 
   .explore {
     background: #f7f3ed;
-    padding: 123px 0;
+    padding: 50px 0;
+
+    @media (min-width: $md) {
+      padding: 123px 0;
+    }
 
     .title {
       font-family: "Josefin Sans";
@@ -87,7 +91,7 @@ $md: 900px;
       );
       border-radius: 20px;
       height: 150px;
-      @media(min-width: $md){
+      @media (min-width: $md) {
         height: 350px;
       }
     }
