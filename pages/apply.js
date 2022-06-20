@@ -21,7 +21,7 @@ export default function Apply() {
   const [loading, setLoading] = useState(false);
   const [attachment, setAttachment] = useState(0);
   const [currentTeam, setCurrentTeam] = useState({
-    email: user.email,
+    email: user?.email,
     country: "",
     gameIdea: "",
     name: "",
