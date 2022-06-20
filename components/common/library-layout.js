@@ -9,11 +9,12 @@ import { links } from "./navbar";
 import { useTranslation } from "react-i18next";
 import useAuth from "hooks/useAuth";
 import ProfileNavbar from "./profile-navbar";
+import { AUTH_STATUS } from "hooks/useAuth";
 
 const cx = cn.bind(styles);
 
 export default function LibraryLayout({ title, date, children }) {
-  const isAuth = useAuth();
+  const authStatus = useAuth();
   const { t } = useTranslation();
   const isDesktop = useMediaQuery("(min-width:900px)");
   return (
@@ -33,9 +34,15 @@ export default function LibraryLayout({ title, date, children }) {
             ) : (
               <>
                 {links.map((link) => {
-                  if (isAuth && link.name === "register")
+                  if (
+                    authStatus !== AUTH_STATUS.NOT_AUTH &&
+                    link.name === "register"
+                  )
                     return <div key={link.name}></div>;
-                  if (isAuth && link.name === "login")
+                  if (
+                    authStatus !== AUTH_STATUS.NOT_AUTH &&
+                    link.name === "login"
+                  )
                     return <ProfileNavbar key={link.name} />;
                   return (
                     <div

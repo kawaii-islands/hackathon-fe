@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 import useAuth from "hooks/useAuth";
 import ProfileNavbar from "./profile-navbar";
+import { AUTH_STATUS } from "hooks/useAuth";
 
 const cx = cn.bind(styles);
 
@@ -41,7 +42,7 @@ export default function Navbar({}) {
     setAnchorEl(null);
   };
 
-  const isAuth = useAuth();
+  const authStatus = useAuth();
 
   return (
     <AppBar>
@@ -62,9 +63,15 @@ export default function Navbar({}) {
           {isDesktop ? (
             <div className={cx("nav-links")}>
               {links.map((link) => {
-                if (isAuth && link.name === "register")
+                if (
+                  authStatus !== AUTH_STATUS.NOT_AUTH &&
+                  link.name === "register"
+                )
                   return <div key={link.name}></div>;
-                if (isAuth && link.name === "login")
+                if (
+                  authStatus !== AUTH_STATUS.NOT_AUTH &&
+                  link.name === "login"
+                )
                   return <ProfileNavbar key={link.name} />;
                 return (
                   <Link href={link.href} key={link.name}>

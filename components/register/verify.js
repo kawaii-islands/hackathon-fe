@@ -26,6 +26,7 @@ export default function Verify() {
           },
         }
       );
+      toast.success("Resend success");
     } catch (error) {
       if (error?.response?.data?.code === 401) refreshToken(resend);
       else toast.error(error?.response?.data?.message);

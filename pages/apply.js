@@ -12,6 +12,7 @@ import axios from "axios";
 import { ENDPOINT } from "consts";
 import refreshToken from "utils/refresh-token";
 import { toast } from "react-toastify";
+import { AUTH_STATUS } from "hooks/useAuth";
 
 const cx = cn.bind(styles);
 
@@ -53,7 +54,7 @@ export default function Apply() {
       attachment: yup.mixed().test({
         message: "Document is required",
         test: (file) => {
-          return currentTeam.name || file.length;
+          return currentTeam.name || file?.length;
         },
       }),
       members: yup.array().of(
@@ -235,9 +236,9 @@ export default function Apply() {
     }
   };
 
-  const isAuth = useAuth(true);
+  const authStatus = useAuth(true);
 
-  if (!isAuth) return <></>;
+  if (authStatus !== AUTH_STATUS.VERIFIED) return <></>;
   return (
     <div className={cx("apply")}>
       <Container className={cx("container")}>

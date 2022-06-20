@@ -6,11 +6,12 @@ import cn from "classnames/bind";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import useAuth from "hooks/useAuth";
+import { AUTH_STATUS } from "hooks/useAuth";
 
 const cx = cn.bind(styles);
 
 export default function Footer() {
-  const isAuth = useAuth();
+  const authStatus = useAuth();
   const { t } = useTranslation();
   return (
     <div className={cx("footer")}>
@@ -111,7 +112,7 @@ export default function Footer() {
               </a>
             </div>
             <div className={cx("buttons")}>
-              {isAuth || (
+              {authStatus !== AUTH_STATUS.NOT_AUTH && (
                 <Link href="/login">
                   <button className={cx("login")}>{t("common.login")}</button>
                 </Link>
