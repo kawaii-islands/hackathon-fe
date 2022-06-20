@@ -243,8 +243,14 @@ export default function Apply() {
     <div className={cx("apply")}>
       <Container className={cx("container")}>
         <form onSubmit={handleSubmit((values) => onSubmit(values))}>
-          <Grid container spacing={6}>
-            <Grid item lg={6}>
+          <Grid
+            container
+            spacing={{
+              md: 6,
+              xs: 0,
+            }}
+          >
+            <Grid item md={6} xs={12}>
               <div className={cx("title")}>{t("apply.info")}</div>
               <div className={cx("label")}>{t("apply.teamName")}</div>
               <OutlinedInput className={cx("input")} {...register(`name`)} />
@@ -318,7 +324,7 @@ export default function Apply() {
                 <div className={cx("error")}>{errors.attachment.message}</div>
               )}
             </Grid>
-            <Grid item lg={6}>
+            <Grid item md={6} xs={12}>
               <div className={cx("title")}>{t("apply.team.members")}</div>
               {fields.map((_, idx) => (
                 <React.Fragment key={idx}>

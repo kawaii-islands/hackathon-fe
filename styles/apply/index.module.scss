@@ -1,4 +1,5 @@
 $md: 900px;
+$sm: 600px;
 .apply {
   padding: 40px 10px;
   width: 100%;
@@ -14,9 +15,13 @@ $md: 900px;
   }
 
   .container {
-    padding: 40px 70px;
+    padding: 30px 20px;
     background: #ffffff;
     border-radius: 10px;
+
+    @media (min-width: $md) {
+      padding: 40px 70px;
+    }
 
     .title {
       font-weight: 700;
@@ -135,7 +140,8 @@ $md: 900px;
     .submit {
       background: #f25c41;
       border-radius: 6px;
-      width: 355px;
+      width: 100%;
+      max-width: 355px;
       height: 50px;
       font-weight: 600;
       font-size: 16px;
