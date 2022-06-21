@@ -122,10 +122,12 @@ $md: 900px;
 }
 
 .into-kawaiiverse {
-  margin: 60px 0px 114px 0px;
-
   :global(.slick-dots) {
     bottom: 45px;
+  }
+
+  :global(.slick-list) {
+    margin-bottom: -20px !important;
   }
 
   .banner {

@@ -25,7 +25,7 @@ function CustomPrevArrow({ className, onClick }) {
 const settings = {
   dots: false,
   infinite: false,
-  autoplay: true,
+  autoplay: false,
   autoplaySpeed: 5000,
   speed: 500,
   cssEase: "linear",
@@ -38,8 +38,8 @@ const settings = {
 
 const secondSettings = {
   dots: true,
-  infinite: true,
-  autoplay: true,
+  infinite: false,
+  autoplay: false,
   autoplaySpeed: 2000,
   speed: 1000,
   //   slidesToShow: 3,
@@ -61,8 +61,8 @@ const secondSettings = {
 
 const settingInto = {
   dots: true,
-  infinite: true,
-  autoplay: true,
+  infinite: false,
+  autoplay: false,
   autoplaySpeed: 5000,
   speed: 500,
   cssEase: "linear",
