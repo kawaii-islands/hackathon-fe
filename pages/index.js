@@ -3,8 +3,6 @@ import cn from "classnames/bind";
 import Slider from "react-slick";
 import { useTranslation } from "react-i18next";
 import Link from "next/link";
-// import "~slick-carousel/slick/slick.css";
-// import "~slick-carousel/slick/slick-theme.css";
 
 const cx = cn.bind(styles);
 
@@ -127,10 +125,7 @@ export default function Home() {
                 Into the Kawaiiverse
               </a>
             </div>
-            <img
-              className={cx("banner-img")}
-              src={`https://miro.medium.com/max/1400/0*ATFLXLKvxGuWUlpb`}
-            />
+            <img className={cx("banner-img")} src="images/home/1.jpg" />
           </a>
 
           <a
@@ -148,10 +143,7 @@ export default function Home() {
                 Into the Kawaiiverse
               </a>
             </div>
-            <img
-              className={cx("banner-img")}
-              src={`https://miro.medium.com/max/1400/0*FGztSi3DJE07Bh95`}
-            />
+            <img className={cx("banner-img")} src="images/home/2.jpg" />
           </a>
 
           <a
@@ -169,10 +161,7 @@ export default function Home() {
                 Into the Kawaiiverse
               </a>
             </div>
-            <img
-              className={cx("banner-img")}
-              src={`https://miro.medium.com/max/1400/0*_hVANsSxLl2PWmuq`}
-            />
+            <img className={cx("banner-img")} src="images/home/3.jpg" />
           </a>
 
           <a
@@ -190,10 +179,7 @@ export default function Home() {
                 Into the Kawaiiverse
               </a>
             </div>
-            <img
-              className={cx("banner-img")}
-              src={`https://miro.medium.com/max/1400/1*ZR99DqyNJUGkWc81cw4N1Q.png`}
-            />
+            <img className={cx("banner-img")} src="images/home/4.jpg" />
           </a>
         </Slider>
       </div>

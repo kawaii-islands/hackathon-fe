@@ -94,11 +94,11 @@ $md: 900px;
       );
       border-radius: 20px;
       height: 150px;
-      width: 50%;
-	  cursor: pointer;
+      width: 80%;
+      cursor: pointer;
 
       @media (min-width: $md) {
-        height: 350px;
+        height: fit-content;
         width: 50%;
       }
 
