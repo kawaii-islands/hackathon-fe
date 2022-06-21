@@ -40,7 +40,7 @@ function MyApp({ Component, pageProps }) {
           />
           <meta
             property="og:image"
-            content="/images/library/kawaiiverse-map.png"
+            content="https://kawaii.global/kawaiiverse.jpg"
           />
         </Head>
         <ToastContainer />
