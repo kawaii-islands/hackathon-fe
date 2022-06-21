@@ -1,7 +1,7 @@
 export default {
   url: "kawaiiverse-hackathon-2022-proposal-building-the-kawaiiverse-gaming-ecosystem",
   title: `Kawaiiverse Hackathon 2022 Proposal: Building the Kawaiiverse gaming ecosystem`,
-  date: "6/20/2022",
+  date: "06/20/2022",
   image: "/images/home/kawaii-hackathon-banner.jpg",
   description:
     "Aiming to incubate our community-owned Anime Metaverse, Kawaii team is thrilled to launch the first ever Kawaiiverse Hackathon, a game hackathon with the mission to find and incubate promising talents from all over the world while growing our metaverse. Development teams from all over the world will have a chance to win an initial prize of $5,000 for each chosen team and chances to develop their game idea of choice with our support to join Kawaiiverse. Today, we are making this pre-announcement to get the community involved in the process.",

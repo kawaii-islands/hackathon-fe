@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import cn from "classnames/bind";
 import styles from "styles/common/news.module.scss";
-import listNews from "library";
+import listNews from "news";
 import LibraryLayout from "components/common/library-layout";
 
 const cx = cn.bind(styles);
@@ -11,6 +11,7 @@ export default function NewsDetail({}) {
   const [news, setNews] = useState();
   const router = useRouter();
   const { url } = router.query;
+  console.log(url);
 
   useEffect(() => {
     if (url) {
@@ -30,7 +31,7 @@ export default function NewsDetail({}) {
         <div className={cx("title")}>{news.title}</div>
         <div className={cx("date")}>{news.date}</div>
         <div className={cx("description")}>{news.description}</div>
-        <img src={news.image} alt="banner" />
+        <img src={news.image} />
         {news.content}
       </div>
     </LibraryLayout>

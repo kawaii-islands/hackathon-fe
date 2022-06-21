@@ -24,11 +24,11 @@ export default function LibraryLayout({ title, date, children }) {
           <Toolbar className={cx("container")}>
             {isDesktop ? (
               <>
-                <Link href="/">
+                <Link href="/hackathon">
                   <div className={cx("link")}>Kawaiiverse Hackathon</div>
                 </Link>
                 <Link href="/library">
-                  <div className={cx("link")}>Library</div>
+                  <div className={cx("link")}>{t("breadcrumb.library")}</div>
                 </Link>
               </>
             ) : (

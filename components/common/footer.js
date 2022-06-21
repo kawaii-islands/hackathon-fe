@@ -73,7 +73,7 @@ export default function Footer() {
             <a href="https://kawaii.global/media-kit" target="_blank">
               Media Kit
             </a>
-            <a href="mailto:contact@kawaii.global">{t("footer.contact")}</a>
+            <a href="mailto:hackathon@kawaii.global">{t("footer.contact")}</a>
             <a href="https://blog.kawaii.global" target="_blank">
               Blog
             </a>

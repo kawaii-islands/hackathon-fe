@@ -3,6 +3,8 @@ import cn from "classnames/bind";
 import Slider from "react-slick";
 import { useTranslation } from "react-i18next";
 import Link from "next/link";
+import news from "news";
+import library from "library";
 
 const cx = cn.bind(styles);
 
@@ -93,94 +95,41 @@ export default function Home() {
         </div>
       </Slider>
       <div className={cx("explore")}>
-        <Link href="/library">
+        <Link href="/hackathon">
           <div className={cx("title")}>{t("home.explore")}</div>
         </Link>
         <Slider {...secondSettings}>
-          <Link href="/library">
-            <div className={cx("slider-item")}>
-              <img
-                className={cx("banner")}
-                src={`/images/home/kawaii-hackathon-banner.jpg`}
-              />
-            </div>
-          </Link>
+          {news.map((item) => (
+            <Link href={`/hackathon/${item.url}`} key={item.url}>
+              <div className={cx("slider-item")}>
+                <img
+                  className={cx("banner")}
+                  src={`/images/home/kawaii-hackathon-banner.jpg`}
+                />
+              </div>
+            </Link>
+          ))}
         </Slider>
       </div>
 
       <div className={cx("into-kawaiiverse")}>
         <Slider {...settingInto}>
-          <a
-            href="https://blog.kawaii.global/introducing-kawaiiverse-subnetwork-on-oraichain-the-first-glimpse-f717d35658ff"
-            target="_blank"
-            rel="noreferrer"
-            className={cx("banner", "banner-4")}
-          >
-            <div className={cx("title")}>
-              <a
-                href="https://blog.kawaii.global/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Into the Kawaiiverse
-              </a>
+          {library.map((item, idx) => (
+            <div className={cx("banner", `banner-${idx + 1}`)} key={item.url}>
+              <div className={cx("title")}>
+                <a
+                  href="https://blog.kawaii.global/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Into the Kawaiiverse
+                </a>
+              </div>
+              <Link href={`/library/${item.url}`}>
+                <img className={cx("banner-img")} src={item.image} />
+              </Link>
             </div>
-            <img className={cx("banner-img")} src="images/home/1.jpg" />
-          </a>
-
-          <a
-            href="https://blog.kawaii.global/kawaiiverses-blooming-first-quarter-mobile-apps-new-economy-and-more-8e44d39591eb"
-            target="_blank"
-            rel="noreferrer"
-            className={cx("banner", "banner-3")}
-          >
-            <div className={cx("title")}>
-              <a
-                href="https://blog.kawaii.global/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Into the Kawaiiverse
-              </a>
-            </div>
-            <img className={cx("banner-img")} src="images/home/2.jpg" />
-          </a>
-
-          <a
-            href="https://blog.kawaii.global/the-dawn-of-our-kawaiiverse-65567bc16ed5"
-            target="_blank"
-            rel="noreferrer"
-            className={cx("banner", "banner-2")}
-          >
-            <div className={cx("title")}>
-              <a
-                href="https://blog.kawaii.global/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Into the Kawaiiverse
-              </a>
-            </div>
-            <img className={cx("banner-img")} src="images/home/3.jpg" />
-          </a>
-
-          <a
-            href="https://blog.kawaii.global/kawaii-islands-2022-bouncing-into-the-anime-metaverse-9e7c1a344aac"
-            target="_blank"
-            rel="noreferrer"
-            className={cx("banner", "banner-1")}
-          >
-            <div className={cx("title")}>
-              <a
-                href="https://blog.kawaii.global/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Into the Kawaiiverse
-              </a>
-            </div>
-            <img className={cx("banner-img")} src="images/home/4.jpg" />
-          </a>
+          ))}
         </Slider>
       </div>
     </div>
