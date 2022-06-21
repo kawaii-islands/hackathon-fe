@@ -13,4 +13,14 @@ export default {
   "register.reset": "Đổi mật khẩu",
   "register.change": "Đổi mật khẩu",
   "register.currentPassword": "Mật khẩu hiện tại",
+  "register.error.email.required": "Hãy nhập email",
+  "register.error.email.invalid": "Email không hợp lệ",
+  "register.error.password.required": "Hãy nhập mật khẩu",
+  "register.error.password.min": "Mật khẩu phải có tối thiểu 8 kí tự",
+  "register.error.password.validate":
+    "Mật khẩu phải chứa ít nhất 1 chữ cái và 1 chữ số",
+  "register.error.confirm-password.required": "Hãy nhập lại mật khẩu",
+  "register.error.confirm-password.match": "Mật khẩu không khớp",
+  "register.error.name.required": "Hãy nhập tên",
+  "register.error.country.required": "Hãy nhập quốc gia",
 };

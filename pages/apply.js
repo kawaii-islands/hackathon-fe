@@ -28,42 +28,41 @@ export default function Apply() {
     story: "",
     members: [
       {
-        discordUsername: "asd",
-        name: "asd",
-        position: "asd",
+        discordUsername: "",
+        name: "",
+        position: "",
       },
     ],
   });
   const schema = yup
     .object()
     .shape({
-      name: yup.string().required("Team name is required"),
+      name: yup.string().required("apply.error.team-name.required"),
       email: yup
         .string()
-        .email("Invalid email")
-        .required("Team email is required"),
+        .email("apply.error.team-email.invalid")
+        .required("apply.error.team-email.required"),
       noOfMembers: yup
         .number()
-        .integer("Must be an integer")
-        .min(1, "Must gte 1")
-        .max(6, "Must lte 6")
-        .required("Email is required"),
-      country: yup.string().required("Country is required"),
-      story: yup.string().required("Story is required"),
-      gameIdea: yup.string().required("Idea is required"),
+        .integer("apply.error.no-of-members.integer")
+        .min(1, "apply.error.no-of-members.min")
+        .max(6, "apply.error.no-of-members.max"),
+      country: yup.string().required("apply.error.country.required"),
+      story: yup.string().required("apply.error.story.required"),
+      gameIdea: yup.string().required("apply.error.idea.required"),
       attachment: yup.mixed().test({
-        message: "Document is required",
+        message: "apply.error.document.required",
         test: (file) => {
           return currentTeam.name || file?.length;
         },
       }),
       members: yup.array().of(
         yup.object().shape({
-          name: yup.string().required("Name is required"),
-          position: yup.string().required("Position is required"),
+          name: yup.string().required("apply.error.name.required"),
+          position: yup.string().required("apply.error.position.required"),
           discordUsername: yup
             .string()
-            .required("Discord username is required"),
+            .required("apply.error.username.required"),
         })
       ),
     })
@@ -167,7 +166,6 @@ export default function Apply() {
         } else if (key === "members") {
           setValue("noOfMembers", res.data[key].length);
           const members = getValues("members");
-          console.log(members);
           members.forEach((_, idx) => remove(idx));
           res.data[key].forEach((item, idx) => {
             append({
@@ -175,9 +173,6 @@ export default function Apply() {
               position: item.position,
               discordUsername: item.discordUsername,
             });
-            // setValue(`members.${idx}.name`, item.name);
-            // setValue(`members.${idx}.position`, item.position);
-            // setValue(`members.${idx}.discordUsername`, item.discordUsername);
           });
         } else {
           setValue(key, res.data[key]);
@@ -255,7 +250,7 @@ export default function Apply() {
               <div className={cx("label")}>{t("apply.teamName")}</div>
               <OutlinedInput className={cx("input")} {...register(`name`)} />
               {errors.name && firstError === "name" && (
-                <div className={cx("error")}>{errors.name.message}</div>
+                <div className={cx("error")}>{t(errors.name.message)}</div>
               )}
               <div className={cx("label")}>{t("apply.teamEmail")}</div>
               <OutlinedInput
@@ -264,7 +259,7 @@ export default function Apply() {
                 readOnly
               />
               {errors.email && firstError === "email" && (
-                <div className={cx("error")}>{errors.email.message}</div>
+                <div className={cx("error")}>{t(errors.email.message)}</div>
               )}
               <div className={cx("label")}>{t("apply.noOfMembers")}</div>
               <OutlinedInput
@@ -277,12 +272,14 @@ export default function Apply() {
                 {...register(`noOfMembers`)}
               />
               {errors.noOfMembers && firstError === "noOfMembers" && (
-                <div className={cx("error")}>{errors.noOfMembers.message}</div>
+                <div className={cx("error")}>
+                  {t(errors.noOfMembers.message)}
+                </div>
               )}
               <div className={cx("label")}>{t("apply.country")}</div>
               <OutlinedInput className={cx("input")} {...register(`country`)} />
               {errors.country && firstError === "country" && (
-                <div className={cx("error")}>{errors.country.message}</div>
+                <div className={cx("error")}>{t(errors.country.message)}</div>
               )}
               <div className={cx("label")}>{t("apply.story")}</div>
               <TextareaAutosize
@@ -291,7 +288,7 @@ export default function Apply() {
                 {...register(`story`)}
               />
               {errors.story && firstError === "story" && (
-                <div className={cx("error")}>{errors.story.message}</div>
+                <div className={cx("error")}>{t(errors.story.message)}</div>
               )}
               <div className={cx("label")}>{t("apply.idea")}</div>
               <TextareaAutosize
@@ -300,7 +297,7 @@ export default function Apply() {
                 {...register(`gameIdea`)}
               />
               {errors.gameIdea && firstError === "gameIdea" && (
-                <div className={cx("error")}>{errors.gameIdea.message}</div>
+                <div className={cx("error")}>{t(errors.gameIdea.message)}</div>
               )}
               <div className={cx("label")}>{t("apply.document")}</div>
               <input
@@ -312,16 +309,16 @@ export default function Apply() {
               />
               <label htmlFor="file">
                 <div>
-                  {currentTeam.attachment
-                    ? currentTeam.attachment.origin
-                    : attachment?.[0]
-                    ? attachment[0].name
-                    : t("apply.upload")}
+                  {attachment?.[0]?.name ||
+                    currentTeam?.attachment?.origin ||
+                    t("apply.upload")}
                 </div>
                 <img src="/icons/upload.svg" />
               </label>
               {errors.attachment && firstError === "attachment" && (
-                <div className={cx("error")}>{errors.attachment.message}</div>
+                <div className={cx("error")}>
+                  {t(errors.attachment.message)}
+                </div>
               )}
             </Grid>
             <Grid item md={6} xs={12}>
@@ -340,7 +337,7 @@ export default function Apply() {
                   {errors?.members?.[idx]?.name &&
                     firstError === `members.${idx}.name` && (
                       <div className={cx("error")}>
-                        {errors.members[idx].name.message}
+                        {t(errors.members[idx].name.message)}
                       </div>
                     )}
                   <div className={cx("label")}>{t("apply.team.position")}</div>
@@ -351,7 +348,7 @@ export default function Apply() {
                   {errors?.members?.[idx]?.position &&
                     firstError === `members.${idx}.position` && (
                       <div className={cx("error")}>
-                        {errors.members[idx].position.message}
+                        {t(errors.members[idx].position.message)}
                       </div>
                     )}
                   <div className={cx("label")}>{t("apply.team.username")}</div>
@@ -362,7 +359,7 @@ export default function Apply() {
                   {errors?.members?.[idx]?.discordUsername &&
                     firstError === `members.${idx}.discordUsername` && (
                       <div className={cx("error")}>
-                        {errors.members[idx].discordUsername.message}
+                        {t(errors.members[idx].discordUsername.message)}
                       </div>
                     )}
                 </React.Fragment>

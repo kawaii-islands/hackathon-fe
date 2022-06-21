@@ -16,22 +16,28 @@ const cx = cn.bind(styles);
 const schema = yup
   .object()
   .shape({
-    name: yup.string().required("Name is required"),
-    country: yup.string().required("Country is required"),
-    email: yup.string().email("Invalid email").required("Email is required"),
+    name: yup.string().required("register.error.name.required"),
+    country: yup.string().required("register.error.country.required"),
+    email: yup
+      .string()
+      .email("register.error.email.invalid")
+      .required("register.error.email.required"),
     password: yup
       .string()
-      .min(8, "Password min length is 8")
+      .min(8, "register.error.password.min")
       .test(
         "validate-password",
-        "Password must contain at least 1 letter and 1 number",
+        "register.error.password.validate",
         (value) => value.match(/\d/) && value.match(/[a-zA-Z]/)
       )
-      .required("Password is required"),
+      .required("register.error.password.required"),
     confirmPassword: yup
       .string()
-      .oneOf([yup.ref("password"), null], "Password must match")
-      .required("Confirm password is required"),
+      .oneOf(
+        [yup.ref("password"), null],
+        "register.error.confirm-password.match"
+      )
+      .required("register.error.confirm-password.required"),
   })
   .required();
 
@@ -115,7 +121,7 @@ export default function Form({ setStep }) {
           {...register("name")}
         />
         {errors.name && firstError === "name" && (
-          <div className={cx("error")}>{errors.name.message}</div>
+          <div className={cx("error")}>{t(errors.name.message)}</div>
         )}
         <OutlinedInput
           className={cx("input")}
@@ -128,7 +134,7 @@ export default function Form({ setStep }) {
           {...register("country")}
         />
         {errors.country && firstError === "country" && (
-          <div className={cx("error")}>{errors.country.message}</div>
+          <div className={cx("error")}>{t(errors.country.message)}</div>
         )}
         <OutlinedInput
           className={cx("input")}
@@ -141,7 +147,7 @@ export default function Form({ setStep }) {
           {...register("email")}
         />
         {errors.email && firstError === "email" && (
-          <div className={cx("error")}>{errors.email.message}</div>
+          <div className={cx("error")}>{t(errors.email.message)}</div>
         )}
         <OutlinedInput
           type="password"
@@ -155,7 +161,7 @@ export default function Form({ setStep }) {
           {...register("password")}
         />
         {errors.password && firstError === "password" && (
-          <div className={cx("error")}>{errors.password.message}</div>
+          <div className={cx("error")}>{t(errors.password.message)}</div>
         )}
         <OutlinedInput
           type="password"
@@ -169,7 +175,7 @@ export default function Form({ setStep }) {
           {...register("confirmPassword")}
         />
         {errors.confirmPassword && firstError === "confirmPassword" && (
-          <div className={cx("error")}>{errors.confirmPassword.message}</div>
+          <div className={cx("error")}>{t(errors.confirmPassword.message)}</div>
         )}
         <Button className={cx("submit")} type="submit" disabled={loading}>
           {t("common.register")}

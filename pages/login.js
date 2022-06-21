@@ -16,8 +16,11 @@ const cx = cn.bind(styles);
 const schema = yup
   .object()
   .shape({
-    email: yup.string().email("Invalid email").required("Email is required"),
-    password: yup.string().required("Password is required"),
+    email: yup
+      .string()
+      .email("register.error.email.invalid")
+      .required("register.error.email.required"),
+    password: yup.string().required("register.error.password.required"),
   })
   .required();
 
@@ -86,7 +89,7 @@ export default function Register() {
             {...register("email")}
           />
           {errors.email && firstError === "email" && (
-            <div className={cx("error")}>{errors.email.message}</div>
+            <div className={cx("error")}>{t(errors.email.message)}</div>
           )}
           <OutlinedInput
             type="password"
@@ -100,10 +103,10 @@ export default function Register() {
             {...register("password")}
           />
           {errors.password && firstError === "password" && (
-            <div className={cx("error")}>{errors.password.message}</div>
+            <div className={cx("error")}>{t(errors.password.message)}</div>
           )}
           <Link href="/forgot-password">
-            <div className={cx("forgot-password")}>Forgot the password?</div>
+            <div className={cx("forgot-password")}>{t("register.forgot")}?</div>
           </Link>
           <Button className={cx("submit")} type="submit" disabled={loading}>
             {t("common.login")}
