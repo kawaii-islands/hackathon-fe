@@ -39,7 +39,6 @@ function News({ news, isLatest, pathname }) {
 export default function ListNews({ isLatest }) {
   const router = useRouter();
   const { t } = useTranslation();
-  console.log(router.pathname.split("/"));
   let data =
     router.pathname.split("/")[1] === "library" ? listLibrary : listNews;
   if (isLatest)

@@ -11,7 +11,6 @@ export default function NewsDetail({}) {
   const [news, setNews] = useState();
   const router = useRouter();
   const { url } = router.query;
-  console.log(url);
 
   useEffect(() => {
     if (url) {
