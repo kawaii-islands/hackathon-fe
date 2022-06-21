@@ -32,6 +32,16 @@ function MyApp({ Component, pageProps }) {
           />
           <title>Kawaiiverse Hackathon 2022</title>
           <meta name="description" content="Kawaiiverse Hackathon 2022" />
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content="Kawaiiverse Hackathon 2022" />
+          <meta
+            property="og:description"
+            content="Kawaiiverse Hackathon 2022"
+          />
+          <meta
+            property="og:image"
+            content="/images/library/kawaiiverse-map.png"
+          />
         </Head>
         <ToastContainer />
         <Component {...pageProps} />
