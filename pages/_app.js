@@ -38,10 +38,7 @@ function MyApp({ Component, pageProps }) {
             property="og:description"
             content="Kawaiiverse Hackathon 2022"
           />
-          <meta
-            property="og:image"
-            content="https://kawaii.global/kawaiiverse.jpg"
-          />
+          <meta property="og:image" content="https://kawaii.global/kawaiiverse.jpg" />
         </Head>
         <ToastContainer />
         <Component {...pageProps} />
