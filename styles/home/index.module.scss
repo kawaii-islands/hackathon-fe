@@ -1,5 +1,7 @@
 $md: 900px;
 .home {
+  background: #f7f3ed;
+
   .banner {
     width: 100%;
   }
@@ -71,8 +73,9 @@ $md: 900px;
       line-height: 16px;
       text-align: center;
       color: #fd8970;
-      margin-bottom: 90px;
+      margin-bottom: 60px;
       cursor: pointer;
+
       @media (min-width: $md) {
         font-size: 40px;
         line-height: 40px;
@@ -83,7 +86,7 @@ $md: 900px;
     }
 
     .slider-item {
-      margin: 0 18px;
+      margin: 0 auto;
       background: radial-gradient(
         88.79% 88.79% at 50% 45.5%,
         #ffffff 0%,
@@ -91,8 +94,16 @@ $md: 900px;
       );
       border-radius: 20px;
       height: 150px;
+      width: 50%;
+	  cursor: pointer;
+
       @media (min-width: $md) {
         height: 350px;
+        width: 50%;
+      }
+
+      .banner {
+        border-radius: 20px;
       }
     }
   }
@@ -107,5 +118,56 @@ $md: 900px;
     color: #e0e0e0;
     opacity: 1;
     font-size: 12px;
+  }
+}
+
+.into-kawaiiverse {
+  margin: 60px 0px 114px 0px;
+
+  :global(.slick-dots) {
+    bottom: 45px;
+  }
+
+  .banner {
+    background: #e0d6bd;
+    width: 100%;
+    padding: 80px 0px 100px 0px;
+    display: flex;
+
+    .title {
+      font-style: normal;
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 40px;
+      text-align: center;
+      color: #ffffff;
+      transition-duration: 0.35s;
+
+      &:hover {
+        color: #fd8970;
+      }
+    }
+
+    .banner-img {
+      width: 56%;
+      padding-top: 40px;
+      margin: 0 auto;
+    }
+  }
+
+  .banner-1 {
+    background: #9cc1cd;
+  }
+
+  .banner-2 {
+    background: #85a893;
+  }
+
+  .banner-3 {
+    background: #6288b1;
+  }
+
+  .banner-4 {
+    background: #463e70;
   }
 }

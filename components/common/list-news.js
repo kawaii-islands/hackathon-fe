@@ -20,21 +20,21 @@ function News({ news, isLatest }) {
         <div className={cx("date", { isLatest })}>{news.date}</div>
         <div
           className={cx("description", {
-            isLatest,
+            isLatest
           })}
         >
-          {news.description}
+          {news.description.slice(0, 200) + "..."}
         </div>
       </div>
-      <img src="/images/common/news.png" className={cx({ isLatest })} />
+      <img src={news.image || '/images/home/1.jpg'} className={cx({ isLatest }, "image")}/>
     </div>
   );
 }
 
 export default function ListNews({ isLatest }) {
   const { t } = useTranslation();
-  let data = listNews.reverse();
-  if (isLatest) data = listNews.reverse().slice(0, 3);
+  let data = listNews
+  if (isLatest) data = listNews.slice(0, 3);
 
   return (
     <div className={cx("list-news")}>
