@@ -87,7 +87,7 @@ export default function ProfileNavbar() {
             boxShadow: "0px 0px 10px rgba(68, 68, 68, 0.25)",
           }}
         >
-          <Box
+          {/* <Box
             onClick={() => router.push("/change-password")}
             sx={{
               display: "flex",
@@ -101,7 +101,7 @@ export default function ProfileNavbar() {
           >
             <img src="/icons/setting.svg" style={{ marginRight: "16px" }} />
             Change password
-          </Box>
+          </Box> */}
           <Box
             onClick={logout}
             sx={{
