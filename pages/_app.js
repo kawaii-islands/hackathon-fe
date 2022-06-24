@@ -41,7 +41,7 @@ function MyApp({ Component, pageProps }) {
           />
           <meta
             property="og:image"
-            content="https://kawaii.global/kawaiiverse.jpg"
+            content="https://kawaii-hackathon.web.app/images/home/big-banner-en.png"
           />
         </Head>
         <ToastContainer />
