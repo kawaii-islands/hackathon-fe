@@ -21,9 +21,9 @@ class MyDocument extends Document {
           />
           <meta
             property="og:image"
-            content="https://hackathon.kawaii.global/images/home/new-banner.png"
+            content="https://hackathon.kawaii.global/images/home/big-banner-en.png"
           />
-          <meta property="twitter:card" content="summary" />
+          <meta property="twitter:card" content="summary_large_image" />
           <meta
             property="twitter:url"
             content="https://hackathon.kawaii.global/"
@@ -35,7 +35,7 @@ class MyDocument extends Document {
           />
           <meta
             property="twitter:image"
-            content="https://hackathon.kawaii.global/images/home/new-banner.png"
+            content="https://hackathon.kawaii.global/images/home/big-banner-en.png"
           />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
