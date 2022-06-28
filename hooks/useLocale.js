@@ -7,7 +7,7 @@ export default function useLocale() {
   const currentLocale = hasWindow
     ? window.localStorage.getItem("locale") || "en"
     : "en";
-  const [locale, setLocale] = useState("en");
+  const [locale, setLocale] = useState(currentLocale);
 
   useEffect(() => {
     if (hasWindow) {
