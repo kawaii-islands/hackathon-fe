@@ -122,7 +122,7 @@ export default function Home() {
                   target="_blank"
                   rel="noreferrer"
                 >
-                  Into the Kawaiiverse
+                  {t("home.into")}
                 </a>
               </div>
               <Link href={`/library/${item.url}`}>
