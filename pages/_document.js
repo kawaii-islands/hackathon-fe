@@ -23,7 +23,7 @@ class MyDocument extends Document {
             property="og:image"
             content="https://hackathon.kawaii.global/images/home/new-banner.png"
           />
-          {/* <meta property="twitter:card" content="summary_large_image" /> */}
+          <meta property="twitter:card" content="summary" />
           <meta
             property="twitter:url"
             content="https://hackathon.kawaii.global/"
