@@ -11,30 +11,31 @@ class MyDocument extends Document {
           />
           <title>Kawaiiverse Hackathon 2022</title>
           <meta name="description" content="Kawaiiverse Hackathon 2022" />
-          <meta property="og:url" content="https://kawaii-hackathon.web.app/" />
+
+          <meta property="og:url" content="https://hackathon.kawaii.global/" />
           <meta property="og:type" content="website" />
           <meta property="og:title" content="Kawaiiverse Hackathon 2022" />
           <meta
             property="og:description"
-            content="Kawaiiverse Hackathon 2022"
+            content="Kawaiiverse Hackathon 2022, a new playground for game developers around the world, join us in developing our Anime Metaverse, where everyone play, create, connect and earn."
           />
           <meta
             property="og:image"
-            content="https://kawaii-hackathon.web.app/images/home/big-banner-en.png"
+            content="https://hackathon.kawaii.global/images/home/new-banner.png"
           />
           <meta property="twitter:card" content="summary_large_image" />
           <meta
             property="twitter:url"
-            content="https://kawaii-hackathon.web.app/"
+            content="https://hackathon.kawaii.global/"
           />
           <meta property="twitter:title" content="Kawaiiverse Hackathon 2022" />
           <meta
             property="twitter:description"
-            content="Kawaiiverse Hackathon 2022"
+            content="Kawaiiverse Hackathon 2022, a new playground for game developers around the world, join us in developing our Anime Metaverse, where everyone play, create, connect and earn."
           />
           <meta
             property="twitter:image"
-            content="https://kawaii-hackathon.web.app/images/home/big-banner-en.png"
+            content="https://hackathon.kawaii.global/images/home/new-banner.png"
           />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
