@@ -22,6 +22,23 @@ class MyDocument extends Document {
             property="og:image"
             content="https://kawaii-hackathon.web.app/images/home/big-banner-en.png"
           />
+          <meta
+            property="twitter:card"
+            content="https://kawaii-hackathon.web.app/images/home/big-banner-en.png"
+          />
+          <meta
+            property="twitter:url"
+            content="https://kawaii-hackathon.web.app/"
+          />
+          <meta property="twitter:title" content="Kawaiiverse Hackathon 2022" />
+          <meta
+            property="twitter:description"
+            content="Kawaiiverse Hackathon 2022"
+          />
+          <meta
+            property="twitter:image"
+            content="https://kawaii-hackathon.web.app/images/home/big-banner-en.png"
+          />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"
