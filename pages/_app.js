@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }) {
     <ThemeProvider theme={theme}>
       <Layout>
         <Head>
-          <meta
+          {/* <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
           />
@@ -41,6 +41,37 @@ function MyApp({ Component, pageProps }) {
           />
           <meta
             property="og:image"
+            content="https://kawaii-hackathon.web.app/images/home/big-banner-en.png"
+          /> */}
+
+          <title>Kawaiiverse Hackathon 2022</title>
+          <meta name="title" content="Kawaiiverse Hackathon 2022" />
+          <meta name="description" content="Kawaiiverse Hackathon 2022" />
+
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://kawaii-hackathon.web.app/" />
+          <meta property="og:title" content="Kawaiiverse Hackathon 2022" />
+          <meta
+            property="og:description"
+            content="Kawaiiverse Hackathon 2022"
+          />
+          <meta
+            property="og:image"
+            content="https://kawaii-hackathon.web.app/images/home/big-banner-en.png"
+          />
+
+          <meta property="twitter:card" content="summary_large_image" />
+          <meta
+            property="twitter:url"
+            content="https://kawaii-hackathon.web.app/"
+          />
+          <meta property="twitter:title" content="Kawaiiverse Hackathon 2022" />
+          <meta
+            property="twitter:description"
+            content="Kawaiiverse Hackathon 2022"
+          />
+          <meta
+            property="twitter:image"
             content="https://kawaii-hackathon.web.app/images/home/big-banner-en.png"
           />
         </Head>
