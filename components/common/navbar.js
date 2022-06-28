@@ -55,7 +55,7 @@ export default function Navbar({}) {
                   src="/images/common/kawaiiverse.png"
                   className={cx("logo")}
                   alt="logo"
-                />
+                /> 
               </a>
             </Link>
             <LanguageSelect />

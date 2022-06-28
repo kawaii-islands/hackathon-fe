@@ -19,12 +19,58 @@
     max-width: 334px;
   }
 
+  .org {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 40px;
+
+    .left {
+      width: 36%;
+      border-right: 1px solid rgba(255, 255, 255, 0.5);
+      text-align: center;
+    }
+
+    .right {
+      width: 64%;
+    }
+  }
+
+  .icon-1 {
+    height: 40px;
+  }
+
+  .group-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .x {
+      margin: 0px 12px;
+      padding-bottom: 5px;
+    }
+
+    .icon-2 {
+      height: 24px;
+    }
+  }
+
+  .from {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 150%;
+    color: #ffffff;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    padding-left: 25%;
+  }
+
   .organized {
     font-weight: 700;
     font-size: 14px;
     line-height: 150%;
     color: #ffffff;
     margin-bottom: 13px;
+    text-transform: uppercase;
   }
 
   .logos {
@@ -39,13 +85,13 @@
       background-color: white;
     }
 
-    a {
-      height: 100%;
-      margin: 0;
-      img {
-        height: 100%;
-      }
-    }
+    // a {
+    //   height: 100%;
+    //   margin: 0;
+    //   img {
+    //     height: 100%;
+    //   }
+    // }
   }
 
   .label {

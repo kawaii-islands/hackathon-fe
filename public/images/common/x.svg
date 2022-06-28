@@ -1,0 +1,6 @@
+<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line x1="2.6484" y1="16.3496" x2="16.3512" y2="2.64674" stroke="white"/>
+<line y1="-0.5" x2="19.3787" y2="-0.5" transform="matrix(-0.707107 -0.707107 -0.707107 0.707107 16.7031 16.7031)" stroke="white"/>
+<circle cx="9.62362" cy="9.85156" r="2.90198" transform="rotate(-45 9.62362 9.85156)" fill="#D87178" stroke="white"/>
+<circle cx="9.62363" cy="9.85156" r="1.78199" transform="rotate(-45 9.62363 9.85156)" fill="white"/>
+</svg>

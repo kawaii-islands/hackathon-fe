@@ -9,4 +9,5 @@ export default {
   "footer.use": "Terms of use",
   "footer.privacy": "Privacy Policy",
   "footer.social": "Social Media",
+  "footer.from": "From",
 };

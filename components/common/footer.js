@@ -33,7 +33,48 @@ export default function Footer() {
               around the world, join us in developing our Anime Metaverse, where
               everyone play, create, connect and earn.
             </div>
-            <div className={cx("organized")}>{t("footer.host")}</div>
+            <div className={cx("org")}>
+              <div className={cx("left")}>
+                <div className={cx("organized")}>{t("footer.host")}</div>
+                <div>
+                  <a href="https://kawaii.global/" target="_blank">
+                    <img
+                      src="/images/common/kawaii-islands.svg"
+                      className={cx("icon-1")}
+                    />
+                  </a>
+                </div>
+              </div>
+              <div className={cx("right")}>
+                <div className={cx("from")}>{t("footer.from")}</div>
+                <div className={cx("group-logo")}>
+                  <a
+                    href="https://imba.co/"
+                    target="_blank"
+                    style={{ marginTop: "0px" }}
+                  >
+                    <img
+                      src="/images/common/imba.png"
+                      className={cx("icon-2")}
+                    />
+                  </a>
+
+                  <img src="/images/common/x.svg" className={cx("x")} />
+
+                  <a
+                    href="https://orai.io/"
+                    target="_blank"
+                    style={{ marginTop: "0px" }}
+                  >
+                    <img
+                      src="/images/common/oraichain.svg"
+                      className={cx("icon-2")}
+                    />
+                  </a>
+                </div>
+              </div>
+            </div>
+            {/* <div className={cx("organized")}>{t("footer.host")}</div>
             <div className={cx("logos")}>
               <a href="https://imba.co/" target="_blank">
                 <img src="/images/common/imba.png" />
@@ -42,7 +83,7 @@ export default function Footer() {
               <a href="https://orai.io/" target="_blank">
                 <img src="/images/common/oraichain.svg" />
               </a>
-            </div>
+            </div> */}
           </Grid>
           <Grid item lg={2} md={3} xs={6}>
             <div className={cx("label")}>{t("footer.ecosystem")}</div>
