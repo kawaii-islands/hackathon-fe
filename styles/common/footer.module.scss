@@ -19,12 +19,74 @@
     max-width: 334px;
   }
 
+  .org {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 40px;
+
+    .left {
+      width: 40%;
+      border-right: 1px solid rgba(255, 255, 255, 0.5);
+      text-align: center;
+    }
+
+    .right {
+      width: 60%;
+    }
+  }
+
+  .icon-1 {
+    height: 40px;
+
+    @media (max-width: 600px) {
+      height: 32px;
+    }
+  }
+
+  .group-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .x {
+      margin: 0px 12px;
+      padding-bottom: 5px;
+    }
+
+    .icon-2 {
+      height: 24px;
+
+      @media (max-width: 600px) {
+        height: 18px;
+      }
+    }
+  }
+
+  .from {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 150%;
+    color: #ffffff;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    padding-left: 25%;
+
+    @media (max-width: 600px) {
+      font-size: 10px;
+    }
+  }
+
   .organized {
     font-weight: 700;
     font-size: 14px;
     line-height: 150%;
     color: #ffffff;
     margin-bottom: 13px;
+    text-transform: uppercase;
+
+    @media (max-width: 600px) {
+      font-size: 10px;
+    }
   }
 
   .logos {
@@ -39,13 +101,13 @@
       background-color: white;
     }
 
-    a {
-      height: 100%;
-      margin: 0;
-      img {
-        height: 100%;
-      }
-    }
+    // a {
+    //   height: 100%;
+    //   margin: 0;
+    //   img {
+    //     height: 100%;
+    //   }
+    // }
   }
 
   .label {

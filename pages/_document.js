@@ -5,6 +5,38 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+          />
+          <title>Kawaiiverse Hackathon 2022</title>
+          <meta name="description" content="Kawaiiverse Hackathon 2022" />
+
+          <meta property="og:url" content="https://hackathon.kawaii.global/" />
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content="Kawaiiverse Hackathon 2022" />
+          <meta
+            property="og:description"
+            content="Kawaiiverse Hackathon 2022, a new playground for game developers around the world, join us in developing our Anime Metaverse, where everyone play, create, connect and earn."
+          />
+          <meta
+            property="og:image"
+            content="https://hackathon.kawaii.global/images/home/big-banner-en.png"
+          />
+          <meta property="twitter:card" content="summary_large_image" />
+          <meta
+            property="twitter:url"
+            content="https://hackathon.kawaii.global/"
+          />
+          <meta property="twitter:title" content="Kawaiiverse Hackathon 2022" />
+          <meta
+            property="twitter:description"
+            content="Kawaiiverse Hackathon 2022, a new playground for game developers around the world, join us in developing our Anime Metaverse, where everyone play, create, connect and earn."
+          />
+          <meta
+            property="twitter:image"
+            content="https://hackathon.kawaii.global/images/home/big-banner-en.png"
+          />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"
