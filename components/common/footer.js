@@ -142,13 +142,13 @@ export default function Footer() {
           <Grid item lg={3} md={6} xs={12}>
             <div className={cx("label")}>{t("footer.social")}</div>
             <div className={cx("social")}>
-              <a href="">
+              <a href="https://blog.kawaii.global/" target="_blank">
                 <img src="/images/common/medium.svg" />
               </a>
-              <a href="">
+              <a href="https://www.youtube.com/watch?v=RTw-WZ5xfOA&ab_channel=KawaiiIslands" target="_blank">
                 <img src="/images/common/youtube.svg" />
               </a>
-              <a href="">
+              <a href="https://www.facebook.com/kawaii.islands.official" target="_blank">
                 <img src="/images/common/facebook.svg" />
               </a>
             </div>
