@@ -31,29 +31,6 @@ function MyApp({ Component, pageProps }) {
         />
         <title>Kawaiiverse Hackathon 2022</title>
         <meta name="description" content="Kawaiiverse Hackathon 2022" />
-        <meta property="og:url" content="https://kawaii-hackathon.web.app/" />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Kawaiiverse Hackathon 2022" />
-        <meta property="og:description" content="Kawaiiverse Hackathon 2022" />
-        <meta
-          property="og:image"
-          content="https://kawaii-hackathon.web.app/images/home/big-banner-en.png"
-        />
-
-        <meta
-          property="twitter:url"
-          content="https://kawaii-hackathon.web.app/"
-        />
-        <meta property="twitter:type" content="website" />
-        <meta name="twitter:title" content="Kawaiiverse Hackathon 2022" />
-        <meta
-          property="twitter:description"
-          content="Kawaiiverse Hackathon 2022"
-        />
-        <meta
-          name="twitter:image"
-          content="https://kawaii-hackathon.web.app/images/home/big-banner-en.png"
-        />
       </Head>
       <Layout>
         <ToastContainer />
