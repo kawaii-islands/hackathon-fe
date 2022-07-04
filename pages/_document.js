@@ -5,13 +5,6 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
-          />
-          <title>Kawaiiverse Hackathon 2022</title>
-          <meta name="description" content="Kawaiiverse Hackathon 2022" />
-
           <meta property="og:url" content="https://hackathon.kawaii.global/" />
           <meta property="og:type" content="website" />
           <meta property="og:title" content="Kawaiiverse Hackathon 2022" />

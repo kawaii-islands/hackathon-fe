@@ -8,7 +8,7 @@ export default {
   "apply.story": "Team story (on game development)",
   "apply.idea": "Game Idea",
   "apply.document": "Supporting document/art (Upload maximum 5 files)",
-  "apply.team.no": "No.",
+  "apply.team.no": "Member ",
   "apply.team.name": "Name/Nickname",
   "apply.team.position": "Position",
   "apply.team.username": "Discord username",
