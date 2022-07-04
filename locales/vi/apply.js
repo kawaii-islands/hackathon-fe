@@ -7,7 +7,7 @@ export default {
   "apply.country": "Quốc gia",
   "apply.story": "Giới thiệu về team (on game development)",
   "apply.idea": "Ý tưởng game",
-  "apply.document": "Tài liệu/bản vẽ giới thiệu về dự án",
+  "apply.document": "Tài liệu/bản vẽ giới thiệu về dự án (Tải lên tối đa 5 files)",
   "apply.team.no": "Thành viên số ",
   "apply.team.name": "Tên/Biệt danh",
   "apply.team.position": "Vai trò",

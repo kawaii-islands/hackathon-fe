@@ -2,7 +2,14 @@ import React, { useMemo, useState, useRef, useEffect } from "react";
 import cn from "classnames/bind";
 import styles from "styles/apply/index.module.scss";
 import { Container } from "@mui/system";
-import { Grid, OutlinedInput, TextareaAutosize } from "@mui/material";
+import {
+  Button,
+  Chip,
+  CircularProgress,
+  Grid,
+  OutlinedInput,
+  TextareaAutosize,
+} from "@mui/material";
 import { useForm, useFieldArray } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -19,7 +26,9 @@ const cx = cn.bind(styles);
 export default function Apply() {
   const user = JSON.parse(window.localStorage.getItem("user"));
   const [loading, setLoading] = useState(false);
-  const [attachment, setAttachment] = useState(0);
+  const [reload, setReload] = useState(false);
+  const [checkDisableUploadFile, setCheckDisableUploadFile] = useState(false);
+  const [attachment, setAttachment] = useState();
   const [currentTeam, setCurrentTeam] = useState({
     email: user?.email,
     country: "",
@@ -50,12 +59,12 @@ export default function Apply() {
       country: yup.string().required("apply.error.country.required"),
       story: yup.string().required("apply.error.story.required"),
       gameIdea: yup.string().required("apply.error.idea.required"),
-      attachment: yup.mixed().test({
-        message: "apply.error.document.required",
-        test: (file) => {
-          return currentTeam.name || file?.length;
-        },
-      }),
+      //   attachment: yup.mixed().test({
+      //     message: "apply.error.document.required",
+      //     test: (file) => {
+      //       return currentTeam.name || file?.length;
+      //     },
+      //   }),
       members: yup.array().of(
         yup.object().shape({
           name: yup.string().required("apply.error.name.required"),
@@ -116,8 +125,47 @@ export default function Apply() {
     }
   }, [noOfMembers]);
 
+  //   useEffect(() => {
+  //     let finalList = getValues("attachment");
+  //     if (currentTeam?.name) {
+  //       console.log("currentTeam :>> ", currentTeam);
+  //       postFiles(finalList);
+  //     } else {
+  //       if (currentTeam?.attachments?.length + finalList?.length > 4) {
+  //         setCheckDisableUploadFile(true);
+  //         if (currentTeam?.attachments?.length + finalList?.length > 5) {
+  //           // finalList = finalList.slice(0, 5);
+  //         }
+  //       } else {
+  //         setCheckDisableUploadFile(false);
+  //       }
+  //     }
+
+  //     console.log("attachment :>> ", finalList);
+  //     setAttachment(finalList);
+  //   }, [attachmentRef]);
+
   useEffect(() => {
-    setAttachment(getValues("attachment"));
+    let fileList = getValues("attachment");
+    console.log("fileList :>> ", attachment);
+    let tempList = attachment?.length ? [...attachment] : [];
+    let finalList;
+    if (fileList?.length) {
+      finalList = [...tempList, ...fileList];
+    } else {
+      finalList = [...tempList];
+    }
+
+    let numOfCurrentFile = currentTeam?.attachments?.length || 0;
+    if (finalList?.length + numOfCurrentFile > 4) {
+      setCheckDisableUploadFile(true);
+      finalList = finalList.slice(0, 5 - numOfCurrentFile);
+    } else {
+      setCheckDisableUploadFile(false);
+    }
+
+    setAttachment([...finalList]);
+    console.log("FinalList ", finalList);
   }, [attachmentRef]);
 
   const firstError = useMemo(
@@ -143,7 +191,7 @@ export default function Apply() {
 
   useEffect(() => {
     getCurrentTeam();
-  }, []);
+  }, [reload]);
 
   useEffect(() => {
     if (firstError) {
@@ -158,12 +206,13 @@ export default function Apply() {
           Authorization: "Bearer " + window.localStorage.getItem("token"),
         },
       });
+
       setCurrentTeam(res.data);
+      console.log("res :>> ", res);
       delete res.data.createdBy;
       delete res.data.id;
       Object.keys(res.data).forEach((key) => {
-        if (key === "attachment") {
-        } else if (key === "members") {
+        if (key === "members") {
           setValue("noOfMembers", res.data[key].length);
           const members = getValues("members");
           members.forEach((_, idx) => remove(idx));
@@ -187,22 +236,36 @@ export default function Apply() {
   };
 
   const onSubmit = async (values) => {
+    console.log("values :>> ", values);
     try {
       const body = { ...values };
       setLoading(true);
+
       delete body.noOfMembers;
+      delete body.attachment;
 
-      if (body?.attachment?.length) {
-        body.attachment = body.attachment[0];
-      } else delete body.attachment;
       body.members = JSON.stringify(body.members);
-
       const formData = new FormData();
       Object.entries(body).forEach(([key, value]) =>
         formData.append(key, value)
       );
+
+      attachment?.map((file, id) => {
+        formData.append("attachments", file, file.name);
+      });
+
       let res;
       if (currentTeam.name) {
+        if (attachment.length) {
+          let data = await updateFile();
+          if (!data) {
+            setLoading(false);
+            return;
+          }
+        }
+
+        formData.delete("attachments");
+
         res = await axios.put(`${ENDPOINT}/teams`, formData, {
           headers: {
             "Content-Type": "multipart/form-data; boundary=something",
@@ -218,20 +281,79 @@ export default function Apply() {
           },
         });
         toast.success("Apply successfully");
+        window.location.reload();
       }
+      //   setReload(!reload);
+      setAttachment([]);
       setLoading(false);
     } catch (error) {
       console.error(error);
       if (error?.response?.data?.code === 401)
         refreshToken(() => onSubmit(values));
       else {
-        toast.error(error?.response?.data?.message);
+        toast.error(error?.response?.data?.message || "Error");
         setLoading(false);
       }
     }
   };
 
   const authStatus = useAuth(true);
+
+  const handleDeleteOriginFile = async (file) => {
+    console.log("Origin", file);
+    try {
+      const res = await axios.delete(
+        `${ENDPOINT}/teams/attachments/${file.id}`,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data; boundary=something",
+            Authorization: "Bearer " + window.localStorage.getItem("token"),
+          },
+        }
+      );
+
+      toast.success("Delete successfully");
+      let numOfCurrentFile = currentTeam?.attachments?.length || 0;
+
+      if (attachment?.length + numOfCurrentFile < 5) {
+        setCheckDisableUploadFile(false);
+      }
+      setReload(!reload);
+    } catch (error) {
+      console.log("error :>> ", error);
+    }
+  };
+
+  const handleDeleteFile = async (file, index) => {
+    let tempArr = [...attachment];
+    tempArr.splice(index, 1);
+    setAttachment([...tempArr]);
+    let numOfCurrentFile = currentTeam?.attachments?.length || 0;
+    if (tempArr?.length + numOfCurrentFile < 5) {
+      setCheckDisableUploadFile(false);
+    }
+  };
+
+  const updateFile = async () => {
+    const formData = new FormData();
+    attachment?.map((file, id) => {
+      formData.append("attachments", file, file.name);
+    });
+
+    try {
+      const res = await axios.post(`${ENDPOINT}/teams/attachments`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data; boundary=something",
+          Authorization: "Bearer " + window.localStorage.getItem("token"),
+        },
+      });
+      console.log("res :>> ", res);
+      setReload(!reload);
+    } catch (error) {
+      console.log("error :>> ", error);
+      toast.error(error?.response?.data?.message || "Error");
+    }
+  };
 
   if (authStatus !== AUTH_STATUS.VERIFIED) return <></>;
   return (
@@ -299,27 +421,83 @@ export default function Apply() {
               {errors.gameIdea && firstError === "gameIdea" && (
                 <div className={cx("error")}>{t(errors.gameIdea.message)}</div>
               )}
+
               <div className={cx("label")}>{t("apply.document")}</div>
+              {/* <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  marginBottom: "12px",
+                }}
+              >
+                <div className={cx("label")}>{t("apply.document")}</div>
+                <Button
+                  style={{
+                    border: "1px solid #f25c41",
+                    borderRadius: "6px",
+                    width: "fit-content",
+                    padding: "6px 12px",
+                    fontWeight: "600",
+                    fontSize: "14px",
+                    color: "#f25c41",
+                    textTransform: "none",
+                  }}
+                  onClick={updateFile}
+                >
+                  Update file
+                </Button>
+              </div> */}
               <input
                 id="file"
                 className={cx("file")}
                 {...register(`attachment`)}
                 type="file"
+                multiple
+                disabled={checkDisableUploadFile}
                 accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/png,image/jpeg"
               />
+
               <label htmlFor="file">
                 <div>
-                  {attachment?.[0]?.name ||
-                    currentTeam?.attachment?.origin ||
-                    t("apply.upload")}
+                  {/* {attachment?.[0]?.name ||
+                    currentTeam?.attachment?.origin || */}
+                  {t("apply.upload")}
                 </div>
                 <img src="/icons/upload.svg" />
               </label>
-              {errors.attachment && firstError === "attachment" && (
+
+              <div className={cx("listFile")}>
+                {currentTeam?.attachments?.length > 0
+                  ? currentTeam?.attachments?.map((file, index) => (
+                      <div className={cx("oneFile")} key={index}>
+                        <Chip
+                          label={file?.origin}
+                          variant="outlined"
+                          onDelete={() => handleDeleteOriginFile(file, index)}
+                        />
+                      </div>
+                    ))
+                  : ""}
+
+                {attachment?.length > 0
+                  ? attachment.map((file, index) => (
+                      <div className={cx("oneFile")} key={index}>
+                        <Chip
+                          label={file.name}
+                          variant="outlined"
+                          onDelete={() => handleDeleteFile(file, index)}
+                        />
+                      </div>
+                    ))
+                  : ""}
+              </div>
+
+              {/* {errors.attachment && firstError === "attachment" && (
                 <div className={cx("error")}>
                   {t(errors.attachment.message)}
                 </div>
-              )}
+              )} */}
             </Grid>
             <Grid item md={6} xs={12}>
               <div className={cx("title")}>{t("apply.team.members")}</div>
@@ -366,7 +544,18 @@ export default function Apply() {
               ))}
             </Grid>
             <button className={cx("submit")} disabled={loading}>
-              {currentTeam.name ? t("apply.update") : t("common.apply")}
+              <span>
+                {currentTeam.name ? t("apply.update") : t("common.apply")}{" "}
+              </span>
+              <span style={{ marginLeft: "16px" }}>
+                {" "}
+                {loading && (
+                  <CircularProgress
+                    color="inherit"
+                    style={{ width: "24px", height: "24px" }}
+                  />
+                )}
+              </span>
             </button>
           </Grid>
         </form>

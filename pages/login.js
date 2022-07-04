@@ -1,5 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
-import { Paper, OutlinedInput, InputAdornment, Button } from "@mui/material";
+import {
+  Paper,
+  OutlinedInput,
+  InputAdornment,
+  Button,
+  CircularProgress,
+} from "@mui/material";
 import styles from "styles/register/index.module.scss";
 import cn from "classnames/bind";
 import Link from "next/link";
@@ -109,7 +115,16 @@ export default function Register() {
             <div className={cx("forgot-password")}>{t("register.forgot")}?</div>
           </Link>
           <Button className={cx("submit")} type="submit" disabled={loading}>
-            {t("common.login")}
+            <span>{t("common.login")}</span>
+            <span style={{ marginLeft: "16px", marginTop: "6px" }}>
+              {" "}
+              {loading && (
+                <CircularProgress
+                  color="inherit"
+                  style={{ width: "24px", height: "24px" }}
+                />
+              )}
+            </span>
           </Button>
           <div className={cx("footer")}>
             {t("register.member")}{" "}
