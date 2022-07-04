@@ -59,12 +59,12 @@ export default function Apply() {
       country: yup.string().required("apply.error.country.required"),
       story: yup.string().required("apply.error.story.required"),
       gameIdea: yup.string().required("apply.error.idea.required"),
-      attachment: yup.mixed().test({
-        message: "apply.error.document.required",
-        test: (file) => {
-          return currentTeam.name || file?.length;
-        },
-      }),
+      //   attachment: yup.mixed().test({
+      //     message: "apply.error.document.required",
+      //     test: (file) => {
+      //       return currentTeam.name || file?.length;
+      //     },
+      //   }),
       members: yup.array().of(
         yup.object().shape({
           name: yup.string().required("apply.error.name.required"),
@@ -156,9 +156,10 @@ export default function Apply() {
       finalList = [...tempList];
     }
 
-    if (finalList?.length > 4) {
+    let numOfCurrentFile = currentTeam?.attachments?.length || 0;
+    if (finalList?.length + numOfCurrentFile > 4) {
       setCheckDisableUploadFile(true);
-      finalList = finalList.slice(0, 5);
+      finalList = finalList.slice(0, 5 - numOfCurrentFile);
     } else {
       setCheckDisableUploadFile(false);
     }
@@ -256,7 +257,11 @@ export default function Apply() {
       let res;
       if (currentTeam.name) {
         if (attachment.length) {
-          await updateFile();
+          let data = await updateFile();
+          if (!data) {
+            setLoading(false);
+            return;
+          }
         }
 
         formData.delete("attachments");
@@ -276,6 +281,7 @@ export default function Apply() {
           },
         });
         toast.success("Apply successfully");
+        window.location.reload();
       }
       //   setReload(!reload);
       setAttachment([]);
@@ -307,7 +313,9 @@ export default function Apply() {
       );
 
       toast.success("Delete successfully");
-      if (attachment?.length < 5) {
+      let numOfCurrentFile = currentTeam?.attachments?.length || 0;
+
+      if (attachment?.length + numOfCurrentFile < 5) {
         setCheckDisableUploadFile(false);
       }
       setReload(!reload);
@@ -320,7 +328,8 @@ export default function Apply() {
     let tempArr = [...attachment];
     tempArr.splice(index, 1);
     setAttachment([...tempArr]);
-    if (tempArr?.length < 5) {
+    let numOfCurrentFile = currentTeam?.attachments?.length || 0;
+    if (tempArr?.length + numOfCurrentFile < 5) {
       setCheckDisableUploadFile(false);
     }
   };
@@ -342,7 +351,7 @@ export default function Apply() {
       setReload(!reload);
     } catch (error) {
       console.log("error :>> ", error);
-      //   toast.error(error?.response?.data?.message);
+      toast.error(error?.response?.data?.message || "Error");
     }
   };
 
@@ -484,11 +493,11 @@ export default function Apply() {
                   : ""}
               </div>
 
-              {errors.attachment && firstError === "attachment" && (
+              {/* {errors.attachment && firstError === "attachment" && (
                 <div className={cx("error")}>
                   {t(errors.attachment.message)}
                 </div>
-              )}
+              )} */}
             </Grid>
             <Grid item md={6} xs={12}>
               <div className={cx("title")}>{t("apply.team.members")}</div>
