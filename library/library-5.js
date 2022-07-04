@@ -17,16 +17,13 @@ export default {
           marginBottom: 10,
         }}
       >
-        <div
+        <h2
           style={{
-            fontWeight: 500,
-            fontSize: 24,
-            lineHeight: "150%",
             color: "#833F1D",
           }}
         >
           Cellyfish Animation Sample Pack
-        </div>
+        </h2>
         <a
           href="https://drive.google.com/drive/u/1/folders/1TM9ONSt8oIiNuYOFDOVP9CQpmXkn9qnT"
           target="_blank"
@@ -48,6 +45,7 @@ export default {
               fontSize: 20,
               color: "#FFFFFF",
               cursor: "pointer",
+              margin: "0.83em 0",
             }}
           >
             <img
@@ -68,16 +66,13 @@ export default {
           marginBottom: 10,
         }}
       >
-        <div
+        <h2
           style={{
-            fontWeight: 500,
-            fontSize: 24,
-            lineHeight: "150%",
             color: "#833F1D",
           }}
         >
           Rubbie Animation Sample Pack
-        </div>
+        </h2>
         <a
           href="https://drive.google.com/drive/u/1/folders/1414eD3ZqJloy_VNeXyqZ3o47Sd27Wn6S"
           target="_blank"
@@ -99,6 +94,7 @@ export default {
               fontSize: 20,
               color: "#FFFFFF",
               cursor: "pointer",
+              margin: "0.83em 0",
             }}
           >
             <img
@@ -118,16 +114,13 @@ export default {
           justifyContent: "space-between",
         }}
       >
-        <div
+        <h2
           style={{
-            fontWeight: 500,
-            fontSize: 24,
-            lineHeight: "150%",
             color: "#833F1D",
           }}
         >
           Cloray Animation Sample Pack
-        </div>
+        </h2>
         <a
           href="https://drive.google.com/drive/u/1/folders/1JN4XGnZ1_e7Y3UpA08StbKSq5IOaQ-4G"
           target="_blank"
@@ -149,6 +142,7 @@ export default {
               fontSize: 20,
               color: "#FFFFFF",
               cursor: "pointer",
+              margin: "0.83em 0",
             }}
           >
             <img
