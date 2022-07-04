@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import Link from "next/link";
 import news from "news";
 import library from "library";
+import useAuth from "hooks/useAuth";
 
 const cx = cn.bind(styles);
 
@@ -77,6 +78,7 @@ const settingInto = {
 
 export default function Home() {
   const { t, i18n } = useTranslation();
+  const auth = useAuth();
 
   return (
     <div className={cx("home")}>
@@ -114,22 +116,24 @@ export default function Home() {
 
       <div className={cx("into-kawaiiverse")}>
         <Slider {...settingInto}>
-          {library.map((item, idx) => (
-            <div className={cx("banner", `banner-${idx + 1}`)} key={item.url}>
-              <div className={cx("title")}>
-                <a
-                  href="https://blog.kawaii.global/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {t("home.into")}
-                </a>
+          {library
+            .filter((i) => !(auth === "NOT_AUTH" && i.url === "sample-art"))
+            .map((item, idx) => (
+              <div className={cx("banner", `banner-${idx + 1}`)} key={item.url}>
+                <div className={cx("title")}>
+                  <a
+                    href="https://blog.kawaii.global/"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    {t("home.into")}
+                  </a>
+                </div>
+                <Link href={`/library/${item.url}`}>
+                  <img className={cx("banner-img")} src={item.image} />
+                </Link>
               </div>
-              <Link href={`/library/${item.url}`}>
-                <img className={cx("banner-img")} src={item.image} />
-              </Link>
-            </div>
-          ))}
+            ))}
         </Slider>
       </div>
     </div>

@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-no-target-blank */
-import { Button, Grid } from "@mui/material";
+import { Button, Grid, Tooltip } from "@mui/material";
 import { Container } from "@mui/system";
 import styles from "styles/common/footer.module.scss";
 import cn from "classnames/bind";
@@ -74,16 +74,6 @@ export default function Footer() {
                 </div>
               </div>
             </div>
-            {/* <div className={cx("organized")}>{t("footer.host")}</div>
-            <div className={cx("logos")}>
-              <a href="https://imba.co/" target="_blank">
-                <img src="/images/common/imba.png" />
-              </a>
-              <div className={cx("divider")} />
-              <a href="https://orai.io/" target="_blank">
-                <img src="/images/common/oraichain.svg" />
-              </a>
-            </div> */}
           </Grid>
           <Grid item lg={2} md={3} xs={6}>
             <div className={cx("label")}>{t("footer.ecosystem")}</div>
@@ -118,9 +108,16 @@ export default function Footer() {
             <a href="https://blog.kawaii.global" target="_blank">
               Blog
             </a>
-            <a href="https://docs.kawaii.global/" target="_blank">
-              {t("footer.instruction")}
-            </a>
+            {authStatus === AUTH_STATUS.NOT_AUTH ? (
+              <Tooltip
+                title="You must login to view the Resource Sample Packs"
+                arrow
+              >
+                <a>{t("footer.instruction")}</a>
+              </Tooltip>
+            ) : (
+              <Link href="/library/sample-art">{t("footer.instruction")}</Link>
+            )}
           </Grid>
           <Grid item lg={2} md={6} xs={6}>
             <div className={cx("label", "fourth-col")}>{t("footer.term")}</div>
@@ -145,10 +142,16 @@ export default function Footer() {
               <a href="https://blog.kawaii.global/" target="_blank">
                 <img src="/images/common/medium.svg" />
               </a>
-              <a href="https://www.youtube.com/watch?v=RTw-WZ5xfOA&ab_channel=KawaiiIslands" target="_blank">
+              <a
+                href="https://www.youtube.com/watch?v=RTw-WZ5xfOA&ab_channel=KawaiiIslands"
+                target="_blank"
+              >
                 <img src="/images/common/youtube.svg" />
               </a>
-              <a href="https://www.facebook.com/kawaii.islands.official" target="_blank">
+              <a
+                href="https://www.facebook.com/kawaii.islands.official"
+                target="_blank"
+              >
                 <img src="/images/common/facebook.svg" />
               </a>
             </div>

@@ -4,7 +4,7 @@ export default {
   "footer.resource": "Resources",
   "footer.litepaper": "Litepaper",
   "footer.contact": "Contact",
-  "footer.instruction": "Instruction",
+  "footer.instruction": "Sample Art",
   "footer.term": "Terms",
   "footer.use": "Terms of use",
   "footer.privacy": "Privacy Policy",

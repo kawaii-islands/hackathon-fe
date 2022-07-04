@@ -5,6 +5,7 @@ import listLibrary from "library";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
+import useAuth from "hooks/useAuth";
 
 const cx = cn.bind(styles);
 
@@ -37,14 +38,22 @@ function News({ news, isLatest, pathname }) {
 }
 
 export default function ListNews({ isLatest }) {
+  const auth = useAuth();
   const router = useRouter();
   const { t } = useTranslation();
   let data =
-    router.pathname.split("/")[1] === "library" ? listLibrary : listNews;
+    router.pathname.split("/")[1] === "library"
+      ? listLibrary.filter((i) => {
+          if (auth === "NOT_AUTH" && i.url === "sample-art") return false;
+          return true;
+        })
+      : listNews;
   if (isLatest)
     data = [
       ...listNews.map((i) => ({ ...i, pathname: "hackathon" })),
-      ...listLibrary.map((i) => ({ ...i, pathname: "library" })),
+      ...listLibrary
+        .map((i) => ({ ...i, pathname: "library" }))
+        .filter((i) => !(auth === "NOT_AUTH" && i.url === "sample-art")),
     ]
       .sort((a, b) => new Date(b.date) - new Date(a.date))
       .slice(0, 3);
