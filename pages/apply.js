@@ -261,11 +261,13 @@ export default function Apply() {
           if (!data) {
             setLoading(false);
             return;
+          } else {
+            setAttachment([]);
+            toast.success("Update file successfully");
           }
         }
 
         formData.delete("attachments");
-
         res = await axios.put(`${ENDPOINT}/teams`, formData, {
           headers: {
             "Content-Type": "multipart/form-data; boundary=something",
@@ -280,10 +282,11 @@ export default function Apply() {
             Authorization: "Bearer " + window.localStorage.getItem("token"),
           },
         });
+
         toast.success("Apply successfully");
-        window.location.reload();
       }
-      //   setReload(!reload);
+	  
+      setReload(!reload);
       setAttachment([]);
       setLoading(false);
     } catch (error) {
@@ -347,11 +350,11 @@ export default function Apply() {
           Authorization: "Bearer " + window.localStorage.getItem("token"),
         },
       });
-      console.log("res :>> ", res);
-      setReload(!reload);
+      return res.data;
     } catch (error) {
       console.log("error :>> ", error);
       toast.error(error?.response?.data?.message || "Error");
+      return error;
     }
   };
 
@@ -479,7 +482,7 @@ export default function Apply() {
                       </div>
                     ))
                   : ""}
-
+                {console.log("attachment :>> ", attachment)}
                 {attachment?.length > 0
                   ? attachment.map((file, index) => (
                       <div className={cx("oneFile")} key={index}>
