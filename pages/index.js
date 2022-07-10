@@ -106,7 +106,7 @@ export default function Home() {
               <div className={cx("slider-item")}>
                 <img
                   className={cx("banner")}
-                  src={`/images/home/kawaii-hackathon-banner.jpg`}
+                  src={`/images/home/kawaii-hackathon-banner.png`}
                 />
               </div>
             </Link>
