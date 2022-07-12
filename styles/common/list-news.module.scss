@@ -4,7 +4,13 @@ $md: 900px;
   flex: 1;
   font-family: "Josefin Sans";
   font-style: normal;
-  padding-bottom: 15px;
+  padding-bottom: 20px;
+
+  .latest {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(167, 169, 172, 0.55);
+  }
 
   .title {
     font-weight: 700;
@@ -23,7 +29,7 @@ $md: 900px;
 
     @media (min-width: $md) {
       flex-direction: row;
-    //   max-height: 200px;
+      //   max-height: 200px;
       width: 100%;
       overflow-y: hidden;
     }
@@ -82,23 +88,24 @@ $md: 900px;
         }
       }
 
-	  .image {
-		width: 100%;
-		height: auto;
-	  }
+      .image {
+        width: 100%;
+        height: auto;
+      }
     }
     img {
-      width: 100%;
+      max-width: 240px;
       margin-bottom: 16px;
       @media (min-width: $md) {
-        max-width: 280px;
-        max-height: 100%;
-        margin-bottom: 0;
+        max-width: 240px;
+        max-height: 168px;
+        margin: auto auto;
       }
 
       &.isLatest {
         @media (min-width: $md) {
-          max-width: 200px;
+          max-width: 240px;
+          max-width: auto;
         }
       }
     }

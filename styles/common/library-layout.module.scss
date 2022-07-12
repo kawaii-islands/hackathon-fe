@@ -6,43 +6,61 @@ $lg: 1200px;
   font-family: "Josefin Sans";
   font-style: normal;
   background: #f7f3ed;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 
-  .navigation {
-    background: #fff8ed;
+  .left {
+    margin: 32px;
+    width: 852px;
 
-    .container {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      height: 50px;
-      @media (min-width: $md) {
-        height: 60px;
-        justify-content: flex-start;
-      }
-      .link {
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 150%;
-        color: #231f20;
-        margin-right: 20px;
-        cursor: pointer;
+    height: calc(100vh - 70px);
+    overflow-y: auto;
 
-        &.apply {
-          color: #ffffff;
-          background: #f25c41;
-          border-radius: 4px;
-          padding: 4px 10px;
-        }
+    &::-webkit-scrollbar {
+      width: 0px;
+    }
 
-        &:last-child {
-          margin: 0;
-        }
+    &::-webkit-scrollbar-track {
+    }
+
+    .navigation {
+      background: #fff8ed;
+
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 50px;
         @media (min-width: $md) {
-          font-weight: 600;
-          font-size: 20px;
-          line-height: 20px;
-          color: #fd8970;
-          margin-right: 22px;
+          height: 60px;
+          justify-content: flex-start;
+        }
+        .link {
+          font-weight: 700;
+          font-size: 12px;
+          line-height: 150%;
+          color: #231f20;
+          margin-right: 20px;
+          cursor: pointer;
+
+          &.apply {
+            color: #ffffff;
+            background: #f25c41;
+            border-radius: 4px;
+            padding: 4px 10px;
+          }
+
+          &:last-child {
+            margin: 0;
+          }
+          @media (min-width: $md) {
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 20px;
+            color: #fd8970;
+            margin-right: 22px;
+          }
         }
       }
     }
@@ -64,6 +82,35 @@ $lg: 1200px;
         background-repeat: no-repeat;
         position: sticky;
         top: 0;
+      }
+    }
+  }
+
+  .right {
+    width: 260px;
+    margin: 32px;
+
+    .banner {
+      width: 260px;
+      height: 560px;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100%;
+      position: relative;
+
+      .button {
+        position: absolute;
+        bottom: 62px;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+        background: linear-gradient(0deg, #e73e1c 22.05%, #ef7d32 93.56%);
+        border: 1.5px solid rgba(255, 255, 255, 0.35);
+        border-radius: 4px;
+        color: #ffffff;
+        font-weight: 700;
+        padding: 8px 20px;
+        width: fit-content;
       }
     }
   }
