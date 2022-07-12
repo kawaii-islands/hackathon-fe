@@ -61,8 +61,8 @@ export default function ListNews({ isLatest }) {
   return (
     <div className={cx("list-news")}>
       {isLatest && (
-        <>
-          <div className={cx("title")}>{t("news.latest")}</div>
+        <div>
+          <div className={cx("title", "latest")}>{t("news.latest")}</div>
           {data.map((news) => (
             <News
               news={news}
@@ -71,7 +71,7 @@ export default function ListNews({ isLatest }) {
               pathname={news.pathname}
             />
           ))}
-        </>
+        </div>
       )}
       {!isLatest &&
         data.map((news) => (

@@ -20,7 +20,7 @@ export default function LibraryLayout({ title, date, children }) {
   return (
     <div className={cx("library-layout")}>
       <div className={cx("navigation")}>
-        <Container>
+        <Container style={{ maxWidth: "1120px" }}>
           <Toolbar className={cx("container")}>
             {isDesktop ? (
               <>
@@ -61,7 +61,7 @@ export default function LibraryLayout({ title, date, children }) {
         </Container>
       </div>
       <Breadcrumb />
-      <Container>
+      <Container style={{ maxWidth: "1120px" }}>
         {title && <div className={cx("title")}>{title}</div>}
         {date && <div className={cx("date")}>{date}</div>}
         <div className={cx("container")}>
