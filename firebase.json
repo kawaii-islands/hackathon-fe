@@ -2,6 +2,16 @@
   "hosting": {
     "public": "out",
     "target": "prod",
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"]
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "/hackathon/**",
+        "destination": "/hackathon/[url]/index.html"
+      },
+      {
+        "source": "/library/**",
+        "destination": "/library/[url]/index.html"
+      }
+    ]
   }
 }
