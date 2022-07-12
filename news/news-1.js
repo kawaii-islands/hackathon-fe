@@ -1,25 +1,24 @@
 import Link from "next/link";
 
 export default {
-  url: "kawaiiverse-hackathon-2022-proposal-building-the-kawaiiverse-gaming-ecosystem",
-  title: `Kawaiiverse Hackathon 2022 Proposal: Building the Kawaiiverse gaming ecosystem`,
+  url: "kawaiiverse-hackathon-2022-building-the-kawaiiverse-gaming-ecosystem",
+  title: `Kawaiiverse Hackathon 2022: Building the Kawaiiverse gaming ecosystem`,
   date: "07/10/2022",
   image: "/images/home/kawaii-hackathon-banner.png",
   description:
-    "Aiming to incubate our community-owned Anime Metaverse, Kawaii team is thrilled to launch the first ever Kawaiiverse Hackathon, a game hackathon with the mission to find and incubate promising talents from all over the world while growing our metaverse. Development teams from all over the world will have a chance to win an initial prize of $5,000 for each chosen team and chances to develop their game idea of choice with our support to join Kawaiiverse.",
+    "Aiming to incubate the community-owned Anime Metaverse, Kawaiiverse recently launched their first ever Hackathon with the mission to find promising talents from all over the world, starting with gaming projects. Development teams joining will have a chance to win an initial prize of $5,000 for each chosen team and chances to develop their game idea of choice with our support to join Kawaiiverse.",
   content: (
     <>
       <p>
         Kawaiiverse is an Anime Metaverse co-founded in 2021 by <b>Imba</b>, a
         leading game company with years of game developing experience and
         multiple successful games including Kawaii Mansion, Kawaii Home
-        Design,... and{" "}
-        <b>Oraichain</b>, the world's first intelligent and secure solution for
-        emerging Web3, scalable Dapps, and decentralized AI. With the target to
-        keep building, maintaining and expanding the Anime Metaverse,
-        Kawaiiverse will continuously roll out new events and programs to
-        incubate the ecosystem development, especially the co-development from
-        our talented and creative community members.
+        Design,... and <b>Oraichain</b>, the world's first intelligent and
+        secure solution for emerging Web3, scalable Dapps, and decentralized AI.
+        With the target to keep building, maintaining and expanding the Anime
+        Metaverse, Kawaiiverse will continuously roll out new events and
+        programs to incubate the ecosystem development, especially the
+        co-development from our talented and creative community members.
       </p>
       <p>
         In anticipation of the recently launched Kawaiiverse subnet on
