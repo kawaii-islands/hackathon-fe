@@ -8,16 +8,17 @@ $lg: 1200px;
   background: #f7f3ed;
   display: flex;
   align-items: flex-start;
-  justify-content: space-around;
+  justify-content: center;
 
   .left {
     margin: 32px;
     width: 852px;
-    height: calc(100vh - 50px);
+
+    height: calc(100vh - 70px);
     overflow-y: auto;
 
     &::-webkit-scrollbar {
-      width: 3px;
+      width: 0px;
     }
 
     &::-webkit-scrollbar-track {
@@ -100,14 +101,14 @@ $lg: 1200px;
       .button {
         position: absolute;
         bottom: 62px;
-		left: 50px;
+        left: 50px;
         background: linear-gradient(0deg, #e73e1c 22.05%, #ef7d32 93.56%);
         border: 1.5px solid rgba(255, 255, 255, 0.35);
         border-radius: 4px;
         color: #ffffff;
         font-weight: 700;
         padding: 8px 20px;
-		width: fit-content;
+        width: fit-content;
       }
     }
   }

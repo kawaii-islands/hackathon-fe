@@ -94,17 +94,18 @@ $md: 900px;
       }
     }
     img {
-      max-width: 320px;
+      max-width: 240px;
       margin-bottom: 16px;
       @media (min-width: $md) {
-        max-width: 320px;
-        max-height: 100%;
-        margin-bottom: 0;
+        max-width: 240px;
+        max-height: 168px;
+        margin: auto auto;
       }
 
       &.isLatest {
         @media (min-width: $md) {
-          max-width: 320px;
+          max-width: 240px;
+          max-width: auto;
         }
       }
     }
