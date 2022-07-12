@@ -14,7 +14,7 @@ export default function Breadcrumb() {
   const routerName = router.pathname.replace("/", "").split("/")[0];
 
   return (
-    <Container style={{ maxWidth: "1120px" }}>
+    <Container style={{ maxWidth: "1180px" }}>
       <Toolbar className={cx("breadcrumb")}>
         <img src="/icons/home.svg" style={{ marginBottom: 4 }} />
         <Link href="/">
