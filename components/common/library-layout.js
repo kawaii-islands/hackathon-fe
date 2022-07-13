@@ -93,14 +93,14 @@ export default function LibraryLayout({ title, date, children }) {
                 ")",
             }}
           >
-            <a href="https://hackathon.kawaii.global/hackathon/kawaiiverse-hackathon-2022-building-the-kawaiiverse-gaming-ecosystem/">
+            <Link href="/hackathon/kawaiiverse-hackathon-2022-building-the-kawaiiverse-gaming-ecosystem/">
               <Button
                 className={cx("button")}
                 //   onClick={() => router.push("/apply")}
               >
                 {t("news.register-now")}
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       ) : (
