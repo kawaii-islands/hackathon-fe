@@ -146,7 +146,7 @@ export default function Footer() {
                 <img src="/images/common/youtube.svg" />
               </a>
               <a
-                href="https://www.facebook.com/kawaii.islands.official"
+                href="https://www.facebook.com/groups/kawaiiverse.hackathon"
                 target="_blank"
               >
                 <img src="/images/common/facebook.svg" />
