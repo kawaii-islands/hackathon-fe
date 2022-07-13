@@ -10,6 +10,9 @@ const nextConfig = {
     return config;
   },
   trailingSlash: true,
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 module.exports = nextConfig;
