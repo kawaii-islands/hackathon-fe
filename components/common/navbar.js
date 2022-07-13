@@ -20,6 +20,10 @@ export const links = [
     href: "/apply",
   },
   {
+    name: "find",
+    href: "/find",
+  },
+  {
     name: "login",
     href: "/login",
   },
@@ -63,6 +67,14 @@ export default function Navbar({}) {
           {isDesktop ? (
             <div className={cx("nav-links")}>
               {links.map((link) => {
+                if (link.name === "find")
+                  return (
+                    <a href="https://discord.gg/9pkyqGBTKH" target="_blank">
+                      <div className={cx("link")}>
+                        {t(`common.${link.name}`)}
+                      </div>
+                    </a>
+                  );
                 if (
                   authStatus !== AUTH_STATUS.NOT_AUTH &&
                   link.name === "register"

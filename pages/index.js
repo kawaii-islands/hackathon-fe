@@ -3,9 +3,11 @@ import cn from "classnames/bind";
 import Slider from "react-slick";
 import { useTranslation } from "react-i18next";
 import Link from "next/link";
-import news from "news";
-import library from "library";
+import newsEn from "news/en";
+import newsVi from "news/vi";
+import library from "library/en";
 import useAuth from "hooks/useAuth";
+import useLocale from "hooks/useLocale";
 
 const cx = cn.bind(styles);
 
@@ -78,7 +80,9 @@ const settingInto = {
 
 export default function Home() {
   const { t, i18n } = useTranslation();
+  const { locale } = useLocale();
   const auth = useAuth();
+  const news = locale === "en" ? newsEn : newsVi;
 
   return (
     <div className={cx("home")}>

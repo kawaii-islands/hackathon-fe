@@ -11,11 +11,10 @@ $lg: 1200px;
   justify-content: center;
 
   .left {
-    margin: 32px;
-    width: 852px;
-
-    height: calc(100vh - 70px);
-    overflow-y: auto;
+    padding: 32px;
+    @media(max-width: $md){
+      padding: 32px 6px;
+    }
 
     &::-webkit-scrollbar {
       width: 0px;
@@ -88,7 +87,14 @@ $lg: 1200px;
 
   .right {
     width: 260px;
-    margin: 32px;
+    padding: 32px;
+    padding-left: 0;
+    position: sticky;
+    top: 0;
+
+    @media (max-width: $md) {
+      display: none;
+    }
 
     .banner {
       width: 260px;
@@ -96,14 +102,13 @@ $lg: 1200px;
       background-repeat: no-repeat;
       background-position: center;
       background-size: 100%;
-      position: relative;
 
       .button {
         position: absolute;
         bottom: 62px;
-		left: 0;
-		right: 0;
-		margin: 0 auto;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
         background: linear-gradient(0deg, #e73e1c 22.05%, #ef7d32 93.56%);
         border: 1.5px solid rgba(255, 255, 255, 0.35);
         border-radius: 4px;

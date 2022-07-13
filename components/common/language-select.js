@@ -10,7 +10,6 @@ export default function LanguageSelect({}) {
 
   return (
     <Box className={cx("language-select")}>
-      {console.log("locale :>> ", locale)}
       <div
         className={cx("item", locale === "vi" && "active")}
         onClick={() => changeLocale("vi")}

@@ -10,6 +10,10 @@ $md: 900px;
     margin-top: 60px;
     padding-top: 30px;
     border-top: 1px solid rgba(167, 169, 172, 0.55);
+
+    @media (max-width: $md) {
+      margin-top: 30px;
+    }
   }
 
   .title {
