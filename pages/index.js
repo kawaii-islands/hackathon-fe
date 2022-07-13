@@ -120,6 +120,23 @@ export default function Home() {
 
       <div className={cx("into-kawaiiverse")}>
         <Slider {...settingInto}>
+          <div className={cx("banner", `banner-0`)}>
+            <div className={cx("title")}>
+              <a
+                href="https://blog.kawaii.global/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {t("home.into")}
+              </a>
+            </div>
+            <a href="https://kawaii.global/" target="_blank">
+              <img
+                className={cx("banner-img")}
+                src="/images/home/kawaiiverse-map.png"
+              />
+            </a>
+          </div>
           {library
             .filter((i) => !(auth === "NOT_AUTH" && i.url === "sample-art"))
             .map((item, idx) => (
