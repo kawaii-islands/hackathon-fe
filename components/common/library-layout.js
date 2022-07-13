@@ -93,12 +93,14 @@ export default function LibraryLayout({ title, date, children }) {
                 ")",
             }}
           >
-            <Button
-              className={cx("button")}
-              onClick={() => router.push("/apply")}
-            >
-              {t("news.register-now")}
-            </Button>
+            <a href="https://hackathon.kawaii.global/hackathon/kawaiiverse-hackathon-2022-building-the-kawaiiverse-gaming-ecosystem/">
+              <Button
+                className={cx("button")}
+                //   onClick={() => router.push("/apply")}
+              >
+                {t("news.register-now")}
+              </Button>
+            </a>
           </div>
         </div>
       ) : (
