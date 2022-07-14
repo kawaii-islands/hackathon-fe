@@ -139,41 +139,32 @@ export default function Footer() {
           <Grid item lg={3} md={6} xs={12}>
             <div className={cx("label")}>{t("footer.social")}</div>
             <div className={cx("social")}>
-              <a
+              {/* <a
                 href="https://www.youtube.com/watch?v=RTw-WZ5xfOA&ab_channel=KawaiiIslands"
                 target="_blank"
               >
                 <img src="/images/common/youtube.svg" />
-              </a>
+              </a> */}
               <a
                 href="https://www.facebook.com/groups/kawaiiverse.hackathon"
                 target="_blank"
               >
                 <img src="/images/common/facebook.svg" />
               </a>
-			  <a
-                href="https://discord.com/invite/nN4FDesACB"
-                target="_blank"
-              >
-                <img src="/images/common/discord.svg" />
-              </a>
-			  <a
-                href="https://twitter.com/kawaii_islands"
-                target="_blank"
-              >
+              <a href="https://twitter.com/kawaii_islands" target="_blank">
                 <img src="/images/common/twiter.svg" />
               </a>
-			  <a
-                href="https://t.me/kawaii_islands"
-                target="_blank"
-              >
+              <a href="https://discord.com/invite/nN4FDesACB" target="_blank">
+                <img src="/images/common/discord.svg" />
+              </a>
+
+              <a href="https://t.me/kawaii_islands" target="_blank">
                 <img src="/images/common/telegram.svg" />
               </a>
 
-
-              <a href="https://blog.kawaii.global/" target="_blank">
+              {/* <a href="https://blog.kawaii.global/" target="_blank">
                 <img src="/images/common/medium.svg" />
-              </a>
+              </a> */}
             </div>
             <div className={cx("buttons")}>
               {authStatus === AUTH_STATUS.NOT_AUTH && (

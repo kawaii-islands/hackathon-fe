@@ -92,13 +92,31 @@ export default function Home() {
             className={cx("banner")}
             src={`/images/home/big-banner-${i18n.language}.png`}
           />
+          <div className={cx("social")}>
+            <a
+              href="https://www.facebook.com/groups/kawaiiverse.hackathon"
+              target="_blank"
+            >
+              <img src="/images/common/facebook.svg" />
+            </a>
+            <a href="https://twitter.com/kawaii_islands" target="_blank">
+              <img src="/images/common/twiter.svg" />
+            </a>
+            <a href="https://discord.com/invite/nN4FDesACB" target="_blank">
+              <img src="/images/common/discord.svg" />
+            </a>
+
+            <a href="https://t.me/kawaii_islands" target="_blank">
+              <img src="/images/common/telegram.svg" />
+            </a>
+          </div>
         </div>
-        <div>
+        {/* <div>
           <img
             className={cx("banner")}
             src={`/images/home/big-banner-${i18n.language}.png`}
           />
-        </div>
+        </div> */}
       </Slider>
       <div className={cx("explore")}>
         <Link href="/hackathon">
