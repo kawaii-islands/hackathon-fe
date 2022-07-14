@@ -18,11 +18,13 @@ export default function NewsDetail({}) {
   useEffect(() => {
     if (url) {
       const listNews = locale === "en" ? listNewsEn : listNewsVi;
+
       const news = listNews.filter((news) => news.url === url)?.[0];
+
       if (news === undefined) router.push("/404");
       setNews(news);
     }
-  }, [url]);
+  }, [url, locale]);
 
   if (!news) {
     return <></>;
