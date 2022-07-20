@@ -11,6 +11,10 @@
       {
         "source": "/library/**",
         "destination": "/library/[url]/index.html"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
       }
     ]
   }
