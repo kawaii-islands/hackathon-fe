@@ -2,6 +2,9 @@ import axios from "axios";
 import { ENDPOINT } from "consts";
 
 export default async function refreshToken(callback) {
+  const refreshToken = window.localStorage.getItem("refresh-token");
+  if (!refreshToken) return;
+
   const res = await axios.post(`${ENDPOINT}/auth/refresh-tokens`, {
     refreshToken: window.localStorage.getItem("refresh-token"),
   });
