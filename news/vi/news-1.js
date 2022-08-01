@@ -10,7 +10,7 @@ export default {
   content: (
     <>
       <p>
-        Kawaiiverse là một Anime Metaverse được đồng sáng lập vào năm 2021 bởi{" "}
+        Kawaiiverse là một Anime Metaverse được đồng sáng lập vào năm 2021 bởi
         <b>Imba</b> - công ty phát triển trò chơi hàng đầu với nhiều năm kinh
         nghiệm, sở hữu nhiều trò chơi nổi tiếng như Kawaii Mansion, Kawaii Home
         Design, ... và <b>Oraichain Labs</b> - công ty cung cấp giải pháp thông
@@ -32,13 +32,17 @@ export default {
         trong những động lực quan trọng nhất dẫn đến thành công của dự án. Cuộc
         thi lập trình Kawaiiverse Hackathon, cùng chương trình K-Ambassador đang
         diễn ra sẽ là sự khởi đầu của Kawaiiverse giai đoạn hai: Tạo lập để sở
-        hữu và kiếm tiền. Bây giờ, hãy cùng tìm hiểu thêm về{" "}
-        <b>
-          Cuộc thi lập trình Kawaiiverse Hackathon 2022: Xây dựng game trên nền
-          tảng hệ sinh thái Kawaiiverse.
-        </b>
+        hữu và kiếm tiền.
       </p>
-      <h2>Xây dựng Kawaiiverse - Môi trường mở để phát triển</h2>
+      <p>
+        Bây giờ, hãy cùng tìm hiểu thêm về Cuộc thi lập trình Kawaiiverse
+        Hackathon 2022: Xây dựng game trên nền tảng hệ sinh thái Kawaiiverse.
+      </p>
+      <h2>
+        {" "}
+        1. Thông tin chung về hệ sinh thái Kawaiiverse - Môi trường mở để phát
+        triển
+      </h2>
       <p>
         Kawaiiverse được xây dựng dựa trên ý tưởng về một Metaverse Anime, nơi
         mọi người có thể vui chơi, tạo lập, kết nối và kiếm tiền. Với mục tiêu
@@ -75,14 +79,14 @@ export default {
         dùng nay đã có thể dùng công cụ được cung cấp để kích hoạt). Tính năng
         này sẽ là lợi thế lớn để thu hút các nhà phát triển mới tham gia xây
         dựng hệ sinh thái Kawaiiverse. Vậy, các đội thi sẽ nhận được những lợi
-        ích gì khi tham gia Cuộc thi lập trình Kawaiiverse Hackathon 2022?
+        ích gì khi tham gia Cuộc thi lập trình game Kawaiiverse Hackathon 2022?
       </p>
-      <h2>Quyền lợi</h2>
+      <h2>2. Quyền lợi</h2>
       <p>
-        Tham gia Cuộc thi lập trình Kawaiiverse Hackathon, các đội phát triển
-        trò chơi sẽ được hỗ trợ trong việc nghiên cứu và phát triển sản phẩm,
-        tiếp cận với công cụ hỗ trợ độc quyền và được tư vấn kiến ​​thức chuyên
-        môn. Cụ thể,các đội tham gia sẽ có cơ hội:
+        Tham gia Cuộc thi lập trình game Kawaiiverse Hackathon, các đội phát
+        triển trò chơi sẽ được hỗ trợ trong việc nghiên cứu và phát triển sản
+        phẩm, tiếp cận với công cụ hỗ trợ độc quyền và được tư vấn kiến ​​thức
+        chuyên môn. Cụ thể, các đội tham gia sẽ có cơ hội:
       </p>
       <ul>
         <li>
@@ -113,16 +117,18 @@ export default {
         <li>
           Được chia doanh thu từ hoạt động mua bán các NFT trong trò chơi (có
           thể là NFT hiện có của Kawaiiverse hoặc NFT tự phát triển) và một phần
-          doanh thu trò chơi đến từ việc người dùng chi tiêu MILKY và mua hàng
-          trong ứng dụng. Tỷ lệ chi tiết sẽ được thống nhất sau khi trò chơi sẵn
-          sàng ra mắt thông qua bỏ phiếu xác nhận của cộng đồng (áp dụng DAO).
+          doanh thu trò chơi đến từ việc người dùng chi tiêu đồng chơi game
+          (MILKY) và mua hàng trong ứng dụng. Tỷ lệ chi tiết sẽ được thống nhất
+          sau khi trò chơi sẵn sàng ra mắt thông qua bỏ phiếu xác nhận của cộng
+          đồng (áp dụng DAO).
         </li>
       </ul>
-      <h2>Đối tượng tham gia Cuộc thi lập trình game Kawaiiverse Hackathon</h2>
+      <h2>3. Đối tượng tham gia</h2>
       <ul>
         <li>
-          Đội ngũ các nhà phát triển trò chơi trên toàn thế giới có ý tưởng và
-          khả năng lập trình;
+          Nhóm các nhà phát triển trò chơi trên toàn thế giới có ý tưởng và khả
+          năng lập trình. Cuộc thi không giới hạn độ tuổi, thể loại game, có thể
+          bao gồm NFT hoặc không.
         </li>
         <li>
           Các thành viên trong đội thi có khả năng thực hiện KYC cùng ban tổ
@@ -135,19 +141,25 @@ export default {
         </li>
         <li>
           Mô hình Kinh tế Kawaii 2.0 sẽ được áp dụng khi trò chơi ra mắt thành
-          công trên Kawaiiverse, với KWT là đồng quản trị, dùng để trao đổi NFT;
-          MILKY là đồng chơi game và nhận thưởng; Được hỗ trợ thêm 1 đồng tự
-          chọn theo game (không thể trao đổi trên blockchain);
+          công trên Kawaiiverse, với:
+          <ul>
+            <li>KWT là đồng quản trị, dùng để trao đổi NFT;</li>
+            <li>MILKY là đồng chơi game và nhận thưởng;</li>
+            <li>
+              Được hỗ trợ thêm 1 đồng tự chọn theo game (không thể trao đổi trên
+              blockchain);
+            </li>
+          </ul>
         </li>
         <li>
           Tài nguyên trong trò chơi được phát triển, bao gồm nhân vật và các
-          thiết kế khác được khuyến khích nhưng không bắt buộc phải sử dụng tài
+          thiết kế được khuyến khích nhưng không bắt buộc phải sử dụng tài
           nguyên có sẵn của Kawaii Islands. Các đội thi có thể thoải mái phát
           triển tài nguyên trò chơi của riêng mình sao cho phù hợp nhất và tuỳ
           chọn trong việc bán NFT.
         </li>
       </ul>
-      <h2>Tiêu chí lựa chọn dự án</h2>
+      <h2>4. Tiêu chí đánh giá</h2>
       <ul>
         <li>
           Ý tưởng và chất lượng trò chơi phải phù hợp với tiêu chuẩn của
@@ -166,20 +178,19 @@ export default {
           tác khác có kinh nghiệm trực tiếp phát triển GameFi.
         </li>
       </ul>
-      <h2>
-        Cách thức đăng ký và quy trình tổ chức Cuộc thi lập trình Kawaiiverv
-        Hackathon
-      </h2>
+      <h2>5. Cách thức đăng ký và Quy trình tổ chức</h2>
       <p>
-        <b>
-          Đăng ký và <Link href={"/apply"}>Gửi dự án</Link>
-        </b>
+        Quá trình đăng ký tham gia Cuộc thi lập trình game Kawaiiverse Hackathon
+        bắt đầu từ ngày 13/07/2022 đến ngày 20/8/2022. Các đội thi sẽ có khoảng
+        thời gian hơn 1 tháng để tập hợp thành viên, tổng hợp ý tưởng và lên kế
+        hoạch triển khai dự án.
       </p>
       <p>
-        Quá trình đăng ký tham gia Cuộc thi lập trình Kawaiiverse Hackathon sẽ
-        chính thức được bắt đầu từ ngày 12/06/2022 đến ngày 20/8/2022. Các đội
-        thi sẽ có khoảng thời gian hơn 1 tháng để tập hợp thành viên, tổng hợp ý
-        tưởng và lên kế hoạch triển khai dự án.
+        Tham gia ngay tại:{" "}
+        <a href=" https://hackathon.kawaii.global">
+          {" "}
+          https://hackathon.kawaii.global
+        </a>
       </p>
       <p>
         Sau khi hết thời gian nhận hồ sơ, ban giám khảo sẽ chia các bài dự thi
@@ -190,15 +201,18 @@ export default {
       </p>
       <p>
         <div>
-          <b>Vòng chung kết Cuộc thi lập trình Kawaiiverse Hackathon 2022</b>
+          <b>
+            Vòng chung kết Cuộc thi lập trình game Kawaiiverse Hackathon 2022
+          </b>
         </div>
         <div>
           Trong ngày diễn ra vòng chung kết cuộc thi, các đội vào thẳng vòng này
           cùng với 1 đội được cộng đồng chọn từ nhóm tiềm năng sẽ trình bày 1
           bản demo cho sản phẩm và cạnh tranh để được chọn hợp tác. Hiện đang
-          không có giới hạn số đội được chọn, tất cả sẽ phụ thuộc vào chất lượng
-          dự án cũng như độ phù hợp với Kawaiiverse. Tất cả các đội được chọn
-          hợp tác sẽ nhận được tất cả các quyền lợi đã đưa ra phía trên.
+          không có giới hạn về số đội được chọn, tất cả sẽ phụ thuộc vào chất
+          lượng dự án cũng như độ phù hợp với Kawaiiverse. Tất cả các đội được
+          chọn hợp tác sẽ nhận được tất cả các quyền lợi đã nêu ở mục 2. Quyền
+          lợi.
         </div>
         <ul>
           <li> Thời gian dự kiến: Tháng 9 năm 2022.</li>
