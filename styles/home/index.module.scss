@@ -24,6 +24,9 @@ $sm: 600px;
     background: rgba(255, 177, 57, 0.15);
     border: 1px solid rgba(255, 255, 255, 0.35);
     border-radius: 10px 0px 0px 10px;
+    img {
+      width: 24px;
+    }
     @media (max-width: $md) {
       padding: 20px 12px 20px 12px;
       gap: 8px;
@@ -31,7 +34,6 @@ $sm: 600px;
     @media (max-width: $sm) {
       img {
         width: 18px;
-        height: 18px;
       }
       padding: 8px 4px 8px 4px;
       gap: 8px;

@@ -105,9 +105,11 @@ export default function Home() {
             <a href="https://discord.com/invite/nN4FDesACB" target="_blank">
               <img src="/images/common/discord.svg" />
             </a>
-
             <a href="https://t.me/kawaii_islands" target="_blank">
               <img src="/images/common/telegram.svg" />
+            </a>
+            <a href="https://play.kawaii.global" target="_blank">
+              <img src="/icons/game.svg" />
             </a>
           </div>
         </div>
