@@ -128,10 +128,7 @@ export default function Home() {
           {news.map((item) => (
             <Link href={`/hackathon/${item.url}`} key={item.url}>
               <div className={cx("slider-item")}>
-                <img
-                  className={cx("banner")}
-                  src={`/images/home/kawaii-hackathon-banner.png`}
-                />
+                <img className={cx("banner")} src={item.image} />
               </div>
             </Link>
           ))}
