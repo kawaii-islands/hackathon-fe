@@ -4,7 +4,7 @@ export default {
   url: "notice-on-submission-deadline-extension",
   title: `[KAWAIIVERSE HACKATHON 2022] THÔNG BÁO VỀ VIỆC GIA HẠN VÒNG NỘP Ý TƯỞNG`,
   date: "08/18/2022",
-  image: "/images/home/big-banner-en.png",
+  image: "/images/home/big-banner-vi-v2.png",
   description:
     "🎮Kể từ khi Kawaiiverse Hackathon 2022 chính thức bắt đầu, cuộc thi đã nhận được sự quan tâm của các nhóm phát triển trò chơi trên toàn thế giới. Sau quá trình cân nhắc và trao đổi, để tạo điều kiện tốt nhất cho các dự án và cơ hội tham gia cho các đội thi, BTC quyết định sẽ gia hạn vòng nộp ý tưởng như sau:",
   content: (

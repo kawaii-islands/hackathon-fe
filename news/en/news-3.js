@@ -4,7 +4,7 @@ export default {
   url: "notice-on-submission-deadline-extension",
   title: `[Kawaiiverse Hackathon 2022] Notice on Submission Deadline Extension`,
   date: "08/18/2022",
-  image: "/images/home/big-banner-en.png",
+  image: "/images/home/big-banner-en-v2.png",
   description:
     "🎮Since Kawaiiverse Hackathon 2022 officially launched, the contest has been receiving attention from game developers around the world continuously. In order to create better competing condition, allowing more developers and talents to finish the application, we decided to extend the idea submission round as follow:",
   content: (
