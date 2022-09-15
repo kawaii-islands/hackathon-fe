@@ -458,7 +458,7 @@ export default function Apply() {
                 type="file"
                 multiple
                 disabled={checkDisableUploadFile}
-                accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/png,image/jpeg"
+                accept="application/vnd.android.package-archive, application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/png,image/jpeg"
               />
 
               <label htmlFor="file">
