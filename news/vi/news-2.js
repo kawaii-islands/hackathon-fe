@@ -2,118 +2,118 @@ import Link from "next/link";
 
 export default {
   url: "kawaiiverse-art-resources-collection",
-  title: `Kawaiiverse Art Resources collection`,
+  title: `Bạn sẽ được hỗ trợ những gì khi kham gia Cuộc thi lập trình game Kawaiiverse Hackathon 2022?`,
   date: "08/10/2022",
   image: "/images/home/art-resources-collection.jpeg",
   description:
-    "Organizing the first ever Kawaiiverse Hackathon 2022: Building the Kawaiiverse gaming ecosystem with an initial prize of $5,000 for each chosen team (no limit on the number of chosen teams - Quality is the only priority), Kawaii team also provides a collection with thousands of art resources to support participants develop their game idea.",
+    `Tổ chức cuộc khi lập trình game Kawaiiverse Hackathon 2022 lần thứ nhất với chủ đề "Xây dựng game trên nền tảng hệ sinh thái Kawaiiverse", bên cạnh phần thưởng trị giá 5.000 USD cho các đội được chọn(Không giới hạn số lượng - Chất lượng sản phẩm là tiêu chí lựa chọn duy nhất), Ban tổ chức(BTC) Kawaii còn cung cấp kho tài nguyên phong phú với hàng nghìn bản vẽ để hỗ trợ các đội thi phát triển trò chơi.`,
   content: (
     <>
       <p>
-        Kawaiiverse is an Anime Metaverse co-founded in 2021 by Imba, a leading
-        game company with years of game developing experience and multiple
-        successful games including Kawaii Mansion, Kawaii Home Design,… Together
-        with the available items from the previous games, the Kawaii team has
-        been continuously rolling out new designs and new gaming items in Kawaii
-        Islands.
+        Kawaiiverse là một Anime Metaverse được đồng sáng lập năm 2021 bởi
+        Imba - công ty phát triển trò chơi hàng đầu với nhiều năm kinh nghiệm,
+        sở hữu nhiều trò chơi nổi tiếng như Kawaii Mansion, Kawaii Home
+        Design, ... Bên cạnh những vật phẩm có sẵn từ các trò chơi
+        trước, đội ngũ Kawaii hiện cũng đang tiếp tục phát triển thêm những
+        thiết kế và vật phẩm mới dành riêng cho Kawaii Islands.
       </p>
       <p>
-        Joining the Kawaiiverse Hackathon 2022, participants will not only get
-        private advising on Gaming Development and Blockchain technology and the
-        initial prize of $5,000 but also gain access to a more valuable asset.
-        Kawaiiverse Hackathon participants can choose to develop the game with
-        their own content and art resources or opt in using the Kawaii art
-        collection. The Kawaii exclusive art resources collection contains more
-        than 5,000 items with high quality and soothing aesthetic. With multiple
-        gameplay, the Kawaii Art Collection can be divided into 4 main
-        categories: Magical Plants, Magical Creatures, Decor and Fashion. To get
-        the art sample files, go to our Hackathon page, Sample tab at:{" "}
+        Tham gia cuộc thi lập trình game Kawaiiverse Hackathon 2022, bên cạnh quyền
+        lợi nhận tư vấn riêng về Lập trình game và Công nghệ blockchain cùng phần
+        thưởng trị giá 5.000 USD, các đội thi còn được cấp quyền truy cập vào kho
+        tài liệu giá trị của Kawaiiverse. Các đội thi có thể chọn giữa phát triển
+        game với nội dung và đồ hoạ tự phát triển hoặc sử dụng bản vẽ có sẵn từ
+        BST Kawaii. BST Kawaii bao gồm hơn 5.000 bản vẽ độc quyền với chất lượng
+        hình ảnh và tính thẩm mỹ cao. Có thể áp dụng cho đa dạng các thể loại
+        game, BST bản vẽ Kawaii được chia thành 4 chủ đề chính: Cây, Thú, Nội thất
+        và Trang phục. Để tải xuống bản vẽ mẫu, hãy truy cập vào website Hackathon
+        và chọn mục "Resources Sample", hoặc truy cập đường dẫn:{" "}
         <a
           href="https://hackathon.kawaii.global/library/sample-art"
           target="_blank"
         >
           https://hackathon.kawaii.global/library/sample-art
         </a>{" "}
-        (must log in to see the files).
+        (cần đăng nhập để xem được tệp).
       </p>
-      <h2>1. Magical Plants: </h2>
+      <h2>1. Cây: </h2>
       <p>
-        11 types of magical plants with ready to use animation throughout its
-        lifespan and matching dye potion.
+        11 loại cây với bản vẽ mô phỏng đầy đủ vòng đời và vật phẩm “màu nhuộm" các màu tương ứng.
       </p>
       <img src="/images/home/plants-collection.png" />
-      <h2>2. Magical Creatures</h2>
+      <h2>2. Thú</h2>
       <p>
-        10 types of Magical creatures with corresponding materials. The
-        application for these creatures is only limited by your imagination.
+        10 loài thú với các vật phẩm “nguyên vật liệu” tương ứng. Các đội thi có thể thỏa sức sáng tạo và áp dụng các bản vẽ này.
       </p>
       <img src="/images/home/creatures-collection.png" />
-      <h2>3. Decor</h2>
+      <h2>3. Nội thất</h2>
       <p>
-        Famous for its decoration games, the Kawaii art collection currently has
-        more than 5,000 items with different themes and growing. Creative ideas
-        can be applied to utilize these high quality items and create great
-        games.
+        Nổi tiếng với các trò chơi thuộc thể loại trang trí, BST Kawaii
+        hiện có hơn 5.000 bản vẽ nội thất thuộc hơn 10 chủ đề và đang được
+        tiếp tục phát triển. Các đội thi có thể thoả sức sáng tạo và phát
+        triển ý tưởng với những bản vẽ chất lượng cao này.
       </p>
       <img src="/images/home/decors-collection.png" />
-      <h2>4. Fashion</h2>
+      <h2>4. Trang phục</h2>
       <p>
-        The Kawaii Art Collection also offers various fashion items for male,
-        female and unisex characters. From the character form, appearance
-        features like face and hair to clothing in multiple styles, your game
-        characters will be fully supported. The fashion collection is growing
-        fast with over 300 items.
+        BST bản vẽ Kawaii còn bao gồm các vật phẩm thời trang cho nhân vật
+        nam, nữ và trung tính. Các chi tiết từ khuôn dáng, ngoại hình như
+        gương mặt, kiểu tóc tới trang phục đều được phát triển với nhiều
+        phong các khác nhau. Số lượng bản vẽ của hạng mục này đang tăng
+        lên nhanh chóng với hơn 300 bản vẽ.
       </p>
       <img src="/images/home/fashions-collection.png" />
       <p>
-        Hackathon participants can take advantage of these available items to
-        develop and complete their game idea. We look forward to receiving more
-        submissions combining your game ideas and our art resources. Let your
-        creativity fly high with our support!
+        Các đội thi có thể tận dụng các bản vẽ có sẵn này để phát triển ý
+        tưởng và hoàn thiện trò chơi. Ban tổ chức kì vọng nhận được nhiều
+        bài dự thi kết hợp giữa ý tưởng của các bạn và các bản vẽ của chúng tôi.
       </p>
       <p>
-        In case you want to join in the Hackathon but can not find teammates or
-        want to get personal advice on both game development and blockchain
-        technology, don’t hesitate to contact us through our discord server{" "}
+        Trong trường hợp bạn muốn tham gia Hackathon nhưng không có đồng
+        đội, hoặc cần tư vấn cá nhân về vấn đề phát triển game hoặc công nghệ
+        blockchain, đừng ngần ngại mà  hãy liên hệ với chúng tôi qua
+        kênh Discord:{" "}
         <a href="https://discord.gg/kawaiiverse" target="_blank">
           https://discord.gg/kawaiiverse
-        </a>
-        . Start preparing your game idea now and join in our Hackathon at:{" "}
+        </a>{" "}
+        để được hỗ trợ. Các đội thi, hãy chuẩn bị sản phẩm và tham gia chương trình Hackathon tại:{" "}
         <a href="https://hackathon.kawaii.global" target="_blank">
           https://hackathon.kawaii.global
         </a>
         .
       </p>
       <p>
-        Kawaiiverse Hackathon 2022 application round is opening now till Aug 20,
-        can’t wait for creative projects from everyone. In the meantime, see you
-        all in Kawaii Islands and the upcoming Kawaii Fishing Saga!
+        Vòng đăng ký tham gia cuộc thi lập trình game Kawaiiverse Hackathon 2022
+        đang được mở từ nay đến ngày 20 tháng 8. BTC kỳ vọng tiếp tục nhận được
+        các sản phẩm dự thi sáng tạo từ các đội thi trên toàn quốc. Hẹn gặp các
+        bạn tại Kawaii Islands và Kawaii Fishing Saga sắp được ra mắt.
       </p>
       <p>
         <b>-------------------</b>
       </p>
       <p>
         <div>
-          <b>About Kawaiiverse</b>
+          <b>Về Kawaiiverse</b>
         </div>
         <div>
-          Kawaiiverse (Kawaii Islands) is a collaboration between{" "}
+          Kawaiiverse (Kawaii Islands) là sản phẩm của sự hợp tác giữa{" "}
           <a target="_blank" href="https://imba.co/">
             Imba Games Studio
           </a>
-          , a leading game development studio with over 14 million customers
-          from more than 7 years of game development experience and strategic
-          partner{" "}
+          , studio phát triển trò chơi hàng đầu có hơn 14 triệu người dùng với
+          hơn 7 năm kinh nghiệm phát triển trò chơi và đối tác chiến lược{" "}
           <a target="_blank" href="https://orai.io/">
             Oraichain
           </a>
-          , the world’s first AI-powered data oracle and AI Layer 1 in the
-          Blockchain sphere. Kawaiiverse is set to grow into an Anime Metaverse,
-          where magic mixes reality and everyone can play, create, connect and
-          earn. With the core game Kawaii Islands, Kawaiiverse is expanding
-          rapidly with its own subnetwork with low fees on Oraichain, the second
-          game Kawaii Fishing Saga and multiple exciting events lined up. Join
-          us in the adventure of the world first Anime Metaverse, Kawaiians!
+          , blockchain Layer 1 hỗ trợ tích hợp và xử lý các công nghệ Trí tuệ
+          nhân tạo (AI). Kawaiiverse được thiết lập để phát triển thành một
+          Metaverse Anime, nơi phép thuật được kết hợp cùng thực tế và mọi người
+          đều có thể vui chơi, tạo lập, kết nối và kiếm tiền. Với trò chơi cốt
+          lõi là Kawaii Islands, Kawaiiverse đang mở rộng nhanh chóng với việc
+          ra mắt mạng con có mức phí thấp của riêng mình trên Oraichain, trò
+          chơi thứ hai Kawaii Fishing Saga và nhiều sự kiện hấp dẫn khác cũng
+          sắp được ra mắt. Tham gia cùng chúng tôi trong cuộc phiêu lưu của
+          Anime Metaverse đầu tiên trên thế giới, Kawaiians!
         </div>
       </p>
       <p>
