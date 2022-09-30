@@ -25,7 +25,7 @@ export default {
           Cellyfish Animation Sample Pack
         </h2>
         <a
-          href="https://drive.google.com/drive/u/1/folders/1TM9ONSt8oIiNuYOFDOVP9CQpmXkn9qnT"
+          href="https://drive.google.com/file/d/1_S_28tUcnuQLzFhZG1gPSTt8o2-ja-0_/view?usp=sharing"
           target="_blank"
           style={{
             textDecoration: "none",
@@ -74,7 +74,7 @@ export default {
           Rubbie Animation Sample Pack
         </h2>
         <a
-          href="https://drive.google.com/drive/u/1/folders/1414eD3ZqJloy_VNeXyqZ3o47Sd27Wn6S"
+          href="https://drive.google.com/file/d/16y1vJKOi1gfNzhg9wUq7LWmXVtdWQfj-/view?usp=sharing"
           target="_blank"
           style={{
             textDecoration: "none",
@@ -122,7 +122,7 @@ export default {
           Cloray Animation Sample Pack
         </h2>
         <a
-          href="https://drive.google.com/drive/u/1/folders/1JN4XGnZ1_e7Y3UpA08StbKSq5IOaQ-4G"
+          href="https://drive.google.com/file/d/1nuH3hnGPo6qCs5zljRbridb5j3t-xFaI/view?usp=sharing"
           target="_blank"
           style={{
             textDecoration: "none",
