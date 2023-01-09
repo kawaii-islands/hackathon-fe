@@ -1,6 +1,6 @@
 export default {
   "footer.host": "ORGANIZED BY",
-  "footer.ecosystem": "Ecosystem",
+  "footer.ecosystem": "Explore Startups Incubated By Oraichain Labs",
   "footer.resource": "Resources",
   "footer.litepaper": "Litepaper",
   "footer.contact": "Contact",
@@ -10,4 +10,6 @@ export default {
   "footer.privacy": "Privacy Policy",
   "footer.social": "Social Media",
   "footer.from": "From",
+  "footer.description":
+    "Oraichain Hackathon, a new playground for blockchain enthusiasts and developers around the world. Join us in developing your own dApp today! ",
 };

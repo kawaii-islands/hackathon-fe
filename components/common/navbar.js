@@ -49,14 +49,14 @@ export default function Navbar({}) {
   const authStatus = useAuth();
 
   return (
-    <AppBar>
+    <AppBar className={cx("navbar-box")}>
       <Container>
         <Toolbar className={cx("navbar")}>
           <Box display="flex" alignItems="center">
             <Link href="/">
               <a>
                 <img
-                  src="/images/common/kawaiiverse.png"
+                  src="/images/common/orai_hackathon_logo_full.svg"
                   className={cx("logo")}
                   alt="logo"
                 />
@@ -126,7 +126,7 @@ export default function Navbar({}) {
                     router.push("/");
                   }}
                 >
-                  Kawaiiverse Hackathon
+                  Oraichain Hackathon
                 </MenuItem>
                 <MenuItem
                   onClick={() => {

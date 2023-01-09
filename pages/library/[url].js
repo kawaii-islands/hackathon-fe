@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import cn from "classnames/bind";
 import styles from "styles/common/news.module.scss";
-import listNewsEn from "library/en";
-import listNewsVi from "library/vi";
+import listNewsEn from "news/en";
+import listNewsVi from "news/vi";
 import LibraryLayout from "components/common/library-layout";
 import useLocale from "hooks/useLocale";
 
@@ -18,7 +18,9 @@ export default function NewsDetail({}) {
   useEffect(() => {
     if (url) {
       const listNews = locale === "en" ? listNewsEn : listNewsVi;
+
       const news = listNews.filter((news) => news.url === url)?.[0];
+
       if (news === undefined) router.push("/404");
       setNews(news);
     }
@@ -34,7 +36,7 @@ export default function NewsDetail({}) {
         <div className={cx("title")}>{news.title}</div>
         <div className={cx("date")}>{news.date}</div>
         <div className={cx("description")}>{news.description}</div>
-        <img src={news.image} alt="banner" />
+        <img src={news.image} />
         {news.content}
       </div>
     </LibraryLayout>

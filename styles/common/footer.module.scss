@@ -1,7 +1,7 @@
 .footer {
-  background-color: #fd8970;
+  background-color: #33176F;
   padding: 50px 0;
-  font-family: "Josefin Sans";
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
 
   .logo {
@@ -21,18 +21,9 @@
 
   .org {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: space-between;
     margin-top: 40px;
-
-    .left {
-      width: 40%;
-      border-right: 1px solid rgba(255, 255, 255, 0.5);
-      text-align: center;
-    }
-
-    .right {
-      width: 60%;
-    }
   }
 
   .icon-1 {
@@ -117,27 +108,28 @@
     color: #ffffff;
     margin-top: 20px;
     margin-bottom: 20px;
+    text-transform: uppercase;
   }
 
-  a {
-    display: block;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 150%;
-    color: #ffffff;
-    text-decoration: none;
-    margin-top: 10px;
+  .list-startup {
+    display: flex;
+    align-items: flex-start;
+    
+    img {
+      padding-right: 54px;
+    }
   }
 
   .social {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
     width: 220px;
     height: 24px;
     margin-bottom: 30px;
 
     a {
       margin: 0;
+      padding-right: 30px;
     }
   }
 
@@ -164,7 +156,7 @@
       font-weight: 700;
       font-size: 14px;
       line-height: 150%;
-      color: #fd8970;
+      color: #51379B;
       border: none;
       cursor: pointer;
     }
@@ -176,3 +168,4 @@
     }
   }
 }
+

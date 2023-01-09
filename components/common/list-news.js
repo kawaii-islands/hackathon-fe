@@ -2,8 +2,6 @@ import cn from "classnames/bind";
 import styles from "styles/common/list-news.module.scss";
 import listNewsEn from "news/en";
 import listNewsVi from "news/vi";
-import listLibraryEn from "library/en";
-import listLibraryVi from "library/vi";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import useLocale from "hooks/useLocale";
@@ -45,7 +43,7 @@ export default function ListNews({ isLatest }) {
   const auth = useAuth();
   const router = useRouter();
   const { t } = useTranslation();
-  const listLibrary = locale === "en" ? listLibraryEn : listLibraryVi;
+  const listLibrary = locale === "en" ? listNewsEn : listNewsVi;
   const listNews = locale === "en" ? listNewsEn : listNewsVi;
   let data =
     router.pathname.split("/")[1] === "library"

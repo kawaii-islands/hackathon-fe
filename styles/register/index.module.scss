@@ -5,7 +5,7 @@ $sm: 600px;
   min-height: calc(100vh - 42px);
   padding: 10px;
   background: #f7f3ed;
-  font-family: "Josefin Sans";
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   display: flex;
   justify-content: center;
@@ -41,7 +41,7 @@ $sm: 600px;
       font-weight: 600;
       color: #595b5e;
       margin-bottom: 12px;
-      font-family: "Josefin Sans";
+      font-family: 'Roboto', sans-serif;
       font-style: normal;
       font-size: 15px;
 
@@ -84,7 +84,7 @@ $sm: 600px;
     }
 
     .submit {
-      background: #f25c41;
+      background: #9671FF;
       border-radius: 12px;
       height: 48px;
       width: 100%;
@@ -109,7 +109,7 @@ $sm: 600px;
     }
 
     a {
-      color: #f25c41 !important;
+      color: #9671FF !important;
     }
   }
 
@@ -156,7 +156,7 @@ $sm: 600px;
     .resend {
       width: 260px;
       height: 48px;
-      background: #f25c41;
+      background: #9671FF;
       border-radius: 8px;
       border: none;
       font-weight: 700;

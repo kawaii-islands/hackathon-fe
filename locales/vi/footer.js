@@ -1,6 +1,6 @@
 export default {
   "footer.host": "Đơn vị tổ chức",
-  "footer.ecosystem": "Hệ sinh thái",
+  "footer.ecosystem": "CÁC STARTUP ĐƯỢC ƯƠM MẦM TỪ ORAICHAIN HACKATHON",
   "footer.resource": "Thông tin",
   "footer.litepaper": "Giới thiệu",
   "footer.contact": "Liên hệ",
@@ -10,4 +10,6 @@ export default {
   "footer.privacy": "Chính sách bảo mật thông tin",
   "footer.social": "Kết nối cùng Kawaiiverse",
   "footer.from": "Trực thuộc",
+  "footer.description":
+    "Oraichain Hackathon, sân chơi dành cho cộng đồng lập trình viên và những người có đam mê lĩnh vực Blockchain, Web3 và AI tại Việt Nam",
 };

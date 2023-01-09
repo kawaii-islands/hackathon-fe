@@ -30,7 +30,7 @@ export default function LibraryLayout({ title, date, children }) {
           width: router.pathname.includes("[url]") ? "852px" : "1120px",
         }}
       >
-        <div className={cx("navigation")}>
+        {/* <div className={cx("navigation")}>
           <Container style={{ maxWidth: "1120px" }}>
             <Toolbar className={cx("container")}>
               {isDesktop ? (
@@ -70,7 +70,7 @@ export default function LibraryLayout({ title, date, children }) {
               )}
             </Toolbar>
           </Container>
-        </div>
+        </div> */}
         <Breadcrumb />
         <Container style={{ maxWidth: "1120px" }}>
           {title && <div className={cx("title")}>{title}</div>}
@@ -84,46 +84,21 @@ export default function LibraryLayout({ title, date, children }) {
       </div>
       {router.pathname.includes("[url]") ? (
         <div className={cx("right")}>
-          <div
-            className={cx("banner")}
-            style={{
-              backgroundImage:
-                "url(" +
-                `/images/home/banner-vertical-${i18n.language}.png` +
-                ")",
-            }}
-          >
-            <Link href="/hackathon/kawaiiverse-hackathon-2022-building-the-kawaiiverse-gaming-ecosystem/">
+          <Link href="/register">
+            <img
+              className={cx("sub-banner")}
+              src={`/images/home/sub_banner_${i18n.language}.svg`}
+            >
+              {/* <Link href="/hackathon/kawaiiverse-hackathon-2022-building-the-kawaiiverse-gaming-ecosystem/">
               <Button
                 className={cx("button")}
                 //   onClick={() => router.push("/apply")}
               >
                 {t("news.register-now")}
               </Button>
-            </Link>
-          </div>
-          <div className={cx("social")}>
-            <a
-              href="https://www.facebook.com/groups/kawaiiverse.hackathon"
-              target="_blank"
-            >
-              <img src="/images/common/facebook.svg" />
-            </a>
-            <a href="https://twitter.com/kawaii_islands" target="_blank">
-              <img src="/images/common/twiter.svg" />
-            </a>
-            <a href="https://discord.com/invite/nN4FDesACB" target="_blank">
-              <img src="/images/common/discord.svg" />
-            </a>
-
-            <a href="https://t.me/kawaii_islands" target="_blank">
-              <img src="/images/common/telegram.svg" />
-            </a>
-
-            {/* <a href="https://blog.kawaii.global/" target="_blank">
-                <img src="/images/common/medium.svg" />
-              </a> */}
-          </div>
+            </Link> */}
+            </img>
+          </Link>
         </div>
       ) : (
         ""

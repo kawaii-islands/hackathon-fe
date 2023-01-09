@@ -1,4 +1,4 @@
 export default {
-  "home.explore": "Tìm hiểu cuộc thi Kawaiiverse Hackathon",
-  "home.into": "Khám phá Kawaiiverse"
+  "home.explore": "TIN TỨC",
+  "home.into": "TÌM HIỂU THÊM VỀ ORAICHAIN HACKATHON"
 };

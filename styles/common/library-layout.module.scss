@@ -3,9 +3,9 @@ $lg: 1200px;
 
 .library-layout {
   width: 100%;
-  font-family: "Josefin Sans";
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
-  background: #f7f3ed;
+  background: #F6F6F7;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -45,7 +45,7 @@ $lg: 1200px;
 
           &.apply {
             color: #ffffff;
-            background: #f25c41;
+            background: #5A41F2;
             border-radius: 4px;
             padding: 4px 10px;
           }
@@ -57,7 +57,7 @@ $lg: 1200px;
             font-weight: 600;
             font-size: 20px;
             line-height: 20px;
-            color: #fd8970;
+            color: #5B30D3;
             margin-right: 22px;
           }
         }

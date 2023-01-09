@@ -23,7 +23,7 @@ const schema = yup
   .object()
   .shape({
     name: yup.string().required("register.error.name.required"),
-    country: yup.string().required("register.error.country.required"),
+    // country: yup.string().required("register.error.country.required"),
     email: yup
       .string()
       .email("register.error.email.invalid")
@@ -129,7 +129,7 @@ export default function Form({ setStep }) {
         {errors.name && firstError === "name" && (
           <div className={cx("error")}>{t(errors.name.message)}</div>
         )}
-        <OutlinedInput
+        {/* <OutlinedInput
           className={cx("input")}
           startAdornment={
             <InputAdornment position="start">
@@ -138,7 +138,7 @@ export default function Form({ setStep }) {
           }
           placeholder={t("register.country")}
           {...register("country")}
-        />
+        /> */}
         {errors.country && firstError === "country" && (
           <div className={cx("error")}>{t(errors.country.message)}</div>
         )}
