@@ -5,9 +5,9 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta property="og:url" content="https://hackathon.kawaii.global/" />
+          <meta property="og:url" content="https://hackathon-orai-staging.web.app/" />
           <meta property="og:type" content="website" />
-          <meta property="og:title" content="OraichainLabs Hackathon 2023" />
+          <meta property="og:title" content="Oraichain Labs Hackathon 2023" />
           <meta
             property="og:description"
             content="This Accelerator Program aims to support developers and entrepreneurs whose vision aligns with ours to fulfill their dreams of founding a company or running a business through DApps"
@@ -17,11 +17,11 @@ class MyDocument extends Document {
             content="https://hackathon-orai-staging.web.app/images/home/big-banner-en.png"
           />
           <meta property="twitter:card" content="summary_large_image" />
-          {/* <meta
+          <meta
             property="twitter:url"
-            content="https://hackathon.kawaii.global/"
-          /> */}
-          {/* <meta property="twitter:title" content="Kawaiiverse Hackathon 2022" /> */}
+            content="https://hackathon-orai-staging.web.app/"
+          />
+          <meta property="twitter:title" content="Oraichain Labs Hackathon 2022" />
           <meta
             property="twitter:description"
             content="This Accelerator Program aims to support developers and entrepreneurs whose vision aligns with ours to fulfill their dreams of founding a company or running a business through DApps"
