@@ -56,7 +56,7 @@ export default function Navbar({}) {
             <Link href="/">
               <a>
                 <img
-                  src="/images/common/orai_hackathon_logo_full.svg"
+                  src="/images/common/orai_hackathon_logo_full.png"
                   className={cx("logo")}
                   alt="logo"
                 />
@@ -69,7 +69,7 @@ export default function Navbar({}) {
               {links.map((link) => {
                 if (link.name === "find")
                   return (
-                    <a href="https://discord.gg/9pkyqGBTKH" target="_blank">
+                    <a href="https://www.facebook.com/groups/oraichain.dev" target="_blank">
                       <div className={cx("link")}>
                         {t(`common.${link.name}`)}
                       </div>

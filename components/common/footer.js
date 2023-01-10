@@ -39,29 +39,37 @@ export default function Footer() {
           <Grid item lg={5} md={12} xs={12}>
             <div className={cx("label")}>{t("footer.ecosystem")}</div>
             <div className={cx("list-startup")}>
-              <img src="/images/common/blockAiCare.svg" />
-              <img src="/images/common/orchai.svg" />
-              <img src="/images/common/ziden.svg" />
-              <img src="/images/common/oraichainLabsUs.svg" />
+              <a href="https://blockai.care/" target="_blank">
+                <img src="/images/common/blockAiCare.svg" />
+              </a>
+              <a href="https://orchai.io/" target="_blank">
+                <img src="/images/common/orchai.svg" />
+              </a>
+              <a href="https://ziden.io/" target="_blank">
+                <img src="/images/common/ziden.svg" />
+              </a>
+              <a href="https://orai.us/" target="_blank">
+                <img src="/images/common/oraichainLabsUs.svg" />
+              </a>
             </div>
           </Grid>
           <Grid item lg={3} md={6} xs={12}>
             <div className={cx("label")}>{t("footer.social")}</div>
             <div className={cx("social")}>
               <a
-                href="https://www.youtube.com/watch?v=RTw-WZ5xfOA&ab_channel=KawaiiIslands"
+                href="https://github.com/oraichain/cw-ide-docs/tree/master/installation-usage"
                 target="_blank"
               >
                 <img src="/images/common/github-mark-white.svg" />
               </a>
               <a
-                href="https://www.youtube.com/watch?v=RTw-WZ5xfOA&ab_channel=KawaiiIslands"
+                href="https://www.youtube.com/@Oraichain/"
                 target="_blank"
               >
                 <img src="/images/common/youtube.svg" />
               </a>
               <a
-                href="https://www.facebook.com/groups/kawaiiverse.hackathon"
+                href="https://www.facebook.com/OraichainLabs"
                 target="_blank"
               >
                 <img src="/images/common/facebook.svg" />

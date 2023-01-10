@@ -7,24 +7,24 @@ class MyDocument extends Document {
         <Head>
           <meta property="og:url" content="https://hackathon.kawaii.global/" />
           <meta property="og:type" content="website" />
-          <meta property="og:title" content="Kawaiiverse Hackathon 2022" />
+          <meta property="og:title" content="OraichainLabs Hackathon 2023" />
           <meta
             property="og:description"
-            content="Kawaiiverse Hackathon 2022, a new playground for game developers around the world, join us in developing our Anime Metaverse, where everyone play, create, connect and earn."
+            content="This Accelerator Program aims to support developers and entrepreneurs whose vision aligns with ours to fulfill their dreams of founding a company or running a business through DApps"
           />
           <meta
             property="og:image"
             content="https://hackathon.kawaii.global/images/home/big-banner-en.png"
           />
           <meta property="twitter:card" content="summary_large_image" />
-          <meta
+          {/* <meta
             property="twitter:url"
             content="https://hackathon.kawaii.global/"
-          />
-          <meta property="twitter:title" content="Kawaiiverse Hackathon 2022" />
+          /> */}
+          {/* <meta property="twitter:title" content="Kawaiiverse Hackathon 2022" /> */}
           <meta
             property="twitter:description"
-            content="Kawaiiverse Hackathon 2022, a new playground for game developers around the world, join us in developing our Anime Metaverse, where everyone play, create, connect and earn."
+            content="This Accelerator Program aims to support developers and entrepreneurs whose vision aligns with ours to fulfill their dreams of founding a company or running a business through DApps"
           />
           <meta
             property="twitter:image"
