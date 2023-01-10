@@ -1,13 +1,10 @@
 {
   "projects": {
-    "default": "oraichain-labs"
+    "default": "kawaii-island"
   },
   "targets": {
-    "oraichain-labs": {
+    "kawaii-island": {
       "hosting": {
-        "prod": [
-          "oraichain-hackathon"
-        ],
         "staging": [
           "hackathon-orai-staging"
         ]
