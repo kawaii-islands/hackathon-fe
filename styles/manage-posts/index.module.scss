@@ -1,0 +1,58 @@
+.manage-posts {
+  padding: 20px 0px;
+
+  .page-header {
+    @extend .flexRow;
+    justify-content: space-between;
+
+    .page-title {
+      @extend .flexRow;
+      align-items: baseline !important;
+
+      .amount {
+        color: #9671ff;
+        font-size: 24px;
+        font-weight: 700;
+        padding-left: 10px;
+      }
+    }
+
+    .button {
+      padding: 12px 48px;
+      border-radius: 30px;
+      background-color: #9671ff;
+      color: #ffffff;
+      font-size: 16px;
+    }
+  }
+
+  .page-body {
+    .post-title {
+      font-weight: 700;
+      font-size: 32px;
+      border: none;
+      margin: 30px 0px;
+      padding: 10px 20px;
+      width: 100%;
+    }
+
+    .description {
+      border: 1px solid #ccced1;
+      border-radius: 4px;
+      width: 100%;
+      font-weight: 500;
+      font-size: 14px;
+      font-style: italic;
+      color: #575757;
+      font-family: "Roboto", sans-serif;
+      margin-bottom: 30px;
+      padding: 10px 20px;
+
+    }
+  }
+}
+
+.flexRow {
+  display: flex;
+  align-items: center;
+}

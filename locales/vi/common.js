@@ -3,4 +3,5 @@ export default {
   "common.apply": "Nộp ý tưởng",
   "common.register": "Đăng ký",
   "common.find": "Ghép đội",
+  "common.managePosts": "Quản lý bài đăng",
 };

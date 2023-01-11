@@ -31,6 +31,10 @@ export const links = [
     name: "register",
     href: "/register",
   },
+  {
+    name: "managePosts",
+    href: "/manage-posts"
+  }
 ];
 
 export default function Navbar({}) {

@@ -3,4 +3,5 @@ export default {
   "common.apply": "Apply",
   "common.register": "Register",
   "common.find": "Find team mates",
+  "common.managePosts": "Manager Posts",
 };
