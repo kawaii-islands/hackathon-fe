@@ -37,7 +37,9 @@ export default function Footer() {
             </div>
           </Grid>
           <Grid item lg={5} md={12} xs={12}>
-            <div className={cx("label")}>{t("footer.ecosystem")}</div>
+            <div className={cx("label")} style={{ textAlign: "center" }}>
+              {t("footer.ecosystem")}
+            </div>
             <div className={cx("list-startup")}>
               <a href="https://blockai.care/" target="_blank">
                 <img src="/images/common/blockAiCare.svg" />
@@ -53,7 +55,7 @@ export default function Footer() {
               </a>
             </div>
           </Grid>
-          <Grid item lg={3} md={6} xs={12}>
+          <Grid item lg={3} md={6} xs={12} style={{paddingLeft: '30px'}}>
             <div className={cx("label")}>{t("footer.social")}</div>
             <div className={cx("social")}>
               <a
@@ -62,16 +64,10 @@ export default function Footer() {
               >
                 <img src="/images/common/github-mark-white.svg" />
               </a>
-              <a
-                href="https://www.youtube.com/@Oraichain/"
-                target="_blank"
-              >
+              <a href="https://www.youtube.com/@Oraichain/" target="_blank">
                 <img src="/images/common/youtube.svg" />
               </a>
-              <a
-                href="https://www.facebook.com/OraichainLabs"
-                target="_blank"
-              >
+              <a href="https://www.facebook.com/OraichainLabs" target="_blank">
                 <img src="/images/common/facebook.svg" />
               </a>
             </div>

@@ -45,16 +45,10 @@ export default function ListNews({ isLatest }) {
   const { t } = useTranslation();
   const listLibrary = locale === "en" ? listNewsEn : listNewsVi;
   const listNews = locale === "en" ? listNewsEn : listNewsVi;
-  let data =
-    router.pathname.split("/")[1] === "library"
-      ? listLibrary.filter((i) => {
-          if (auth === "NOT_AUTH" && i.url === "sample-art") return false;
-          return true;
-        })
-      : listNews;
+  let data = listNews;
   if (isLatest)
     data = [
-      ...listNews.map((i) => ({ ...i, pathname: "hackathon" })),
+      ...listNews.map((i) => ({ ...i, pathname: "library" })),
       ...listLibrary
         .map((i) => ({ ...i, pathname: "library" }))
         .filter((i) => !(auth === "NOT_AUTH" && i.url === "sample-art")),
