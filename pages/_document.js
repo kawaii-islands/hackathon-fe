@@ -5,30 +5,30 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta property="og:url" content="https://hackathon.kawaii.global/" />
+          <meta property="og:url" content="https://hackathon-orai-staging.web.app/" />
           <meta property="og:type" content="website" />
-          <meta property="og:title" content="Kawaiiverse Hackathon 2022" />
+          <meta property="og:title" content="Oraichain Labs Hackathon 2023" />
           <meta
             property="og:description"
-            content="Kawaiiverse Hackathon 2022, a new playground for game developers around the world, join us in developing our Anime Metaverse, where everyone play, create, connect and earn."
+            content="This Accelerator Program aims to support developers and entrepreneurs whose vision aligns with ours to fulfill their dreams of founding a company or running a business through DApps"
           />
           <meta
             property="og:image"
-            content="https://hackathon.kawaii.global/images/home/big-banner-en.png"
+            content="https://data.eueno.io/hackathon-orai/images/big_banner_orai_hackathon_2023_en.png"
           />
           <meta property="twitter:card" content="summary_large_image" />
           <meta
             property="twitter:url"
-            content="https://hackathon.kawaii.global/"
+            content="https://hackathon-orai-staging.web.app/"
           />
-          <meta property="twitter:title" content="Kawaiiverse Hackathon 2022" />
+          <meta property="twitter:title" content="Oraichain Labs Hackathon 2022" />
           <meta
             property="twitter:description"
-            content="Kawaiiverse Hackathon 2022, a new playground for game developers around the world, join us in developing our Anime Metaverse, where everyone play, create, connect and earn."
+            content="This Accelerator Program aims to support developers and entrepreneurs whose vision aligns with ours to fulfill their dreams of founding a company or running a business through DApps"
           />
           <meta
             property="twitter:image"
-            content="https://hackathon.kawaii.global/images/home/big-banner-en.png"
+            content="https://data.eueno.io/hackathon-orai/images/big_banner_orai_hackathon_2023_en.png"
           />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link

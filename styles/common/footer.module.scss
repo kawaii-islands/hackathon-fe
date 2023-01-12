@@ -16,7 +16,7 @@
     line-height: 150%;
     color: #ffffff;
     margin-bottom: 20px;
-    max-width: 334px;
+    max-width: 345px;
   }
 
   .org {
@@ -24,6 +24,7 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 40px;
+    padding-right: 38px;
   }
 
   .icon-1 {
@@ -114,10 +115,12 @@
   .list-startup {
     display: flex;
     align-items: flex-start;
+    justify-content: space-around;
+    padding: 0 20px;
     
-    img {
-      padding-right: 54px;
-    }
+    // img {
+    //   padding-right: 36px;
+    // }
   }
 
   .social {

@@ -1,12 +1,12 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Prod
+name: Staging
 
 # Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [master]
+    branches: [develop]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -49,12 +49,12 @@ jobs:
         run: yarn install
       - name: COPY ENV
         run: cp .env.example .env
-      - name: Build Prod
+      - name: Build Staging
         env:
           CI: false
         run: yarn build
       - name: Deploy to firebase
-        run: yarn firebase deploy --only hosting:prod -m "${{ github.event.head_commit.message }}" --token ${{ secrets.FIREBASE_TOKEN }}
+        run: yarn firebase deploy --only hosting:staging -m "${{ github.event.head_commit.message }}" --token ${{ secrets.FIREBASE_TOKEN }}
       - name: Uninstall Yarn
         if: always()
-        run: npm uninstall -g yarn 
+        run: npm uninstall -g yarn

@@ -29,8 +29,8 @@ function MyApp({ Component, pageProps }) {
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
         />
-        <title>Kawaiiverse Hackathon 2022</title>
-        <meta name="description" content="Kawaiiverse Hackathon 2022" />
+        <title>Oraichain Labs Hackathon 2023</title>
+        <meta name="description" content="Oraichain Labs Hackathon 2023" />
       </Head>
       <Layout>
         <ToastContainer />
