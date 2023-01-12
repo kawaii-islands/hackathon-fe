@@ -14,7 +14,7 @@ class MyDocument extends Document {
           />
           <meta
             property="og:image"
-            content="https://hackathon-orai-staging.web.app/images/home/big-banner-en.png"
+            content="https://data.eueno.io/hackathon-orai/images/big_banner_orai_hackathon_2023_en.png"
           />
           <meta property="twitter:card" content="summary_large_image" />
           <meta
@@ -28,7 +28,7 @@ class MyDocument extends Document {
           />
           <meta
             property="twitter:image"
-            content="https://hackathon-orai-staging.web.app/images/home/big-banner-en.png"
+            content="https://data.eueno.io/hackathon-orai/images/big_banner_orai_hackathon_2023_en.png"
           />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
