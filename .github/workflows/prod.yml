@@ -57,4 +57,4 @@ jobs:
         run: yarn firebase deploy --only hosting:prod -m "${{ github.event.head_commit.message }}" --token ${{ secrets.FIREBASE_TOKEN }}
       - name: Uninstall Yarn
         if: always()
-        run: npm uninstall -g yarn
+        run: npm uninstall -g yarn 

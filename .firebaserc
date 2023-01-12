@@ -5,6 +5,9 @@
   "targets": {
     "kawaii-island": {
       "hosting": {
+        "prod": [
+          "hackathon-orai"
+        ],
         "staging": [
           "hackathon-orai-staging"
         ]
