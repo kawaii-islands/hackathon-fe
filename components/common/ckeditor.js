@@ -3,8 +3,8 @@ import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import axios from "axios";
 
-function Ckeditor() {
-  const API = "192.168.1.91:9000/kawaii-snapshot/v1/upload";
+const Ckeditor = ({ language }) => {
+  const API = "http://192.168.1.39:3000/orai-hackathon/v1/blog";
 
   function uploadAdapter(loader) {
     return {
@@ -13,16 +13,16 @@ function Ckeditor() {
           const body = new FormData();
 
           loader.file.then((file) => {
-            body.append("file", file);
+            console.log("FILE", file);
+            body.append("image", file);
 
-            fetch(`192.168.1.91:9000/kawaii-snapshot/v1/upload`, {
+            fetch(`${API}/image`, {
               method: "post",
               body: body,
-            }).then(
-              ((res) => res.json())
-                .then((res) => resolve({ default: res }))
-                .catch((err) => reject(err))
-            );
+            })
+              .then((response) => response.json())
+              .then((result) => resolve({ default: result.imageUrl }))
+              .catch((error) => reject(error));
           });
         }),
     };
@@ -41,14 +41,14 @@ function Ckeditor() {
           extraPlugins: [uploadPlugin],
         }}
         editor={ClassicEditor}
-        data="<p>Hello</p>"
+        data="<p>Oraichain Labs Hackathon</p>"
         onReady={(editor) => {
           // You can store the "editor" and use when it is needed.
           console.log("Editor is ready to use!", editor);
         }}
         onChange={(event, editor) => {
           const data = editor.getData();
-          window.localStorage.setItem("post-data", data);
+          window.localStorage.setItem(`${language}-post-data`, data);
           console.log({ event, editor, data });
         }}
         onBlur={(event, editor) => {
@@ -60,6 +60,6 @@ function Ckeditor() {
       />
     </div>
   );
-}
+};
 
 export default Ckeditor;
