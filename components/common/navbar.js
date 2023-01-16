@@ -73,10 +73,7 @@ export default function Navbar({}) {
               {links.map((link) => {
                 if (link.name === "find")
                   return (
-                    <a
-                      href="https://www.facebook.com/groups/oraichain.dev"
-                      target="_blank"
-                    >
+                    <a href="https://www.facebook.com/groups/oraichain.dev" target="_blank" className={cx("link")}>
                       <div className={cx("link")}>
                         {t(`common.${link.name}`)}
                       </div>
