@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import axios from "axios";
+import { LOCAL_ENDPOINT } from "consts";
 
-const Ckeditor = ({ language }) => {
-  const API = "http://192.168.1.39:3000/orai-hackathon/v1/blog";
-
+const Ckeditor = ({ language, data, setData }) => {
   function uploadAdapter(loader) {
     return {
       upload: () =>
@@ -16,7 +15,7 @@ const Ckeditor = ({ language }) => {
             console.log("FILE", file);
             body.append("image", file);
 
-            fetch(`${API}/image`, {
+            fetch(`${LOCAL_ENDPOINT}/blog/image`, {
               method: "post",
               body: body,
             })
@@ -41,14 +40,14 @@ const Ckeditor = ({ language }) => {
           extraPlugins: [uploadPlugin],
         }}
         editor={ClassicEditor}
-        data="<p>Oraichain Labs Hackathon</p>"
+        data={data}
         onReady={(editor) => {
           // You can store the "editor" and use when it is needed.
           console.log("Editor is ready to use!", editor);
         }}
         onChange={(event, editor) => {
           const data = editor.getData();
-          window.localStorage.setItem(`${language}-post-data`, data);
+          setData(data)
           console.log({ event, editor, data });
         }}
         onBlur={(event, editor) => {
