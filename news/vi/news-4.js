@@ -20,14 +20,14 @@ export default {
       <p>Yêu cầu sản phẩm áp dụng hai công nghệ chính:</p>
       <p>
         - Lưu trữ dữ liệu phi tập trung: Eueno (truy cập tại{" "}
-        <a href="eueno.io" target="_blank">
+        <a href="https://eueno.io/" target="_blank">
           eueno.io
         </a>
         ).{" "}
       </p>
       <p>
         - Lập trình trên môi trường phát triển CosmWasm IDE (truy cập tại{" "}
-        <a href="cwide.io" target="_blank">
+        <a href="https://cwide.io" target="_blank">
           cwide.io
         </a>
         ).
@@ -35,7 +35,7 @@ export default {
       <p>
         Ngoài ra, khuyến khích triển khai mô hình AI qua AI Marketplace (truy
         cập tại{" "}
-        <a href="ai.dinohub.io" target="_blank">
+        <a href="https://ai.dinohub.io" target="_blank">
           ai.dinohub.io
         </a>
         ).
