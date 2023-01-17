@@ -136,8 +136,8 @@ export default {
       <p>
         Diễn ra trong thời gian tối đa 05 ngày ngay trước vòng Chung kết, lựa
         chọn dự án được yêu thích nhất thông qua bình chọn trên fanpage:{" "}
-        <a href="https://www.facebook.com/OraichainHackathon" blank="">
-          https://www.facebook.com/OraichainHackathon
+        <a href="https://www.facebook.com/hackathon.orai.io" blank="">
+          https://www.facebook.com/hackathon.orai.io
         </a>
       </p>
       <p>
