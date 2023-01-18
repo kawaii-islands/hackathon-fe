@@ -147,7 +147,7 @@ export default function Apply() {
 
   useEffect(() => {
     let fileList = getValues("attachment");
-    console.log("fileList :>> ", attachment);
+    
     let tempList = attachment?.length ? [...attachment] : [];
     let finalList;
     if (fileList?.length) {
@@ -165,7 +165,6 @@ export default function Apply() {
     }
 
     setAttachment([...finalList]);
-    console.log("FinalList ", finalList);
   }, [attachmentRef]);
 
   const firstError = useMemo(
@@ -381,7 +380,7 @@ export default function Apply() {
               <OutlinedInput
                 className={cx("input")}
                 {...register(`email`)}
-                readOnly
+                // readOnly
               />
               {errors.email && firstError === "email" && (
                 <div className={cx("error")}>{t(errors.email.message)}</div>
