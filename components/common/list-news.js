@@ -43,15 +43,11 @@ export default function ListNews({ isLatest }) {
   const auth = useAuth();
   const router = useRouter();
   const { t } = useTranslation();
-  const listLibrary = locale === "en" ? listNewsEn : listNewsVi;
   const listNews = locale === "en" ? listNewsEn : listNewsVi;
   let data = listNews;
   if (isLatest)
     data = [
-      ...listNews.map((i) => ({ ...i, pathname: "library" })),
-      ...listLibrary
-        .map((i) => ({ ...i, pathname: "library" }))
-        .filter((i) => !(auth === "NOT_AUTH" && i.url === "sample-art")),
+      ...listNews.map((i) => ({ ...i, pathname: "library" }))
     ]
       .sort((a, b) => new Date(b.date) - new Date(a.date))
       .slice(0, 3);
