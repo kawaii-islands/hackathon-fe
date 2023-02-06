@@ -6,6 +6,9 @@ import listNewsEn from "news/en";
 import listNewsVi from "news/vi";
 import LibraryLayout from "components/common/library-layout";
 import useLocale from "hooks/useLocale";
+import axios from "axios";
+import moment from "moment";
+import { LOCAL_ENDPOINT } from "consts";
 
 const cx = cn.bind(styles);
 
@@ -17,14 +20,34 @@ export default function NewsDetail({}) {
 
   useEffect(() => {
     if (url) {
-      const listNews = locale === "en" ? listNewsEn : listNewsVi;
-
-      const news = listNews.filter((news) => news.url === url)?.[0];
-
-      if (news === undefined) router.push("/404");
-      setNews(news);
+      getNews();
     }
-  }, [url, locale]);
+  }, [url]);
+
+  const getNews = async () => {
+    try {
+      const res = await axios.get(`${LOCAL_ENDPOINT}/posts/${url}`);
+      if (res.status === 200) {
+        const decodeDataVi = decodeHtml(res.data.content);
+        const decodeDataEn = decodeHtml(res.data.en_content);
+
+        const dataNews = {
+          ...res.data,
+          content: decodeDataVi,
+          en_content: decodeDataEn,
+        };
+        setNews(dataNews);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const decodeHtml = (html) => {
+    var txt = document.createElement("textarea");
+    txt.innerHTML = html;
+    return txt.value;
+  };
 
   if (!news) {
     return <></>;
@@ -33,11 +56,23 @@ export default function NewsDetail({}) {
   return (
     <LibraryLayout>
       <div className={cx("news")}>
-        <div className={cx("title")}>{news.title}</div>
-        <div className={cx("date")}>{news.date}</div>
-        <div className={cx("description")}>{news.description}</div>
-        <img src={news.image} />
-        {news.content}
+        <div className={cx("title")}>
+          {locale === "en" ? news.en_title : news.title}
+        </div>
+        <div className={cx("date")}>
+          {moment(news.createdAt).format("HH:mm:ss, DD/MM/YYYY")}
+        </div>
+        <div className={cx("description")}>
+          {locale === "en" ? news.en_description : news.description}
+        </div>
+        <img src={locale === "en" ? news.en_thumbnail : news.thumbnail} />
+
+        <br />
+        <div
+          dangerouslySetInnerHTML={{
+            __html: locale === "en" ? news.en_content : news.content,
+          }}
+        />
       </div>
     </LibraryLayout>
   );

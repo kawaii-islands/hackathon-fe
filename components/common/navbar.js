@@ -24,6 +24,10 @@ export const links = [
     href: "/find",
   },
   {
+    name: "managePosts",
+    href: "/manage-posts",
+  },
+  {
     name: "login",
     href: "/login",
   },
@@ -47,6 +51,7 @@ export default function Navbar({}) {
   };
 
   const authStatus = useAuth();
+  const user = JSON.parse(window.localStorage.getItem("user"));
 
   return (
     <AppBar className={cx("navbar-box")}>
@@ -72,12 +77,16 @@ export default function Navbar({}) {
                     <a
                       href="https://www.facebook.com/groups/oraichain.dev"
                       target="_blank"
+                      className={cx("link")}
                     >
                       <div className={cx("link")}>
                         {t(`common.${link.name}`)}
                       </div>
                     </a>
                   );
+                if (link.name === "managePosts" && user?.role !== "admin") {
+                  return <div key={link.name}></div>;
+                }
                 if (
                   authStatus !== AUTH_STATUS.NOT_AUTH &&
                   link.name === "register"

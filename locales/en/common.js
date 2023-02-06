@@ -8,4 +8,5 @@ export default {
   "common.verifyContent1": "A verification email has been sent to",
   "common.verifyContent2": "Please check your mailbox to verify the account before you log in",
   "common.verifyButton": "Resend",
+  "common.managePosts": "Manager Posts",
 };
