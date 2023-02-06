@@ -2,17 +2,18 @@ import React, { useEffect, useState } from "react";
 import styles from "styles/manage-posts/index.module.scss";
 import cn from "classnames/bind";
 import { Button, Container, Grid } from "@mui/material";
-import Ckeditor from "components/common/ckeditor";
 import axios from "axios";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import ArrowUpwardRoundedIcon from "@mui/icons-material/ArrowUpwardRounded";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import { LOCAL_ENDPOINT } from "consts";
+import dynamic from "next/dynamic";
 
 const cx = cn.bind(styles);
 
 function CreatePosts() {
+  const Ckeditor = dynamic(() => import("../../components/common/ckeditor"), { ssr: false });
   const [dataEn, setDataEn] = useState();
   const [dataVi, setDatavi] = useState();
   const [title, setTitle] = useState();
