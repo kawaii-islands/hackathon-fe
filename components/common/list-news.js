@@ -65,13 +65,12 @@ export default function ListNews({ isLatest }) {
 
   const getListPost = async () => {
     try {
-      const response = await axios.get(`${LOCAL_ENDPOINT}/blog`);
-      console.log("DATA", response);
+      const response = await axios.get(`${LOCAL_ENDPOINT}/posts`);
       let data;
       if (response.status === 200) {
-        data = response.data;
+        data = response.data.results;
         if (isLatest) {
-          data = response.data
+          data = response.data.results
             .map((i) => ({ ...i, pathname: "library" }))
             .sort((a, b) => new Date(b.createAt) - new Date(a.createAt))
             .slice(0, 3);

@@ -13,6 +13,7 @@ import axios from "axios";
 import moment from "moment";
 import { toast } from "react-toastify";
 import { LOCAL_ENDPOINT } from "consts";
+import useLocale from "hooks/useLocale";
 
 const cx = cn.bind(styles);
 
@@ -21,9 +22,20 @@ function ManagerPosts() {
   const router = useRouter();
   const [posts, setPosts] = useState();
   const [deleteItem, setDeleteItem] = useState();
+  const user = JSON.parse(window.localStorage.getItem("user"));
+  const token = window.localStorage.getItem("token");
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  const { locale } = useLocale();
 
   useEffect(() => {
-    getListPost();
+    if (user?.role === "admin") {
+      getListPost();
+    } else {
+      toast.error("Vui lòng đăng nhập bằng tài khoản admin!");
+      router.push("/");
+    }
   }, []);
 
   const handleClose = () => setShow(false);
@@ -34,9 +46,9 @@ function ManagerPosts() {
 
   const getListPost = async () => {
     try {
-      const response = await axios.get(`${LOCAL_ENDPOINT}/blog`);
-      setPosts(response.data);
-      console.log(response);
+      const response = await axios.get(`${LOCAL_ENDPOINT}/posts`);
+      console.log("DATA", response);
+      setPosts(response.data.results);
     } catch (error) {
       console.error(error);
     }
@@ -45,7 +57,8 @@ function ManagerPosts() {
   const handleDeletePost = async () => {
     try {
       const res = await axios.delete(
-        `${LOCAL_ENDPOINT}/blog/${deleteItem._id}`
+        `${LOCAL_ENDPOINT}/posts/${deleteItem._id}`,
+        config
       );
       if (res.status === 200) {
         toast.success("Success!");
@@ -77,22 +90,39 @@ function ManagerPosts() {
             <div className={cx("post")} key={id}>
               <div className={cx("text")}>
                 <Link href={`/library/${item._id}`}>
-                  <div className={cx("title")}>{item.title}</div>
+                  <div className={cx("title")}>
+                    {locale === "vi" ? item.title : item.en_title}
+                  </div>
                 </Link>
                 <div className={cx("date")}>
                   {moment(item.createdAt).format("HH:mm:ss, DD/MM/YYYY")}
                 </div>
-                <div className={cx("description")}>{item.description}</div>
+                <div className={cx("description")}>
+                  {locale === "vi"
+                    ? item.description.slice(0, 150)
+                    : item.en_description.slice(0, 150)}
+                  ...
+                </div>
               </div>
 
               <div className={cx("image")}>
-                <img
-                  src={
-                    item.thumbnail
-                      ? item.thumbnail
-                      : "https://hackathon-orai-staging.web.app/images/home/big-banner-en.png"
-                  }
-                />
+                {locale === "vi" ? (
+                  <img
+                    src={
+                      item.thumbnail
+                        ? item.thumbnail
+                        : "https://hackathon-orai-staging.web.app/images/home/big-banner-en.png"
+                    }
+                  />
+                ) : (
+                  <img
+                    src={
+                      item.en_thumbnail
+                        ? item.en_thumbnail
+                        : "https://hackathon-orai-staging.web.app/images/home/big-banner-en.png"
+                    }
+                  />
+                )}
               </div>
               <div className={cx("group-btn")}>
                 <IconButton

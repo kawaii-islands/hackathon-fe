@@ -26,7 +26,7 @@ export default function NewsDetail({}) {
 
   const getNews = async () => {
     try {
-      const res = await axios.get(`${LOCAL_ENDPOINT}/blog/${url}`);
+      const res = await axios.get(`${LOCAL_ENDPOINT}/posts/${url}`);
       if (res.status === 200) {
         const decodeDataVi = decodeHtml(res.data.content);
         const decodeDataEn = decodeHtml(res.data.en_content);

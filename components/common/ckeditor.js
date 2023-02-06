@@ -5,6 +5,8 @@ import axios from "axios";
 import { LOCAL_ENDPOINT } from "consts";
 
 const Ckeditor = ({ language, data, setData }) => {
+  const token = window.localStorage.getItem("token");
+
   function uploadAdapter(loader) {
     return {
       upload: () =>
@@ -15,9 +17,12 @@ const Ckeditor = ({ language, data, setData }) => {
             console.log("FILE", file);
             body.append("image", file);
 
-            fetch(`${LOCAL_ENDPOINT}/blog/image`, {
+            fetch(`${LOCAL_ENDPOINT}/images`, {
               method: "post",
               body: body,
+              headers: {
+                'Authorization': `Bearer ${token}`
+            },
             })
               .then((response) => response.json())
               .then((result) => resolve({ default: result.imageUrl }))

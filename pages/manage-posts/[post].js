@@ -23,8 +23,18 @@ function CreatePosts() {
   const [viThumbnail, setViThumbnail] = useState();
   const router = useRouter();
   const { post, postId } = router.query;
+  const token = window.localStorage.getItem("token");
+  const user = JSON.parse(window.localStorage.getItem("user"));
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
 
   useEffect(() => {
+    if (user?.role !== "admin") {
+      toast.error("Vui lòng đăng nhập bằng tài khoản admin!");
+      router.back();
+    }
+
     if (post === "edit-post" && postId) {
       getNews();
     }
@@ -32,7 +42,7 @@ function CreatePosts() {
 
   const getNews = async () => {
     try {
-      const res = await axios.get(`${LOCAL_ENDPOINT}/blog/${postId}`);
+      const res = await axios.get(`${LOCAL_ENDPOINT}/posts/${postId}`);
       if (res.status === 200) {
         const news = res.data;
         let decodeDataVi = decodeHtml(news.content);
@@ -63,7 +73,7 @@ function CreatePosts() {
     body.append("image", e.target.files[0]);
 
     try {
-      const res = await axios.post(`${LOCAL_ENDPOINT}/blog/image`, body);
+      const res = await axios.post(`${LOCAL_ENDPOINT}/images`, body, config);
       if (res.status === 200) {
         setThumbnail(res.data.imageUrl);
       }
@@ -77,7 +87,7 @@ function CreatePosts() {
     body.append("image", e.target.files[0]);
 
     try {
-      const res = await axios.post(`${LOCAL_ENDPOINT}/blog/image`, body);
+      const res = await axios.post(`${LOCAL_ENDPOINT}/images`, body, config);
       if (res.status === 200) {
         console.log(res);
         setViThumbnail(res.data.imageUrl);
@@ -102,16 +112,19 @@ function CreatePosts() {
     try {
       let res;
       if (post === "edit-post") {
-        res = await axios.put(`${LOCAL_ENDPOINT}/blog/${postId}`, bodyParams);
+        res = await axios.put(
+          `${LOCAL_ENDPOINT}/posts/${postId}`,
+          bodyParams,
+          config
+        );
       } else {
-        res = await axios.post(`${LOCAL_ENDPOINT}/blog`, bodyParams);
+        res = await axios.post(`${LOCAL_ENDPOINT}/posts`, bodyParams, config);
       }
 
       if (res.status === 200) {
         toast.success("Success!");
         router.push(`/manage-posts`);
       }
-      console.log("POSt", res);
     } catch (error) {
       console.log(error);
     }
@@ -153,7 +166,24 @@ function CreatePosts() {
                 }}
               >
                 {thumbnail ? (
-                  <img src={thumbnail} width="100%" height="200px" />
+                  <div>
+                    <img src={thumbnail} width="100%" height="160px" />
+                    <div style={{ textAlign: "center" }}>
+                      <label for="re-thumbnail">
+                        <div className={cx("btn-change-thumbnail")}>
+                          Change thumbnail
+                        </div>
+                      </label>
+                      <input
+                        type="file"
+                        name="photo"
+                        id="re-thumbnail"
+                        accept="image/*"
+                        style={{ display: "none" }}
+                        onChange={(e) => handleUploadThumbnail(e)}
+                      />
+                    </div>
+                  </div>
                 ) : (
                   <>
                     <label for="thumbnail" className={cx("upload-thumbnail")}>
@@ -172,7 +202,7 @@ function CreatePosts() {
                 )}
               </div>
 
-              <Ckeditor language="en" data={dataEn} setData={setDataEn}/>
+              <Ckeditor language="en" data={dataEn} setData={setDataEn} />
             </Grid>
             <Grid
               item
@@ -204,17 +234,34 @@ function CreatePosts() {
                 }}
               >
                 {viThumbnail ? (
-                  <img src={viThumbnail} width="100%" height="200px" />
+                  <div>
+                    <img src={viThumbnail} width="100%" height="160px" />
+                    <div style={{ textAlign: "center" }}>
+                      <label for="re-vi-thumbnail">
+                        <div className={cx("btn-change-thumbnail")}>
+                          Thay đổi ảnh bìa
+                        </div>
+                      </label>
+                      <input
+                        type="file"
+                        name="photo"
+                        id="re-vi-thumbnail"
+                        accept="image/*"
+                        style={{ display: "none" }}
+                        onChange={(e) => handleUploadViThumbnail(e)}
+                      />
+                    </div>
+                  </div>
                 ) : (
                   <>
-                    <label for="thumbnail" className={cx("upload-thumbnail")}>
+                    <label for="vi-thumbnail" className={cx("upload-thumbnail")}>
                       <AddRoundedIcon className={cx("add-icon")} />
                       <div>Thêm ảnh bìa</div>
                     </label>
                     <input
                       type="file"
                       name="photo"
-                      id="thumbnail"
+                      id="vi-thumbnail"
                       accept="image/*"
                       style={{ display: "none" }}
                       onChange={(e) => handleUploadViThumbnail(e)}
