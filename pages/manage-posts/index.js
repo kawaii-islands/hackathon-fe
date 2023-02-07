@@ -50,7 +50,6 @@ function ManagerPosts() {
   const getListPost = async () => {
     try {
       const response = await axios.get(`${LOCAL_ENDPOINT}/posts`);
-      console.log("DATA", response);
       setPosts(response.data.results);
     } catch (error) {
       console.error(error);

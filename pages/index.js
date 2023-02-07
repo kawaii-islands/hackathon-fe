@@ -97,7 +97,6 @@ export default function Home() {
         data = response.data.results
           .map((i) => ({ ...i, pathname: "library" }))
           .sort((a, b) => new Date(b.createAt) - new Date(a.createAt))
-          .slice(0, 3);
       }
 
       setNews(data);
@@ -234,7 +233,7 @@ export default function Home() {
           <div className={cx("title")}>{t("home.explore")}</div>
         </Link>
         <Slider {...secondSettings}>
-          {news?.map((item) => (
+          {news?.slice(0, 3).map((item) => (
             <Link href={`/library/${item._id}`} key={item._id}>
               <div className={cx("slider-item")}>
                 <img
@@ -267,7 +266,7 @@ export default function Home() {
               />
             </a>
           </div> */}
-          {news?.map((item, idx) => (
+          {news?.slice(-3).map((item, idx) => (
             <div className={cx("banner")} key={item._id}>
               <div className={cx("title")}>{t("home.into")}</div>
               <Link href={`/library/${item._id}`}>
