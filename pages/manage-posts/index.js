@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "styles/manage-posts/index.module.scss";
 import cn from "classnames/bind";
-import { Button, Container, IconButton } from "@mui/material";
+import { Button, Container, IconButton, Pagination } from "@mui/material";
 import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRounded";
 import Link from "next/link";
 import DeleteOutlineRoundedIcon from "@mui/icons-material/DeleteOutlineRounded";
@@ -28,6 +28,9 @@ function ManagerPosts() {
     headers: { Authorization: `Bearer ${token}` },
   };
   const { locale } = useLocale();
+  const NUM_PER_PAGE = 4;
+  const [currentPage, setCurrentPage] = useState(1);
+
 
   useEffect(() => {
     if (user?.role === "admin") {
@@ -86,7 +89,10 @@ function ManagerPosts() {
         </div>
 
         <div className={cx("list-post")}>
-          {posts?.map((item, id) => (
+          {posts?.slice(
+              (currentPage - 1) * NUM_PER_PAGE,
+              currentPage * NUM_PER_PAGE
+            ).map((item, id) => (
             <div className={cx("post")} key={id}>
               <div className={cx("text")}>
                 <Link href={`/library/${item._id}`}>
@@ -149,6 +155,13 @@ function ManagerPosts() {
             </div>
           ))}
         </div>
+
+        <div className={cx("pagination")}>
+            <Pagination
+              count={Math.ceil(posts?.length / NUM_PER_PAGE)}
+              onChange={(e, p) => setCurrentPage(p)}
+            />
+          </div>
       </Container>
 
       <Modal show={show} onHide={handleClose} centered>

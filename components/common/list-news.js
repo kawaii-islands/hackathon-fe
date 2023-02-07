@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import useAuth from "hooks/useAuth";
 import axios from "axios";
 import { LOCAL_ENDPOINT } from "consts";
+import { Pagination } from "@mui/material";
 
 const cx = cn.bind(styles);
 
@@ -59,6 +60,8 @@ export default function ListNews({ isLatest }) {
   const router = useRouter();
   const { t } = useTranslation();
   const [posts, setPosts] = useState();
+  const NUM_PER_PAGE = 4;
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     getListPost();
@@ -99,15 +102,31 @@ export default function ListNews({ isLatest }) {
           ))}
         </div>
       )}
-      {!isLatest &&
-        posts?.map((news) => (
-          <News
-            news={news}
-            isLatest={isLatest}
-            key={news._id}
-            pathname={router.pathname.split("/")[1]}
-          />
-        ))}
+
+      {!isLatest && (
+        <>
+          {posts
+            ?.slice(
+              (currentPage - 1) * NUM_PER_PAGE,
+              currentPage * NUM_PER_PAGE
+            )
+            .map((news) => (
+              <News
+                news={news}
+                isLatest={isLatest}
+                key={news._id}
+                pathname={router.pathname.split("/")[1]}
+              />
+            ))}
+
+          <div className={cx("pagination")}>
+            <Pagination
+              count={Math.ceil(posts?.length / NUM_PER_PAGE)}
+              onChange={(e, p) => setCurrentPage(p)}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }
