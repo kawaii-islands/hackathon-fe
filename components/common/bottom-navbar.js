@@ -20,7 +20,7 @@ function BottomNavbar() {
             <div className={cx("item-menu")}>Oraichain Hackathon</div>
           </Link>
         ) : (
-          <Link href={`/library/the-le`}>
+          <Link href={`/library/63e229734c9fba28056fd839`}>
             <div className={cx("item-menu")}>Thể lệ</div>
           </Link>
         )}
