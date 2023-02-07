@@ -1,13 +1,14 @@
+import { useState, useEffect } from "react";
 import styles from "styles/home/index.module.scss";
 import cn from "classnames/bind";
 import Slider from "react-slick";
 import { useTranslation } from "react-i18next";
 import Link from "next/link";
-import newsEn from "news/en";
-import newsVi from "news/vi";
 import useAuth from "hooks/useAuth";
 import useLocale from "hooks/useLocale";
 import { Button } from "@mui/material";
+import { LOCAL_ENDPOINT } from "consts";
+import axios from "axios";
 
 const cx = cn.bind(styles);
 
@@ -82,7 +83,29 @@ export default function Home() {
   const { t, i18n } = useTranslation();
   const { locale } = useLocale();
   const auth = useAuth();
-  const news = locale === "en" ? newsEn : newsVi;
+  const [news, setNews] = useState();
+
+  useEffect(() => {
+    getListPost();
+  }, []);
+
+  const getListPost = async () => {
+    try {
+      const response = await axios.get(`${LOCAL_ENDPOINT}/posts`);
+      let data;
+      if (response.status === 200) {
+        data = response.data.results
+          .map((i) => ({ ...i, pathname: "library" }))
+          .sort((a, b) => new Date(b.createAt) - new Date(a.createAt))
+          .slice(0, 3);
+      }
+
+      setNews(data);
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className={cx("home")}>
@@ -211,10 +234,14 @@ export default function Home() {
           <div className={cx("title")}>{t("home.explore")}</div>
         </Link>
         <Slider {...secondSettings}>
-          {news.map((item) => (
-            <Link href={`/library/${item.url}`} key={item.url}>
+          {news?.map((item) => (
+            <Link href={`/library/${item._id}`} key={item._id}>
               <div className={cx("slider-item")}>
-                <img className={cx("banner")} src={item.image} />
+                <img
+                  className={cx("banner")}
+                  src={locale === "vi" ? item.thumbnail : item.en_thumbnail}
+                  style={{ height: "320px", width: "auto", margin: "auto" }}
+                />
               </div>
             </Link>
           ))}
@@ -240,11 +267,14 @@ export default function Home() {
               />
             </a>
           </div> */}
-          {news.map((item, idx) => (
-            <div className={cx("banner")} key={item.url}>
+          {news?.map((item, idx) => (
+            <div className={cx("banner")} key={item._id}>
               <div className={cx("title")}>{t("home.into")}</div>
-              <Link href={`/library/${item.url}`}>
-                <img className={cx("banner-img")} src={item.image} />
+              <Link href={`/library/${item._id}`}>
+                <img
+                  className={cx("banner-img")}
+                  src={locale === "vi" ? item.thumbnail : item.en_thumbnail}
+                />
               </Link>
             </div>
           ))}
