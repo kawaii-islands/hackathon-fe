@@ -96,7 +96,7 @@ export default function Home() {
       if (response.status === 200) {
         data = response.data.results
           .map((i) => ({ ...i, pathname: "library" }))
-          .sort((a, b) => new Date(b.createAt) - new Date(a.createAt))
+          .sort((a, b) => new Date(b.createAt) - new Date(a.createAt));
       }
 
       setNews(data);
@@ -144,9 +144,9 @@ export default function Home() {
       </Slider>
 
       <div className={cx("introduction")}>
-        <div className={cx("content")}>
-          {i18n.language === "en" ? (
-            <>
+        {i18n.language === "en" ? (
+          <>
+            <div className={cx("content")}>
               <div className={cx("title")}>
                 The Oraichain for DApps Accelerator Program
               </div>
@@ -173,9 +173,28 @@ export default function Home() {
                   in this program.
                 </p>
               </div>
-            </>
-          ) : (
-            <>
+              <br />
+              <Link href="/register">
+                <Button className={cx("buttonRegister")}>
+                  {t("register.title")}
+                </Button>
+              </Link>
+            </div>
+            <div className={cx("video")}>
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/lX8b3JixQzw"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className={cx("content")}>
               <div className={cx("titleVi")}>Cơ cấu giải thưởng</div>
               <div className={cx("row")}>
                 <img src="/images/home/first.svg" />
@@ -206,26 +225,26 @@ export default function Home() {
                   mặt và chứng nhận của Ban Tổ chức
                 </p>
               </div>
-            </>
-          )}
-          <br />
-          <Link href="/register">
-            <Button className={cx("buttonRegister")}>
-              {t("register.title")}
-            </Button>
-          </Link>
-        </div>
-        <div className={cx("video")}>
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/ekzmDkXl_B4"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-        </div>
+              <br />
+              <Link href="/register">
+                <Button className={cx("buttonRegister")}>
+                  {t("register.title")}
+                </Button>
+              </Link>
+            </div>
+            <div className={cx("video")}>
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/YkKOnPWWoc4"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </>
+        )}
       </div>
 
       <div className={cx("explore")}>

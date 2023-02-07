@@ -119,12 +119,16 @@ export default function ListNews({ isLatest }) {
               />
             ))}
 
-          <div className={cx("pagination")}>
-            <Pagination
-              count={Math.ceil(posts?.length / NUM_PER_PAGE)}
-              onChange={(e, p) => setCurrentPage(p)}
-            />
-          </div>
+          {posts?.length > NUM_PER_PAGE ? (
+            <div className={cx("pagination")}>
+              <Pagination
+                count={Math.ceil(posts?.length / NUM_PER_PAGE)}
+                onChange={(e, p) => setCurrentPage(p)}
+              />
+            </div>
+          ) : (
+            <></>
+          )}
         </>
       )}
     </div>

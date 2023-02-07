@@ -31,7 +31,6 @@ function ManagerPosts() {
   const NUM_PER_PAGE = 4;
   const [currentPage, setCurrentPage] = useState(1);
 
-
   useEffect(() => {
     if (user?.role === "admin") {
       getListPost();
@@ -88,79 +87,85 @@ function ManagerPosts() {
         </div>
 
         <div className={cx("list-post")}>
-          {posts?.slice(
+          {posts
+            ?.slice(
               (currentPage - 1) * NUM_PER_PAGE,
               currentPage * NUM_PER_PAGE
-            ).map((item, id) => (
-            <div className={cx("post")} key={id}>
-              <div className={cx("text")}>
-                <Link href={`/library/${item._id}`}>
-                  <div className={cx("title")}>
-                    {locale === "vi" ? item.title : item.en_title}
+            )
+            .map((item, id) => (
+              <div className={cx("post")} key={id}>
+                <div className={cx("text")}>
+                  <Link href={`/library/${item._id}`}>
+                    <div className={cx("title")}>
+                      {locale === "vi" ? item.title : item.en_title}
+                    </div>
+                  </Link>
+                  <div className={cx("date")}>
+                    {moment(item.createdAt).format("HH:mm:ss, DD/MM/YYYY")}
                   </div>
-                </Link>
-                <div className={cx("date")}>
-                  {moment(item.createdAt).format("HH:mm:ss, DD/MM/YYYY")}
+                  <div className={cx("description")}>
+                    {locale === "vi"
+                      ? item.description.slice(0, 150)
+                      : item.en_description.slice(0, 150)}
+                    ...
+                  </div>
                 </div>
-                <div className={cx("description")}>
-                  {locale === "vi"
-                    ? item.description.slice(0, 150)
-                    : item.en_description.slice(0, 150)}
-                  ...
-                </div>
-              </div>
 
-              <div className={cx("image")}>
-                {locale === "vi" ? (
-                  <img
-                    src={
-                      item.thumbnail
-                        ? item.thumbnail
-                        : "https://hackathon-orai-staging.web.app/images/home/big-banner-en.png"
+                <div className={cx("image")}>
+                  {locale === "vi" ? (
+                    <img
+                      src={
+                        item.thumbnail
+                          ? item.thumbnail
+                          : "https://hackathon-orai-staging.web.app/images/home/big-banner-en.png"
+                      }
+                    />
+                  ) : (
+                    <img
+                      src={
+                        item.en_thumbnail
+                          ? item.en_thumbnail
+                          : "https://hackathon-orai-staging.web.app/images/home/big-banner-en.png"
+                      }
+                    />
+                  )}
+                </div>
+                <div className={cx("group-btn")}>
+                  <IconButton
+                    className={cx("icon")}
+                    onClick={() => router.push(`/library/${item._id}`)}
+                  >
+                    <VisibilityOutlinedIcon />
+                  </IconButton>
+                  <IconButton
+                    className={cx("icon")}
+                    onClick={() =>
+                      router.push(`/manage-posts/edit-post?postId=${item._id}`)
                     }
-                  />
-                ) : (
-                  <img
-                    src={
-                      item.en_thumbnail
-                        ? item.en_thumbnail
-                        : "https://hackathon-orai-staging.web.app/images/home/big-banner-en.png"
-                    }
-                  />
-                )}
+                  >
+                    <ModeEditOutlineOutlinedIcon />
+                  </IconButton>
+                  <IconButton
+                    className={cx("icon")}
+                    onClick={() => handleShow(item)}
+                  >
+                    <DeleteOutlineRoundedIcon />
+                  </IconButton>
+                </div>
               </div>
-              <div className={cx("group-btn")}>
-                <IconButton
-                  className={cx("icon")}
-                  onClick={() => router.push(`/library/${item._id}`)}
-                >
-                  <VisibilityOutlinedIcon />
-                </IconButton>
-                <IconButton
-                  className={cx("icon")}
-                  onClick={() =>
-                    router.push(`/manage-posts/edit-post?postId=${item._id}`)
-                  }
-                >
-                  <ModeEditOutlineOutlinedIcon />
-                </IconButton>
-                <IconButton
-                  className={cx("icon")}
-                  onClick={() => handleShow(item)}
-                >
-                  <DeleteOutlineRoundedIcon />
-                </IconButton>
-              </div>
-            </div>
-          ))}
+            ))}
         </div>
 
-        <div className={cx("pagination")}>
+        {posts?.length > NUM_PER_PAGE ? (
+          <div className={cx("pagination")}>
             <Pagination
               count={Math.ceil(posts?.length / NUM_PER_PAGE)}
               onChange={(e, p) => setCurrentPage(p)}
             />
           </div>
+        ) : (
+          <></>
+        )}
       </Container>
 
       <Modal show={show} onHide={handleClose} centered>

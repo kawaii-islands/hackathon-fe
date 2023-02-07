@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { toast } from "react-toastify";
 import { LOCAL_ENDPOINT } from "consts";
 import dynamic from "next/dynamic";
+// import Ckeditor from "../../components/common/ckeditor";
 
 const cx = cn.bind(styles);
 
@@ -90,7 +91,6 @@ function CreatePosts() {
     try {
       const res = await axios.post(`${LOCAL_ENDPOINT}/images`, body, config);
       if (res.status === 200) {
-        console.log(res);
         setViThumbnail(res.data.imageUrl);
       }
     } catch (error) {
@@ -133,6 +133,7 @@ function CreatePosts() {
 
   return (
     <div className={cx("manage-posts")}>
+      {console.log("DATA", dataEn)}
       <Container>
         <div className={cx("page-body")}>
           <Button className={cx("publish-btn")} onClick={createPost}>
