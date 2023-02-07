@@ -91,7 +91,7 @@ export default function Footer() {
               <p>
                 <b>Hotline</b>
               </p>
-              <div>0344 268 982 | 0356 777 256</div>
+              <div>0344 268 982 | 024 6660 8464</div>
             </div>
           </Grid>
         </Grid>
