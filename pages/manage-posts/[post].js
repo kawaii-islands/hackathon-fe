@@ -13,8 +13,9 @@ import dynamic from "next/dynamic";
 
 const cx = cn.bind(styles);
 
+const Ckeditor = dynamic(() => import("../../components/common/ckeditor"), { ssr: false });
+
 function CreatePosts() {
-  const Ckeditor = dynamic(() => import("../../components/common/ckeditor"), { ssr: false });
   const [dataEn, setDataEn] = useState();
   const [dataVi, setDatavi] = useState();
   const [title, setTitle] = useState();
