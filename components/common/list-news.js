@@ -18,7 +18,7 @@ function News({ news, isLatest, pathname }) {
   if (locale === "en") {
     title = news.en_title;
     description = news.en_description;
-    thumbnail = news.en_thumbail;
+    thumbnail = news.en_thumbnail;
     content = news.en_content;
   }
 
@@ -29,7 +29,7 @@ function News({ news, isLatest, pathname }) {
           isLatest,
         })}
       >
-        <Link href={`/${pathname}/${news.url}`}>
+        <Link href={`/${pathname}/${news._id}`}>
           <div className={cx("title", { isLatest })}>{title}</div>
         </Link>
         <div className={cx("date", { isLatest })}>{news.createAt}</div>
@@ -47,6 +47,7 @@ function News({ news, isLatest, pathname }) {
           "https://data.eueno.io/hackathon-orai/images/big_banner_orai_hackathon_2023_en.png"
         }
         className={cx({ isLatest }, "image")}
+        alt="thumbnail"
       />
     </div>
   );
