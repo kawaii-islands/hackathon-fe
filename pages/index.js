@@ -285,7 +285,7 @@ export default function Home() {
               />
             </a>
           </div> */}
-          {news?.slice(-3).map((item, idx) => (
+          {news?.slice(-3).reverse().map((item, idx) => (
             <div className={cx("banner")} key={item._id}>
               <div className={cx("title")}>{t("home.into")}</div>
               <Link href={`/library/${item._id}`}>
