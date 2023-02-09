@@ -7,7 +7,7 @@ import Link from "next/link";
 import useAuth from "hooks/useAuth";
 import useLocale from "hooks/useLocale";
 import { Button } from "@mui/material";
-import { LOCAL_ENDPOINT } from "consts";
+import { ENDPOINT } from "consts";
 import axios from "axios";
 
 const cx = cn.bind(styles);
@@ -91,7 +91,7 @@ export default function Home() {
 
   const getListPost = async () => {
     try {
-      const response = await axios.get(`${LOCAL_ENDPOINT}/posts`);
+      const response = await axios.get(`${ENDPOINT}/posts`);
       let data;
       if (response.status === 200) {
         data = response.data.results

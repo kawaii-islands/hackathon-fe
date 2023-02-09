@@ -51,7 +51,7 @@ export default function Navbar({}) {
   };
 
   const authStatus = useAuth();
-  const user = JSON.parse(window.localStorage.getItem("user"));
+  const user = window.localStorage.getItem("user") ? JSON.parse(window.localStorage.getItem("user")) : "";
 
   return (
     <AppBar className={cx("navbar-box")}>

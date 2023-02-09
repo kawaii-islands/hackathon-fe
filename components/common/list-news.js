@@ -7,7 +7,7 @@ import useLocale from "hooks/useLocale";
 import { useRouter } from "next/router";
 import useAuth from "hooks/useAuth";
 import axios from "axios";
-import { LOCAL_ENDPOINT } from "consts";
+import { ENDPOINT } from "consts";
 import { Pagination } from "@mui/material";
 
 const cx = cn.bind(styles);
@@ -69,7 +69,7 @@ export default function ListNews({ isLatest }) {
 
   const getListPost = async () => {
     try {
-      const response = await axios.get(`${LOCAL_ENDPOINT}/posts`);
+      const response = await axios.get(`${ENDPOINT}/posts`);
       let data;
       if (response.status === 200) {
         data = response.data.results;

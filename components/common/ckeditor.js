@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import axios from "axios";
-import { LOCAL_ENDPOINT } from "consts";
+import { ENDPOINT } from "consts";
 
 const Ckeditor = ({ language, data, setData }) => {
   const token = window.localStorage.getItem("token");
@@ -17,7 +17,7 @@ const Ckeditor = ({ language, data, setData }) => {
             console.log("FILE", file);
             body.append("image", file);
 
-            fetch(`${LOCAL_ENDPOINT}/images`, {
+            fetch(`${ENDPOINT}/images`, {
               method: "post",
               body: body,
               headers: {

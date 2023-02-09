@@ -12,7 +12,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import moment from "moment";
 import { toast } from "react-toastify";
-import { LOCAL_ENDPOINT } from "consts";
+import { ENDPOINT } from "consts";
 import useLocale from "hooks/useLocale";
 
 const cx = cn.bind(styles);
@@ -22,7 +22,6 @@ function ManagerPosts() {
   const router = useRouter();
   const [posts, setPosts] = useState();
   const [deleteItem, setDeleteItem] = useState();
-  const user = JSON.parse(window.localStorage.getItem("user"));
   const token = window.localStorage.getItem("token");
   const config = {
     headers: { Authorization: `Bearer ${token}` },
@@ -30,6 +29,9 @@ function ManagerPosts() {
   const { locale } = useLocale();
   const NUM_PER_PAGE = 4;
   const [currentPage, setCurrentPage] = useState(1);
+  const user = window.localStorage.getItem("user")
+  ? JSON.parse(window.localStorage.getItem("user"))
+  : "";
 
   useEffect(() => {
     if (user?.role === "admin") {
@@ -48,7 +50,7 @@ function ManagerPosts() {
 
   const getListPost = async () => {
     try {
-      const response = await axios.get(`${LOCAL_ENDPOINT}/posts`);
+      const response = await axios.get(`${ENDPOINT}/posts`);
       setPosts(response.data.results);
     } catch (error) {
       console.error(error);
@@ -58,7 +60,7 @@ function ManagerPosts() {
   const handleDeletePost = async () => {
     try {
       const res = await axios.delete(
-        `${LOCAL_ENDPOINT}/posts/${deleteItem._id}`,
+        `${ENDPOINT}/posts/${deleteItem._id}`,
         config
       );
       if (res.status === 200) {
@@ -79,7 +81,7 @@ function ManagerPosts() {
             <h1>Manage Posts</h1>
             <div className={cx("amount")}>{posts?.length} posts</div>
           </div>
-          <Link href="/manage-posts/create-post">
+          <Link href={`/manage-posts/post?action=create`}>
             <Button className={cx("button")}>
               <AddCircleOutlineRoundedIcon /> &nbsp; Create post
             </Button>
@@ -140,7 +142,7 @@ function ManagerPosts() {
                   <IconButton
                     className={cx("icon")}
                     onClick={() =>
-                      router.push(`/manage-posts/edit-post?postId=${item._id}`)
+                      router.push(`/manage-posts/post?postId=${item._id}&action=edit`)
                     }
                   >
                     <ModeEditOutlineOutlinedIcon />
