@@ -1,13 +1,14 @@
+import { useState, useEffect } from "react";
 import styles from "styles/home/index.module.scss";
 import cn from "classnames/bind";
 import Slider from "react-slick";
 import { useTranslation } from "react-i18next";
 import Link from "next/link";
-import newsEn from "news/en";
-import newsVi from "news/vi";
 import useAuth from "hooks/useAuth";
 import useLocale from "hooks/useLocale";
 import { Button } from "@mui/material";
+import { ENDPOINT } from "consts";
+import axios from "axios";
 
 const cx = cn.bind(styles);
 
@@ -82,7 +83,28 @@ export default function Home() {
   const { t, i18n } = useTranslation();
   const { locale } = useLocale();
   const auth = useAuth();
-  const news = locale === "en" ? newsEn : newsVi;
+  const [news, setNews] = useState();
+
+  useEffect(() => {
+    getListPost();
+  }, []);
+
+  const getListPost = async () => {
+    try {
+      const response = await axios.get(`${ENDPOINT}/posts`);
+      let data;
+      if (response.status === 200) {
+        data = response.data.results
+          .map((i) => ({ ...i, pathname: "library" }))
+          .sort((a, b) => new Date(b.createAt) - new Date(a.createAt));
+      }
+
+      setNews(data);
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className={cx("home")}>
@@ -122,9 +144,9 @@ export default function Home() {
       </Slider>
 
       <div className={cx("introduction")}>
-        <div className={cx("content")}>
-          {i18n.language === "en" ? (
-            <>
+        {i18n.language === "en" ? (
+          <>
+            <div className={cx("content")}>
               <div className={cx("title")}>
                 The Oraichain for DApps Accelerator Program
               </div>
@@ -151,9 +173,28 @@ export default function Home() {
                   in this program.
                 </p>
               </div>
-            </>
-          ) : (
-            <>
+              <br />
+              <Link href="/register">
+                <Button className={cx("buttonRegister")}>
+                  {t("register.title")}
+                </Button>
+              </Link>
+            </div>
+            <div className={cx("video")}>
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/lX8b3JixQzw"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className={cx("content")}>
               <div className={cx("titleVi")}>Cơ cấu giải thưởng</div>
               <div className={cx("row")}>
                 <img src="/images/home/first.svg" />
@@ -184,26 +225,26 @@ export default function Home() {
                   mặt và chứng nhận của Ban Tổ chức
                 </p>
               </div>
-            </>
-          )}
-          <br />
-          <Link href="/register">
-            <Button className={cx("buttonRegister")}>
-              {t("register.title")}
-            </Button>
-          </Link>
-        </div>
-        <div className={cx("video")}>
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/ekzmDkXl_B4"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-        </div>
+              <br />
+              <Link href="/register">
+                <Button className={cx("buttonRegister")}>
+                  {t("register.title")}
+                </Button>
+              </Link>
+            </div>
+            <div className={cx("video")}>
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/YkKOnPWWoc4"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </>
+        )}
       </div>
 
       <div className={cx("explore")}>
@@ -211,10 +252,14 @@ export default function Home() {
           <div className={cx("title")}>{t("home.explore")}</div>
         </Link>
         <Slider {...secondSettings}>
-          {news.map((item) => (
-            <Link href={`/library/${item.url}`} key={item.url}>
+          {news?.slice(0, 3).map((item) => (
+            <Link href={`/library/${item._id}`} key={item._id}>
               <div className={cx("slider-item")}>
-                <img className={cx("banner")} src={item.image} />
+                <img
+                  className={cx("banner")}
+                  src={locale === "vi" ? item.thumbnail : item.en_thumbnail}
+                  style={{ height: "320px", width: "auto", margin: "auto" }}
+                />
               </div>
             </Link>
           ))}
@@ -240,11 +285,14 @@ export default function Home() {
               />
             </a>
           </div> */}
-          {news.map((item, idx) => (
-            <div className={cx("banner")} key={item.url}>
+          {news?.slice(-3).reverse().map((item, idx) => (
+            <div className={cx("banner")} key={item._id}>
               <div className={cx("title")}>{t("home.into")}</div>
-              <Link href={`/library/${item.url}`}>
-                <img className={cx("banner-img")} src={item.image} />
+              <Link href={`/library/${item._id}`}>
+                <img
+                  className={cx("banner-img")}
+                  src={locale === "vi" ? item.thumbnail : item.en_thumbnail}
+                />
               </Link>
             </div>
           ))}

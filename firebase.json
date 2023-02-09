@@ -50,6 +50,10 @@
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
         {
+          "source": "/manage-posts/**",
+          "destination": "/manage-posts/[post]/index.html"
+        },
+        {
           "source": "/library/**",
           "destination": "/library/[url]/index.html"
         },
