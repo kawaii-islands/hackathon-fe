@@ -219,7 +219,7 @@ function CreatePosts() {
                         id="re-thumbnail"
                         accept="image/*"
                         style={{ display: "none" }}
-                        onChange={(e) => handleUploadThumbnail(e)}
+                        onChange={handleUploadThumbnail}
                       />
                     </div>
                   </div>
@@ -235,7 +235,7 @@ function CreatePosts() {
                       id="thumbnail"
                       accept="image/*"
                       style={{ display: "none" }}
-                      onChange={(e) => handleUploadThumbnail(e)}
+                      onChange={handleUploadThumbnail}
                     />
                   </>
                 )}
@@ -299,7 +299,7 @@ function CreatePosts() {
                         id="re-vi-thumbnail"
                         accept="image/*"
                         style={{ display: "none" }}
-                        onChange={(e) => handleUploadViThumbnail(e)}
+                        onChange={handleUploadViThumbnail}
                       />
                     </div>
                   </div>
@@ -318,7 +318,7 @@ function CreatePosts() {
                       id="vi-thumbnail"
                       accept="image/*"
                       style={{ display: "none" }}
-                      onChange={(e) => handleUploadViThumbnail(e)}
+                      onChange={handleUploadViThumbnail}
                     />
                   </>
                 )}
