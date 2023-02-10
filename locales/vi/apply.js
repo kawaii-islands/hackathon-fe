@@ -2,6 +2,7 @@ export default {
   "apply.info": "Thông tin chung",
   "apply.team.members": "thành viên",
   "apply.teamName": "Tên nhóm",
+  "apply.teamPhonenumber": "Số điện thoại của trưởng nhóm",
   "apply.teamEmail": "Email của nhóm ",
   "apply.noOfMembers": "Số lượng thành viên",
   "apply.country": "Quốc gia",
@@ -27,4 +28,5 @@ export default {
   "apply.error.name.required": "Hãy nhập tên",
   "apply.error.position.required": "Hãy nhập vị trí",
   "apply.error.username.required": "Hãy nhập discord username",
+  "apply.error.phone.required": "Hãy nhập số điện thoại",
 };

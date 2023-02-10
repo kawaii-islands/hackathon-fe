@@ -47,6 +47,7 @@ export default function Apply() {
     .object()
     .shape({
       name: yup.string().required("apply.error.team-name.required"),
+      phoneNumber: yup.string().required("apply.error.phone.required"),
       email: yup
         .string()
         .email("apply.error.team-email.invalid")
@@ -147,7 +148,7 @@ export default function Apply() {
 
   useEffect(() => {
     let fileList = getValues("attachment");
-    
+
     let tempList = attachment?.length ? [...attachment] : [];
     let finalList;
     if (fileList?.length) {
@@ -284,7 +285,7 @@ export default function Apply() {
 
         toast.success("Apply successfully");
       }
-	  
+
       setReload(!reload);
       setAttachment([]);
       setLoading(false);
@@ -376,6 +377,13 @@ export default function Apply() {
               {errors.name && firstError === "name" && (
                 <div className={cx("error")}>{t(errors.name.message)}</div>
               )}
+
+              <div className={cx("label")}>{t("apply.teamPhonenumber")}</div>
+              <OutlinedInput className={cx("input")} {...register(`phoneNumber`)} />
+              {errors.phoneNumber && firstError === "phoneNumber" && (
+                <div className={cx("error")}>{t(errors.phoneNumber.message)}</div>
+              )}
+
               <div className={cx("label")}>{t("apply.teamEmail")}</div>
               <OutlinedInput
                 className={cx("input")}

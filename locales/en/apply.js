@@ -2,6 +2,7 @@ export default {
   "apply.info": "general information",
   "apply.team.members": "team members",
   "apply.teamName": "Team name",
+  "apply.teamPhonenumber": "Team leader's phone number",
   "apply.teamEmail": "Team email",
   "apply.noOfMembers": "No. of members",
   "apply.country": "Country",
@@ -27,4 +28,5 @@ export default {
   "apply.error.name.required": "Name is required",
   "apply.error.position.required": "Position is required",
   "apply.error.username.required": "Discord username is required",
+  "apply.error.phone.required": "Phone number is required",
 };
