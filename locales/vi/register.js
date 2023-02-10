@@ -3,6 +3,7 @@ export default {
   "register.name": "Tên",
   "register.email": "Email",
   "register.country": "Quốc gia",
+  "register.phone": "Số điện thoại",
   "register.password": "Mật khẩu",
   "register.confirm": "Xác nhận mật khẩu",
   "register.already": "Bạn đã có tài khoản?",
@@ -23,4 +24,6 @@ export default {
   "register.error.confirm-password.match": "Mật khẩu không khớp",
   "register.error.name.required": "Hãy nhập tên",
   "register.error.country.required": "Hãy nhập quốc gia",
+  "register.error.phone.required": "Hãy nhập số điện thoại",
+  "register.error.phone.validate": "Số điện thoại không hợp lệ",
 };

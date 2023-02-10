@@ -3,6 +3,7 @@ export default {
   "register.name": "Name",
   "register.email": "Email",
   "register.country": "Country",
+  "register.phone": "Phone number",
   "register.password": "Password",
   "register.confirm": "Confirm password",
   "register.already": "Already have an account?",
@@ -23,4 +24,6 @@ export default {
   "register.error.confirm-password.match": "Password must match",
   "register.error.name.required": "Name is required",
   "register.error.country.required": "Country is required",
+  "register.error.phone.required": "Phone number is required",
+  "register.error.phone.validate": "Invalid phone number",
 };
