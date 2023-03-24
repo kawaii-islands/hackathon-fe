@@ -39,6 +39,7 @@ const TeamInfoTab = () => {
           color: "#ffffff",
           backgroundColor: "#9671FF",
         }}
+        
         onClick={() => getData()}
       >
         <DownloadRoundedIcon /> &nbsp; Download Teams Info
