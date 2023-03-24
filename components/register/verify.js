@@ -6,12 +6,14 @@ import axios from "axios";
 import { useState } from "react";
 import refreshToken from "utils/refresh-token";
 import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
 
 const cx = cn.bind(styles);
 
 export default function Verify() {
   const [loading, setLoading] = useState(false);
   const user = JSON.parse(window.localStorage.getItem("user"));
+  const { t } = useTranslation();
 
   const resend = async () => {
     try {
@@ -36,15 +38,15 @@ export default function Verify() {
   };
   return (
     <Paper className={cx("verify")}>
-      <div className={cx("title")}>Verify your account</div>
+      <div className={cx("title")}>{t("common.verifyTitle")}</div>
       <img src="/icons/send.svg" />
       <div className={cx("text")}>
-        A verification email has been sent to{" "}
-        <span className={cx("email")}>{user.email}</span>. Please check your
-        mailbox to verify the account before you log in
+        {t("common.verifyContent1")}{" "}
+        <span className={cx("email")}>{user.email}</span>.{" "}
+        {t("common.verifyContent2")}
       </div>
       <button className={cx("resend")} onClick={resend} disabled={loading}>
-        Resend
+        {t("common.verifyButton")}
       </button>
     </Paper>
   );

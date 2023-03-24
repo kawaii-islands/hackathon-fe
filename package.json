@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^35.4.0",
+    "@ckeditor/ckeditor5-react": "^5.0.6",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@hookform/resolvers": "^2.9.1",
@@ -16,11 +18,15 @@
     "@mui/lab": "^5.0.0-alpha.86",
     "@mui/material": "^5.8.3",
     "axios": "^0.27.2",
+    "bootstrap": "^5.2.3",
     "classnames": "^2.3.1",
     "i18next": "^21.8.9",
+    "moment": "^2.29.4",
     "next": "12.1.6",
     "react": "18.1.0",
+    "react-bootstrap": "^2.7.0",
     "react-dom": "18.1.0",
+    "react-export-excel": "^0.5.3",
     "react-hook-form": "^7.32.0",
     "react-i18next": "^11.17.1",
     "react-slick": "^0.29.0",
@@ -33,5 +39,10 @@
     "eslint-config-next": "12.1.6",
     "firebase-tools": "^11.1.0",
     "sass": "^1.52.3"
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
   }
 }

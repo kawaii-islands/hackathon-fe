@@ -24,6 +24,14 @@ export const links = [
     href: "/find",
   },
   {
+    name: "managePosts",
+    href: "/manage-posts",
+  },
+  {
+    name: "userInfo",
+    href: "/user-info",
+  },
+  {
     name: "login",
     href: "/login",
   },
@@ -47,16 +55,19 @@ export default function Navbar({}) {
   };
 
   const authStatus = useAuth();
+  const user = window.localStorage.getItem("user")
+    ? JSON.parse(window.localStorage.getItem("user"))
+    : "";
 
   return (
-    <AppBar>
+    <AppBar className={cx("navbar-box")}>
       <Container>
         <Toolbar className={cx("navbar")}>
           <Box display="flex" alignItems="center">
             <Link href="/">
               <a>
                 <img
-                  src="/images/common/kawaiiverse.png"
+                  src="/images/common/orai_hackathon_logo_full.png"
                   className={cx("logo")}
                   alt="logo"
                 />
@@ -69,12 +80,22 @@ export default function Navbar({}) {
               {links.map((link) => {
                 if (link.name === "find")
                   return (
-                    <a href="https://discord.gg/9pkyqGBTKH" target="_blank">
+                    <a
+                      href="https://www.facebook.com/groups/oraichain.dev"
+                      target="_blank"
+                      className={cx("link")}
+                    >
                       <div className={cx("link")}>
                         {t(`common.${link.name}`)}
                       </div>
                     </a>
                   );
+                if (link.name === "managePosts" && user?.role !== "admin") {
+                  return <div key={link.name}></div>;
+                }
+                if (link.name === "user-info" && user?.role !== "admin") {
+                  return <div key={link.name}></div>;
+                }
                 if (
                   authStatus !== AUTH_STATUS.NOT_AUTH &&
                   link.name === "register"
@@ -126,7 +147,7 @@ export default function Navbar({}) {
                     router.push("/");
                   }}
                 >
-                  Kawaiiverse Hackathon
+                  Oraichain Hackathon
                 </MenuItem>
                 <MenuItem
                   onClick={() => {
@@ -134,7 +155,7 @@ export default function Navbar({}) {
                     router.push("/library");
                   }}
                 >
-                  Library
+                  {t("common.library")}
                 </MenuItem>
               </Menu>
             </>

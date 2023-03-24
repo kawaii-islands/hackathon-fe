@@ -4,6 +4,7 @@ import styles from "styles/common/navbar.module.scss";
 import { Popover } from "@mui/material";
 import { Box } from "@mui/system";
 import { useRouter } from "next/router";
+import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 
 const cx = cn.bind(styles);
 
@@ -38,7 +39,8 @@ export default function ProfileNavbar() {
         variant="contained"
         onClick={handleClick}
       >
-        <img src="/icons/user-icon.svg" /> <div>{user.email}</div>
+        <AccountCircleRoundedIcon /> &nbsp;
+        <div>{user.email}</div>
       </div>
       <Popover
         id={id}

@@ -1,1 +1,1 @@
-export const ENDPOINT = "https://hackathon-api.kawaii.global/v1";
+export const ENDPOINT = "https://api-hackathon.orai.io/v1";

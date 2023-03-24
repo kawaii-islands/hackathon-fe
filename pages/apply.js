@@ -31,13 +31,13 @@ export default function Apply() {
   const [attachment, setAttachment] = useState();
   const [currentTeam, setCurrentTeam] = useState({
     email: user?.email,
-    country: "",
-    gameIdea: "",
+    // country: "",
+    // gameIdea: "",
     name: "",
     story: "",
     members: [
       {
-        discordUsername: "",
+        // discordUsername: "",
         name: "",
         position: "",
       },
@@ -47,6 +47,7 @@ export default function Apply() {
     .object()
     .shape({
       name: yup.string().required("apply.error.team-name.required"),
+      phoneNumber: yup.string().required("apply.error.phone.required"),
       email: yup
         .string()
         .email("apply.error.team-email.invalid")
@@ -56,9 +57,9 @@ export default function Apply() {
         .integer("apply.error.no-of-members.integer")
         .min(1, "apply.error.no-of-members.min")
         .max(6, "apply.error.no-of-members.max"),
-      country: yup.string().required("apply.error.country.required"),
+      // country: yup.string().required("apply.error.country.required"),
       story: yup.string().required("apply.error.story.required"),
-      gameIdea: yup.string().required("apply.error.idea.required"),
+      // gameIdea: yup.string().required("apply.error.idea.required"),
       //   attachment: yup.mixed().test({
       //     message: "apply.error.document.required",
       //     test: (file) => {
@@ -69,9 +70,9 @@ export default function Apply() {
         yup.object().shape({
           name: yup.string().required("apply.error.name.required"),
           position: yup.string().required("apply.error.position.required"),
-          discordUsername: yup
-            .string()
-            .required("apply.error.username.required"),
+          // discordUsername: yup
+          //   .string()
+          //   .required("apply.error.username.required"),
         })
       ),
     })
@@ -91,8 +92,8 @@ export default function Apply() {
     defaultValues: {
       noOfMembers: currentTeam.members.length,
       email: currentTeam.email,
-      country: currentTeam.country,
-      gameIdea: currentTeam.gameIdea,
+      // country: currentTeam.country,
+      // gameIdea: currentTeam.gameIdea,
       name: currentTeam.name,
       story: currentTeam.story,
     },
@@ -110,13 +111,13 @@ export default function Apply() {
   useEffect(() => {
     if (noOfMembers === olfNoOfMembers.current) return;
     const newVal = parseInt(noOfMembers || 0);
-    if (newVal > 6 || newVal < 1)
+    if (newVal > 4 || newVal < 1)
       return setValue("noOfMembers", olfNoOfMembers.current);
     olfNoOfMembers.current = noOfMembers;
     const oldVal = fields.length;
     if (newVal > oldVal) {
       for (let i = oldVal; i < newVal; i++) {
-        append({ name: "", position: "", discordUsername: "" });
+        append({ name: "", position: "" });
       }
     } else {
       for (let i = oldVal; i > newVal; i--) {
@@ -147,7 +148,7 @@ export default function Apply() {
 
   useEffect(() => {
     let fileList = getValues("attachment");
-    console.log("fileList :>> ", attachment);
+
     let tempList = attachment?.length ? [...attachment] : [];
     let finalList;
     if (fileList?.length) {
@@ -165,7 +166,6 @@ export default function Apply() {
     }
 
     setAttachment([...finalList]);
-    console.log("FinalList ", finalList);
   }, [attachmentRef]);
 
   const firstError = useMemo(
@@ -220,7 +220,7 @@ export default function Apply() {
             append({
               name: item.name,
               position: item.position,
-              discordUsername: item.discordUsername,
+              // discordUsername: item.discordUsername,
             });
           });
         } else {
@@ -285,7 +285,7 @@ export default function Apply() {
 
         toast.success("Apply successfully");
       }
-	  
+
       setReload(!reload);
       setAttachment([]);
       setLoading(false);
@@ -377,11 +377,18 @@ export default function Apply() {
               {errors.name && firstError === "name" && (
                 <div className={cx("error")}>{t(errors.name.message)}</div>
               )}
+
+              <div className={cx("label")}>{t("apply.teamPhonenumber")}</div>
+              <OutlinedInput className={cx("input")} {...register(`phoneNumber`)} />
+              {errors.phoneNumber && firstError === "phoneNumber" && (
+                <div className={cx("error")}>{t(errors.phoneNumber.message)}</div>
+              )}
+
               <div className={cx("label")}>{t("apply.teamEmail")}</div>
               <OutlinedInput
                 className={cx("input")}
                 {...register(`email`)}
-                readOnly
+                // readOnly
               />
               {errors.email && firstError === "email" && (
                 <div className={cx("error")}>{t(errors.email.message)}</div>
@@ -401,11 +408,11 @@ export default function Apply() {
                   {t(errors.noOfMembers.message)}
                 </div>
               )}
-              <div className={cx("label")}>{t("apply.country")}</div>
+              {/* <div className={cx("label")}>{t("apply.country")}</div>
               <OutlinedInput className={cx("input")} {...register(`country`)} />
               {errors.country && firstError === "country" && (
                 <div className={cx("error")}>{t(errors.country.message)}</div>
-              )}
+              )} */}
               <div className={cx("label")}>{t("apply.story")}</div>
               <TextareaAutosize
                 className={cx("textarea")}
@@ -415,7 +422,7 @@ export default function Apply() {
               {errors.story && firstError === "story" && (
                 <div className={cx("error")}>{t(errors.story.message)}</div>
               )}
-              <div className={cx("label")}>{t("apply.idea")}</div>
+              {/* <div className={cx("label")}>{t("apply.idea")}</div>
               <TextareaAutosize
                 className={cx("textarea")}
                 minRows={5}
@@ -423,7 +430,7 @@ export default function Apply() {
               />
               {errors.gameIdea && firstError === "gameIdea" && (
                 <div className={cx("error")}>{t(errors.gameIdea.message)}</div>
-              )}
+              )} */}
 
               <div className={cx("label")}>{t("apply.document")}</div>
               {/* <div
@@ -458,7 +465,7 @@ export default function Apply() {
                 type="file"
                 multiple
                 disabled={checkDisableUploadFile}
-                accept="application/vnd.android.package-archive, application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/png,image/jpeg"
+                accept="application/pdf"
               />
 
               <label htmlFor="file">
@@ -532,8 +539,8 @@ export default function Apply() {
                         {t(errors.members[idx].position.message)}
                       </div>
                     )}
-                  <div className={cx("label")}>{t("apply.team.username")}</div>
-                  <OutlinedInput
+                  {/* <div className={cx("label")}>{t("apply.team.username")}</div> */}
+                  {/* <OutlinedInput
                     className={cx("input")}
                     {...register(`members.${idx}.discordUsername`)}
                   />
@@ -542,7 +549,7 @@ export default function Apply() {
                       <div className={cx("error")}>
                         {t(errors.members[idx].discordUsername.message)}
                       </div>
-                    )}
+                    )} */}
                 </React.Fragment>
               ))}
             </Grid>

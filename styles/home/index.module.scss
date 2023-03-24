@@ -1,13 +1,13 @@
 $md: 900px;
 $sm: 600px;
 .home {
-  background: #f7f3ed;
+  background: #f6f6f7;
 
   .banner {
     width: 100%;
   }
   .social {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -44,7 +44,7 @@ $sm: 600px;
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(164, 120, 255, 0.2);
     backdrop-filter: blur(10px);
     display: flex;
     justify-content: center;
@@ -65,12 +65,12 @@ $sm: 600px;
     transform: translateY(-50%);
 
     img {
-      margin-right: 2px;
-      height: 13px;
+      // margin-right: 2px;
+      height: 16px;
 
       @media (min-width: $md) {
-        height: 20px;
-        margin-right: 4px;
+        height: 28px;
+        // margin-right: 4px;
       }
     }
   }
@@ -80,18 +80,86 @@ $sm: 600px;
     transform: translateY(-50%);
 
     img {
-      height: 13px;
-      margin-left: 2px;
+      height: 16px;
+      // margin-left: 2px;
 
       @media (min-width: $md) {
-        height: 20px;
-        margin-left: 4px;
+        height: 28px;
+        // margin-left: 4px;
       }
     }
   }
 
+  .introduction {
+    display: flex;
+    align-items: center;
+    margin: 0px auto;
+    margin-top: 110px;
+    max-width: 1180px;
+
+    @media (max-width: $md) {
+      flex-direction: column;
+    }
+
+    .content {
+      width: 50%;
+      padding-right: 60px;
+
+      @media (max-width: $md) {
+        width: 100%;
+        padding: 30px;
+      }
+
+      .title {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 28px;
+        color: #51379b;
+      }
+
+      .titleVi {
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 47px;
+        text-transform: uppercase;
+        color: #51379b;
+        margin-bottom: 12px;
+      }
+
+      .subtitle {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 150%;
+        color: #51379b;
+      }
+
+      .row {
+        display: flex;
+        align-items: center;
+        margin-top: 8px;
+      }
+
+      .buttonRegister {
+        background: #331670;
+        border-radius: 4px;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 19px;
+        color: #ffffff;
+        width: 204px;
+        padding: 12px;
+      }
+    }
+
+    .video {
+      padding-left: 30px;
+    }
+  }
+
   .explore {
-    background: #f7f3ed;
+    background: #F6F6F7;
     padding: 50px 0;
 
     @media (min-width: $md) {
@@ -99,15 +167,16 @@ $sm: 600px;
     }
 
     .title {
-      font-family: "Josefin Sans";
+      font-family: "Roboto", sans-serif;
       font-style: normal;
       font-weight: 700;
       font-size: 16px;
       line-height: 16px;
       text-align: center;
-      color: #fd8970;
+      color: #51379B;
       margin-bottom: 60px;
       cursor: pointer;
+      text-transform: uppercase;
 
       @media (min-width: $md) {
         font-size: 40px;
@@ -120,12 +189,12 @@ $sm: 600px;
 
     .slider-item {
       margin: 0 auto;
-      background: radial-gradient(
-        88.79% 88.79% at 50% 45.5%,
-        #ffffff 0%,
-        #ff8569 100%
-      );
-      border-radius: 20px;
+      // background: radial-gradient(
+      //   88.79% 88.79% at 50% 45.5%,
+      //   #ffffff 0%,
+      //   #A478FF 100%
+      // );
+      border-radius: 30px;
       height: fit-content;
       width: 80%;
       cursor: pointer;
@@ -141,7 +210,7 @@ $sm: 600px;
   }
 
   :global(.slick-dots li.slick-active button:before) {
-    color: #ff9270;
+    color: #A478FF;
     opacity: 1;
     font-size: 12px;
   }
@@ -163,7 +232,7 @@ $sm: 600px;
   }
 
   .banner {
-    background: #e0d6bd;
+    background: #3B2F5C;
     width: 100%;
     height: 100%;
     padding: 80px 0px 120px 0px;
@@ -176,16 +245,12 @@ $sm: 600px;
       font-size: 16px;
       line-height: 16px;
       text-align: center;
-      color: #ffffff;
+      color: #FFFFFF;
       transition-duration: 0.35s;
 
       @media (min-width: $md) {
         font-size: 40px;
         line-height: 40px;
-      }
-
-      &:hover {
-        color: #fd8970;
       }
     }
 

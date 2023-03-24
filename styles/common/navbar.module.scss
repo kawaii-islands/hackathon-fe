@@ -2,61 +2,94 @@ $sm: 600px;
 $md: 900px;
 $lg: 1200px;
 
-.navbar {
-  display: flex;
+.navbar-box {
+  background-color: #33176f !important;
 
-  .logo {
-    height: 21px;
-    @media (min-width: $md) {
-      height: 41px;
-    }
-  }
-
-  .nav-links {
+  .navbar {
     display: flex;
-    align-items: center;
-    .link {
-      padding: 10px 20px;
-      margin-left: 6px;
-      cursor: pointer;
-      font-family: "Josefin Sans";
-      font-style: normal;
-      font-weight: 600;
-      font-size: 16px;
-      line-height: 16px;
+    background-color: #33176f;
 
-      &:first-child {
-        margin-left: 0;
+    .logo {
+      height: 21px;
+      @media (min-width: $md) {
+        height: 41px;
       }
     }
 
-    .apply {
-      background: #f25c41;
-      border-radius: 6px;
+    .nav-links {
+      display: flex;
+      align-items: center;
       color: #ffffff;
+
+      .link {
+        padding: 10px 20px;
+        margin-left: 6px;
+        cursor: pointer;
+        font-family: "Roboto", sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 16px;
+        color: #ffffff;
+        text-decoration: none;
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+
+      .apply {
+        background: #9671ff;
+        border-radius: 6px;
+        color: #ffffff;
+      }
+    }
+
+    .toggle {
+      cursor: pointer;
     }
   }
 
-  .toggle {
+  .profile {
+    display: flex;
+    align-items: center;
+    font-weight: 400;
+    line-height: 16px;
+    color: #ffffff;
     cursor: pointer;
+    margin-left: 0;
+    font-size: 12px;
+    @media (min-width: $md) {
+      margin-left: 34px;
+      font-size: 16px;
+    }
+
+    img {
+      margin-right: 5px;
+    }
   }
 }
 
-.profile {
-  display: flex;
-  align-items: center;
-  font-weight: 400;
-  line-height: 16px;
-  color: #484848;
-  cursor: pointer;
-  margin-left: 0;
-  font-size: 12px;
-  @media (min-width: $md) {
-    margin-left: 34px;
-    font-size: 16px;
-  }
+.bottom-navbar {
+  background-color: #f2edff;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
 
-  img {
-    margin-right: 5px;
+  .list-menu {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+
+    .item-menu {
+      font-size: 18px;
+      line-height: 23px;
+      text-align: center;
+      color: #51379b;
+      font-weight: 500;
+      padding-left: 60px;
+      padding: 12px 20px;
+      cursor: pointer;
+    }
   }
 }

@@ -26,147 +26,52 @@ export default function Footer() {
           <Grid item lg={4} md={6} sm={6} xs={12}>
             <img
               className={cx("logo")}
-              src="/images/common/kawaiiverse-v2.png"
+              src="/images/common/hackathon_full_white.svg"
             />
-            <div className={cx("description")}>
-              Kawaiiverse Hackathon 2022, a new playground for game developers
-              around the world, join us in developing our Anime Metaverse, where
-              everyone play, create, connect and earn.
-            </div>
+            <div className={cx("description")}>{t("footer.description")}</div>
             <div className={cx("org")}>
               <div className={cx("left")}>
                 <div className={cx("organized")}>{t("footer.host")}</div>
-                <div>
-                  <a href="https://kawaii.global/" target="_blank">
-                    <img
-                      src="/images/common/kawaii-islands.svg"
-                      className={cx("icon-1")}
-                    />
-                  </a>
-                </div>
               </div>
-              <div className={cx("right")}>
-                <div className={cx("from")}>{t("footer.from")}</div>
-                <div className={cx("group-logo")}>
-                  <a
-                    href="https://imba.co/"
-                    target="_blank"
-                    style={{ marginTop: "0px" }}
-                  >
-                    <img
-                      src="/images/common/imba.png"
-                      className={cx("icon-2")}
-                    />
-                  </a>
-
-                  <img src="/images/common/x.svg" className={cx("x")} />
-
-                  <a
-                    href="https://orai.io/"
-                    target="_blank"
-                    style={{ marginTop: "0px" }}
-                  >
-                    <img
-                      src="/images/common/oraichain.svg"
-                      className={cx("icon-2")}
-                    />
-                  </a>
-                </div>
-              </div>
+              <img src="/images/common/org_by.svg" />
             </div>
           </Grid>
-          <Grid item lg={2} md={3} xs={6}>
-            <div className={cx("label")}>{t("footer.ecosystem")}</div>
-            <a
-              href="https://blog.kawaii.global/tagged/kawaiiverse"
-              target="_blank"
-            >
-              Kawaiiverse
-            </a>
-            <a
-              href="https://kawaii.global/?shortlink=social&pid=social"
-              target="_blank"
-            >
-              Kawaii Islands
-            </a>
-            <a href="https://blog.kawaii.global/tagged/kfs">
-              Kawaii Fishing Saga
-            </a>
-            <a href="https://marketplace.kawaii.global/" target="_blank">
-              Marketplace
-            </a>
+          <Grid item lg={5} md={12} xs={12}>
+            <div className={cx("label")} style={{ textAlign: "center" }}>
+              {t("footer.ecosystem")}
+            </div>
+            <div className={cx("list-startup")}>
+              <a href="https://blockai.care/" target="_blank">
+                <img src="/images/common/blockAiCare.svg" />
+              </a>
+              <a href="https://orchai.io/" target="_blank">
+                <img src="/images/common/orchai.svg" />
+              </a>
+              <a href="https://ziden.io/" target="_blank">
+                <img src="/images/common/ziden.svg" />
+              </a>
+              <a href="https://orai.us/" target="_blank">
+                <img src="/images/common/oraichainLabsUs.svg" />
+              </a>
+            </div>
           </Grid>
-          <Grid item lg={1} md={3} xs={6}>
-            <div className={cx("label")}>{t("footer.resource")}</div>
-            <a href="https://docs.kawaii.global/litepaper" target="_blank">
-              {t("footer.litepaper")}
-            </a>
-            <a href="https://kawaii.global/media-kit" target="_blank">
-              Media Kit
-            </a>
-            <a href="mailto:hackathon@kawaii.global">{t("footer.contact")}</a>
-            <a href="https://blog.kawaii.global" target="_blank">
-              Blog
-            </a>
-            {authStatus === AUTH_STATUS.NOT_AUTH ? (
-              <Tooltip
-                title="You must login to view the Resource Sample Packs"
-                arrow
-              >
-                <a>{t("footer.instruction")}</a>
-              </Tooltip>
-            ) : (
-              <Link href="/library/sample-art">{t("footer.instruction")}</Link>
-            )}
-          </Grid>
-          <Grid item lg={2} md={6} xs={6}>
-            <div className={cx("label", "fourth-col")}>{t("footer.term")}</div>
-            <a
-              href="https://kawaii.global/terms"
-              target="_blank"
-              className={cx("fourth-col")}
-            >
-              {t("footer.use")}
-            </a>
-            <a
-              href="https://kawaii.global/privacy"
-              target="_blank"
-              className={cx("fourth-col")}
-            >
-              {t("footer.privacy")}
-            </a>
-          </Grid>
-          <Grid item lg={3} md={6} xs={12}>
+          <Grid item lg={3} md={6} xs={12} style={{paddingLeft: '30px'}}>
             <div className={cx("label")}>{t("footer.social")}</div>
             <div className={cx("social")}>
-              {/* <a
-                href="https://www.youtube.com/watch?v=RTw-WZ5xfOA&ab_channel=KawaiiIslands"
-                target="_blank"
-              >
-                <img src="/images/common/youtube.svg" />
-              </a> */}
               <a
-                href="https://www.facebook.com/groups/kawaiiverse.hackathon"
+                href="https://github.com/oraichain/cw-ide-docs/tree/master/installation-usage"
                 target="_blank"
               >
+                <img src="/images/common/github-mark-white.svg" />
+              </a>
+              <a href="https://www.youtube.com/@Oraichain/" target="_blank">
+                <img src="/images/common/youtube.svg" />
+              </a>
+              <a href="https://www.facebook.com/OraichainLabs" target="_blank">
                 <img src="/images/common/facebook.svg" />
               </a>
-              <a href="https://twitter.com/kawaii_islands" target="_blank">
-                <img src="/images/common/twiter.svg" />
-              </a>
-              <a href="https://discord.com/invite/nN4FDesACB" target="_blank">
-                <img src="/images/common/discord.svg" />
-              </a>
-
-              <a href="https://t.me/kawaii_islands" target="_blank">
-                <img src="/images/common/telegram.svg" />
-              </a>
-
-              {/* <a href="https://blog.kawaii.global/" target="_blank">
-                <img src="/images/common/medium.svg" />
-              </a> */}
             </div>
-            <div className={cx("buttons")}>
+            {/* <div className={cx("buttons")}>
               {authStatus === AUTH_STATUS.NOT_AUTH && (
                 <Link href="/login">
                   <button className={cx("login")}>{t("common.login")}</button>
@@ -175,6 +80,18 @@ export default function Footer() {
               <Link href="/apply">
                 <button className={cx("apply")}>{t("common.apply")}</button>
               </Link>
+            </div> */}
+            <div style={{ color: "#FFFFFF" }}>
+              <p>
+                <b>Email</b>
+              </p>
+              <div>hackathon@orai.io</div>
+              <div>tainangviet.twd@gmail.com</div>
+              <br />
+              <p>
+                <b>Hotline</b>
+              </p>
+              <div>0344 268 982 | 024 6660 8464</div>
             </div>
           </Grid>
         </Grid>

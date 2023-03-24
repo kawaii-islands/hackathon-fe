@@ -6,7 +6,10 @@
     "kawaii-island": {
       "hosting": {
         "prod": [
-          "kawaii-hackathon"
+          "hackathon-orai"
+        ],
+        "staging": [
+          "hackathon-orai-staging"
         ]
       }
     }

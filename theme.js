@@ -45,9 +45,9 @@ theme = createTheme(theme, {
       styleOverrides: {
         root: {
           color: "#FD8970",
-          fontFamily: "Josefin Sans",
+          fontFamily: 'Roboto',
           fontStyle: "normal",
-          fontWeight: 600,
+          fontWeight: 500,
           fontSize: 12,
           lineHeight: "12px",
           paddingTop: "15px",

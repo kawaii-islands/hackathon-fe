@@ -2,8 +2,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "Josefin Sans", -apple-system, BlinkMacSystemFont, Segoe UI,
-    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+  font-family:  'Roboto', BlinkMacSystemFont, Segoe UI,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
     sans-serif;
   font-style: normal;
 }
@@ -19,9 +19,12 @@ a {
 
 .layout {
   margin-top: 42px;
+  padding-top: 20px;
   min-height: calc(100vh - 42px);
+  
   @media (min-width: 900px) {
     margin-top: 70px;
+    padding-top: 46px;
     min-height: calc(100vh - 70px);
   }
 }

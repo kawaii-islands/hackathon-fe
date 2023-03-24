@@ -16,6 +16,11 @@ import { useTranslation } from "react-i18next";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { ENDPOINT } from "../../consts";
+import LocalPhoneRoundedIcon from "@mui/icons-material/LocalPhoneRounded";
+import CalendarMonthRoundedIcon from "@mui/icons-material/CalendarMonthRounded";
+import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
+import EngineeringRoundedIcon from "@mui/icons-material/EngineeringRounded";
+import HomeWorkRoundedIcon from "@mui/icons-material/HomeWorkRounded";
 
 const cx = cn.bind(styles);
 
@@ -23,11 +28,16 @@ const schema = yup
   .object()
   .shape({
     name: yup.string().required("register.error.name.required"),
-    country: yup.string().required("register.error.country.required"),
+    // country: yup.string().required("register.error.country.required"),
+    phoneNumber: yup.string().required("register.error.phone.required"),
     email: yup
       .string()
       .email("register.error.email.invalid")
       .required("register.error.email.required"),
+    dateOfBirth: yup.date().required("register.error.birthday.required"),
+    townCity: yup.string().required("register.error.city.required"),
+    jobRole: yup.string().required("register.error.job.required"),
+    placeOfWork: yup.string().required("register.error.place.required"),
     password: yup
       .string()
       .min(8, "register.error.password.min")
@@ -133,14 +143,15 @@ export default function Form({ setStep }) {
           className={cx("input")}
           startAdornment={
             <InputAdornment position="start">
-              <img src="/icons/country.svg" />
+              {/* <img src="/icons/country.svg" /> */}
+              <LocalPhoneRoundedIcon />
             </InputAdornment>
           }
-          placeholder={t("register.country")}
-          {...register("country")}
+          placeholder={t("register.phone")}
+          {...register("phoneNumber")}
         />
-        {errors.country && firstError === "country" && (
-          <div className={cx("error")}>{t(errors.country.message)}</div>
+        {errors.phoneNumber && firstError === "phoneNumber" && (
+          <div className={cx("error")}>{t(errors.phoneNumber.message)}</div>
         )}
         <OutlinedInput
           className={cx("input")}
@@ -155,6 +166,64 @@ export default function Form({ setStep }) {
         {errors.email && firstError === "email" && (
           <div className={cx("error")}>{t(errors.email.message)}</div>
         )}
+
+        <OutlinedInput
+          className={cx("input")}
+          type="date"
+          startAdornment={
+            <InputAdornment position="start">
+              <CalendarMonthRoundedIcon />
+            </InputAdornment>
+          }
+          placeholder={t("register.birthday")}
+          {...register("dateOfBirth")}
+        />
+        {errors.dateOfBirth && firstError === "dateOfBirth" && (
+          <div className={cx("error")}>{t(errors.dateOfBirth.message)}</div>
+        )}
+
+        <OutlinedInput
+          className={cx("input")}
+          startAdornment={
+            <InputAdornment position="start">
+              <LocationOnRoundedIcon />
+            </InputAdornment>
+          }
+          placeholder={t("register.city")}
+          {...register("townCity")}
+        />
+        {errors.townCity && firstError === "townCity" && (
+          <div className={cx("error")}>{t(errors.townCity.message)}</div>
+        )}
+
+        <OutlinedInput
+          className={cx("input")}
+          startAdornment={
+            <InputAdornment position="start">
+              <EngineeringRoundedIcon />
+            </InputAdornment>
+          }
+          placeholder={t("register.job")}
+          {...register("jobRole")}
+        />
+         {errors.jobRole && firstError === "jobRole" && (
+          <div className={cx("error")}>{t(errors.jobRole.message)}</div>
+        )}
+
+        <OutlinedInput
+          className={cx("input")}
+          startAdornment={
+            <InputAdornment position="start">
+              <HomeWorkRoundedIcon />
+            </InputAdornment>
+          }
+          placeholder={t("register.place")}
+          {...register("placeOfWork")}
+        />
+         {errors.placeOfWork && firstError === "placeOfWork" && (
+          <div className={cx("error")}>{t(errors.placeOfWork.message)}</div>
+        )}
+
         <OutlinedInput
           type="password"
           className={cx("input")}

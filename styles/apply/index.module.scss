@@ -7,7 +7,7 @@ $sm: 600px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: "Josefin Sans";
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   background: #f7f3ed;
   @media (min-width: 900px) {
@@ -29,7 +29,7 @@ $sm: 600px;
       line-height: 130%;
       letter-spacing: -0.02em;
       text-transform: uppercase;
-      color: #f8a629;
+      color: #5F29F8;
       margin-bottom: 20px;
     }
 
@@ -38,7 +38,7 @@ $sm: 600px;
       font-size: 20px;
       line-height: 130%;
       letter-spacing: -0.02em;
-      color: #ce7847;
+      color: #4755CE;
       margin-bottom: 12px;
     }
 
@@ -62,7 +62,7 @@ $sm: 600px;
       line-height: 130%;
       letter-spacing: -0.02em;
       margin-bottom: 15px;
-      font-family: "Josefin Sans";
+      font-family: 'Roboto', sans-serif;
       font-style: normal;
 
       :global(.MuiOutlinedInput-notchedOutline) {
@@ -134,7 +134,7 @@ $sm: 600px;
       border: 1px solid rgba(160, 160, 160, 0.3);
       border-radius: 4px;
       font-size: 16px;
-      font-family: "Josefin Sans";
+      font-family: 'Roboto', sans-serif;
       font-style: normal;
 
       &:focus-visible {
@@ -149,7 +149,7 @@ $sm: 600px;
     }
 
     .submit {
-      background: #f25c41;
+      background: #5A41F2;
       border-radius: 6px;
       width: 100%;
       max-width: 355px;
@@ -176,7 +176,7 @@ $sm: 600px;
   justify-content: center;
 
   .btn-update-file {
-    background: #f25c41;
+    background: #5A41F2;
     border-radius: 6px;
     width: fit-content;
     padding: 8px 16px;

@@ -5,8 +5,8 @@ import vi from "./vi";
 
 const hasWindow = typeof window !== "undefined";
 const initLang = hasWindow
-  ? window.localStorage.getItem("locale") || "en"
-  : "en";
+  ? window.localStorage.getItem("locale") || "vi"
+  : "vi";
 
 const resources = {
   en: {

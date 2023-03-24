@@ -6,7 +6,7 @@ name: Prod
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
-    branches: [main]
+    branches: [master]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -57,4 +57,4 @@ jobs:
         run: yarn firebase deploy --only hosting:prod -m "${{ github.event.head_commit.message }}" --token ${{ secrets.FIREBASE_TOKEN }}
       - name: Uninstall Yarn
         if: always()
-        run: npm uninstall -g yarn
+        run: npm uninstall -g yarn 

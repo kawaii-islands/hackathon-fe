@@ -1,4 +1,4 @@
 export default {
-  "home.explore": "Explore Kawaiiverse Hackathon",
-  "home.into": "Into the Kawaiiverse",
+  "home.explore": "Latest News",
+  "home.into": "LEARN MORE ABOUT ORAICHAIN HACKATHON",
 };

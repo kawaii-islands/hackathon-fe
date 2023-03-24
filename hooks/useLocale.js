@@ -5,8 +5,8 @@ export default function useLocale() {
   const { i18n } = useTranslation();
   const hasWindow = typeof window !== "undefined";
   const currentLocale = hasWindow
-    ? window.localStorage.getItem("locale") || "en"
-    : "en";
+    ? window.localStorage.getItem("locale") || "vi"
+    : "vi";
   const [locale, setLocale] = useState(currentLocale);
 
   useEffect(() => {
