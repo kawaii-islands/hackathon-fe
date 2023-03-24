@@ -15,7 +15,7 @@ const ExcelSheet = ReactExport.ExcelFile.ExcelSheet;
 const ExcelColumn = ReactExport.ExcelFile.ExcelColumn;
 
 const UserInfoTab = () => {
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
   const token = window.localStorage.getItem("token");
   const config = {
     headers: { Authorization: `Bearer ${token}` },
@@ -45,7 +45,7 @@ const UserInfoTab = () => {
           return userData;
         });
 
-        setData(customData.reverse());
+        // setData(customData.reverse());
       }
     } catch (error) {
       console.error(error);
