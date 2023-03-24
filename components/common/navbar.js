@@ -28,6 +28,10 @@ export const links = [
     href: "/manage-posts",
   },
   {
+    name: "userInfo",
+    href: "/user-info",
+  },
+  {
     name: "login",
     href: "/login",
   },
@@ -51,7 +55,9 @@ export default function Navbar({}) {
   };
 
   const authStatus = useAuth();
-  const user = window.localStorage.getItem("user") ? JSON.parse(window.localStorage.getItem("user")) : "";
+  const user = window.localStorage.getItem("user")
+    ? JSON.parse(window.localStorage.getItem("user"))
+    : "";
 
   return (
     <AppBar className={cx("navbar-box")}>
@@ -85,6 +91,9 @@ export default function Navbar({}) {
                     </a>
                   );
                 if (link.name === "managePosts" && user?.role !== "admin") {
+                  return <div key={link.name}></div>;
+                }
+                if (link.name === "user-info" && user?.role !== "admin") {
                   return <div key={link.name}></div>;
                 }
                 if (

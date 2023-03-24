@@ -1,0 +1,28 @@
+.user-info {
+  padding: 30px 0px;
+
+  .tabs {
+    display: flex;
+    align-items: center;
+
+    .tab {
+      font-weight: 700;
+      font-size: 24px;
+      text-transform: uppercase;
+      margin-right: 30px;
+      padding: 0px 6px;
+      border-bottom: 2px solid #FFFFFF;
+      cursor: pointer;
+      transition-duration: 0.35s;
+    }
+
+    .active {
+      color: #9671FF;
+      border-bottom: 2px solid #9671FF;
+    }
+  }
+
+  .body {
+    margin-top: 60px;
+  }
+}
