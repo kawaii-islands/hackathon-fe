@@ -1,0 +1,26 @@
+.table {
+  margin: 30px 0px;
+
+  .table-header {
+    border: 1px solid #d5d5d5;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background-color: #f7f5f5;
+    color: #833f1d;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .table-body {
+    margin-top: 8px;
+
+    .table-row {
+      @extend .table-header;
+      background-color: #FFFFFF;
+      margin-bottom: 2px;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

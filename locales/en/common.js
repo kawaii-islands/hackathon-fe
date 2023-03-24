@@ -9,4 +9,5 @@ export default {
   "common.verifyContent2": "Please check your mailbox to verify the account before you log in",
   "common.verifyButton": "Resend",
   "common.managePosts": "Manage Posts",
+  "common.userInfo": "User Info",
 };

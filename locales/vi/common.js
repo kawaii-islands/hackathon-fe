@@ -9,4 +9,5 @@ export default {
   "common.verifyContent2": "Vui lòng kiểm tra hộp thư và xác thực tài khoản trước khi đăng nhập",
   "common.verifyButton": "Gửi lại",
   "common.managePosts": "Quản lý bài đăng",
+  "common.userInfo": "Thông tin User",
 };

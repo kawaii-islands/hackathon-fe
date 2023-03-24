@@ -32,6 +32,6 @@ export default {
   "register.error.phone.validate": "Số điện thoại không hợp lệ",
   "register.error.birthday.required": "Hãy nhập ngày tháng năm sinh",
   "register.error.city.required": "Hãy nhập tỉnh/thành phố",
-  "register.error.job.required": "Hãy nhập nghê nghiệp của bạn",
+  "register.error.job.required": "Hãy nhập nghề nghiệp của bạn",
   "register.error.place.required": "Hãy nhập đơn vị công tác",
 };
