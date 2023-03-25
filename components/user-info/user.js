@@ -98,7 +98,7 @@ const UserInfoTab = () => {
             Job
           </Grid>
           <Grid item xs={3}>
-            Place of word
+            Place of work
           </Grid>
           <Grid item xs={1}>
             Town/City
