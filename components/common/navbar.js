@@ -93,7 +93,7 @@ export default function Navbar({}) {
                 if (link.name === "managePosts" && user?.role !== "admin") {
                   return <div key={link.name}></div>;
                 }
-                if (link.name === "user-info" && user?.role !== "admin") {
+                if (link.name === "userInfo" && user?.role !== "admin") {
                   return <div key={link.name}></div>;
                 }
                 if (

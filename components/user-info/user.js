@@ -39,8 +39,13 @@ const UserInfoTab = () => {
           obj["jobRole"] = user.jobRole ? user.jobRole : "";
           obj["placeOfWork"] = user.placeOfWork ? user.placeOfWork : "";
           obj["townCity"] = user.townCity ? user.townCity : "";
-          obj["dateOfBirth"] = user.dateOfBirth ? user.dateOfBirth : "";
-        
+          obj["dateOfBirth"] = user.dateOfBirth
+            ? moment(user.dateOfBirth).format("L")
+            : "";
+          obj["createdAt"] = user.createdAt
+            ? moment(user.createdAt).format("MM/DD/YYYY, hh:mm:ss a")
+            : "";
+
           const userData = { ...user, ...obj };
           return userData;
         });
@@ -77,6 +82,7 @@ const UserInfoTab = () => {
           <ExcelColumn label="Job" value="jobRole" />
           <ExcelColumn label="Place of work" value="placeOfWork" />
           <ExcelColumn label="Town/City" value="townCity" />
+          <ExcelColumn label="Created at" value="createdAt" />
         </ExcelSheet>
       </ExcelFile>
 
@@ -97,11 +103,14 @@ const UserInfoTab = () => {
           <Grid item xs={1}>
             Job
           </Grid>
-          <Grid item xs={3}>
-            Place of word
+          <Grid item xs={2}>
+            Place of work
           </Grid>
           <Grid item xs={1}>
             Town/City
+          </Grid>
+          <Grid item xs={1}>
+            Created at
           </Grid>
         </Grid>
         <div className={cx("table-body")}>
@@ -117,16 +126,19 @@ const UserInfoTab = () => {
                 {user.email}
               </Grid>
               <Grid item xs={1}>
-                {user.dateOfBirth ? moment(user.dateOfBirth).format("L") : null}
+                {user.dateOfBirth}
               </Grid>
               <Grid item xs={1}>
                 {user.jobRole}
               </Grid>
-              <Grid item xs={3}>
+              <Grid item xs={2}>
                 {user.placeOfWork}
               </Grid>
               <Grid item xs={1}>
                 {user.townCity}
+              </Grid>
+              <Grid item xs={1}>
+                {user.createdAt}
               </Grid>
             </Grid>
           ))}
