@@ -1,10 +1,9 @@
 const lesson4 = {
   lesson: 4,
-  title: "Giới thiệu hệ sinh thái Oraichain.",
+  title: "Giới thiệu hệ sinh thái Oraichain",
   thumbnail: "/images/courses/lesson4.png",
   time: "2h12'",
-  overview: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. 
-     Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.`,
+  overview: `Đây là phần chia sẻ thứ 3 của TS. Đào Thành Chung, CEO & Co-founder Oraichain Labs với chuyên đề “Giới thiệu về Oraichain: AI Layer 1 cho Kinh tế dữ liệu và Dịch vụ Oracle” với các nội dung sau`,
   content: [
     {
       topicTitle:

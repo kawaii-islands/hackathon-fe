@@ -1,7 +1,7 @@
 const lesson2 = {
   lesson: 2,
   title:
-    "Smart Contract và dApps là gì? Cơ hội việc làm trong thị trường lao động hiện nay với ngành Blockchain.",
+    "Smart Contract và dApps là gì? Cơ hội việc làm trong thị trường lao động hiện nay với ngành Blockchain",
   thumbnail: "/images/courses/lesson2.png",
   time: "1h32'",
   overview: `Với chủ đề về hợp đồng thông minh và ứng dụng phi tập trung (smart contract và Dapps),TS. Đỗ Bá Lâm, Giảng viên Trường Công nghệ thông tin và Truyền thông, Đại học Bách khoa Hà Nội đã cung cấp định nghĩa, cấu trúc và cách thức hoạt động của hai công nghệ này. Ngoài ra các ứng dụng và ví dụ của hợp đồng thông minh và ứng dụng phi tập trung đã được trực quan hóa một cách dễ hiểu trong phần học này.`,

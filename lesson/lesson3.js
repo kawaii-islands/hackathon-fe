@@ -1,7 +1,7 @@
 const lesson3 = {
   lesson: 3,
   title:
-    "Cosmos Network và DeFi là gì? Giới thiệu một số xu hướng của công nghệ chuỗi khối trong tương lai.",
+    "Cosmos Network và DeFi là gì? Giới thiệu một số xu hướng của công nghệ chuỗi khối trong tương lai",
   thumbnail: "/images/courses/lesson3.png",
   time: "2h36'",
   overview: `Cosmos - Internet của chuỗi khối được giới thiệu bởi anh Phạm Lê Đức, CPO & Co-founder Oraichain Labs. Ở phần đầu, chúng ta sẽ được tìm hiểu về vấn đề mà nền tảng Cosmos giải quyết, như Chủ quyền, Khả năng mở rộng, Tính bền vững.`,

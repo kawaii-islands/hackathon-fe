@@ -1,6 +1,6 @@
 const lesson1 = {
   lesson: 1,
-  title: "Blockchain là gì? Thích ứng tâm lý trong xã hội số.",
+  title: "Blockchain là gì? Thích ứng tâm lý trong xã hội số",
   thumbnail: "/images/courses/lesson1.png",
   time: "1h50'",
   overview: `Được chia sẻ bởi T.S Đào Thành Chung, CEO của Oraichain Labs, “Kiến thức chung về Blockchain, Web3 và tiền điện tử” là nội dung đầu tiên của khóa học Blockchain Anyone. Đây là bài giảng đưa ra những khái niệm cơ bản nhất của thế giới blockchain, bao gồm: Bitcoin, Ethereum, ứng dụng phi tập trung,vv..
