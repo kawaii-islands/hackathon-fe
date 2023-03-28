@@ -10,4 +10,5 @@ export default {
   "common.verifyButton": "Gửi lại",
   "common.managePosts": "Quản lý bài đăng",
   "common.userInfo": "Thông tin User",
+  "common.courses": "Khoá học",
 };

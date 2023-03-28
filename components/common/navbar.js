@@ -24,6 +24,10 @@ export const links = [
     href: "/find",
   },
   {
+    name: "courses",
+    href: "/courses",
+  },
+  {
     name: "managePosts",
     href: "/manage-posts",
   },

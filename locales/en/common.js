@@ -10,4 +10,5 @@ export default {
   "common.verifyButton": "Resend",
   "common.managePosts": "Manage Posts",
   "common.userInfo": "User Info",
+  "common.courses": "Courses",
 };
