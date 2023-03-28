@@ -6,6 +6,10 @@
     align-items: center;
     justify-content: space-between;
 
+    @media (max-width: 600px) {
+      flex-direction: column;
+    }
+
     .left {
     }
 
@@ -20,6 +24,10 @@
       cursor: pointer;
       transition-duration: 0.35s;
 
+      @media (max-width: 600px) {
+        margin-top: 20px;
+      }
+
       &:hover {
         background: #4c25a0;
       }
@@ -27,9 +35,13 @@
   }
 
   .banner {
-    height: 480px;
+    height: 520px;
     width: 100%;
     margin: 40px 0px;
+
+    @media (max-width: 600px) {
+      height: 200px;
+    }
 
     img {
       width: 100%;
@@ -41,9 +53,18 @@
   .course-intro {
     display: flex;
 
+    @media (max-width: 600px) {
+      flex-direction: column;
+    }
+
     .overview {
       width: 73%;
       padding-right: 60px;
+
+      @media (max-width: 600px) {
+        width: 100%;
+        padding-right: 0px;
+      }
 
       .content {
         padding-top: 10px;
@@ -56,6 +77,10 @@
 
     .lecturer {
       width: 27%;
+
+      @media (max-width: 600px) {
+        width: 100%;
+      }
 
       .tab-header {
         font-weight: 600;

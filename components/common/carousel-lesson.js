@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import lessons from "../../lesson";
 import Link from "next/link";
 import CourseCard from "./course-card";
-import { Container } from "@mui/material";
+import { Container, useMediaQuery } from "@mui/material";
 
 const cx = cn.bind(styles);
 
@@ -25,21 +25,23 @@ function CustomPrevArrow({ className, onClick }) {
   );
 }
 
-const settings = {
-  dots: false,
-  infinite: false,
-  autoplay: false,
-  autoplaySpeed: 5000,
-  speed: 500,
-  cssEase: "linear",
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  arrows: true,
-  nextArrow: <CustomNextArrow />,
-  prevArrow: <CustomPrevArrow />,
-};
-
 const CarouselLesson = () => {
+  const isDesktop = useMediaQuery("(min-width:900px)");
+  
+  const settings = {
+    dots: false,
+    infinite: false,
+    autoplay: false,
+    autoplaySpeed: 5000,
+    speed: 500,
+    cssEase: "linear",
+    slidesToShow: isDesktop ? 3 : 1,
+    slidesToScroll: 1,
+    arrows: true,
+    nextArrow: <CustomNextArrow />,
+    prevArrow: <CustomPrevArrow />,
+  };
+
   return (
     <Container className={cx("carousel-lesson")} >
       <Slider {...settings}>

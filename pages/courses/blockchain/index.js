@@ -37,15 +37,15 @@ const lectures = [
     position: "CPO & Co-Founder Oraichain Labs",
     avatar: "/images/courses/pham-le-duc.jpg",
   },
-  {
-    name: "Anh Vũ Anh Nhật",
-    position: "CEO & Co-Founder/Deputy CEO cum CPTO TopCV",
-    avatar: "/images/courses/do-anh-tung.png",
-  },
+  // {
+  //   name: "Anh Vũ Anh Nhật",
+  //   position: "CEO & Co-Founder/Deputy CEO cum CPTO TopCV",
+  //   avatar: "/images/courses/do-anh-tung.png",
+  // },
   {
     name: "TS. Nguyễn Thị Ngọc Diệp",
     position: "CAIO Oraichain Labs",
-    avatar: "/images/courses/nguyen-thi-ngoc-diep.jpg",
+    avatar: "/images/courses/nguyen-thi-ngoc-diep.JPG",
   },
   {
     name: "Anh Đỗ Anh Tùng",
@@ -142,7 +142,8 @@ const Blockchain = () => {
           {lessons.map((item, id) => (
             <Grid
               item
-              xs={4}
+              xs={12}
+              sm={4}
               key={`lesson-$${id}`}
               onClick={() =>
                 router.push(`/courses/blockchain/lesson${item.lesson}`)

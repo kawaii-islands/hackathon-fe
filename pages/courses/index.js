@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "styles/courses/index.module.scss";
 import cn from "classnames/bind";
-import { Button, Container, IconButton, Pagination } from "@mui/material";
-import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRounded";
+import { Container } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import axios from "axios";
 import moment from "moment";
-import { toast } from "react-toastify";
-import { ENDPOINT } from "consts";
 import useLocale from "hooks/useLocale";
 
 const cx = cn.bind(styles);
@@ -28,6 +24,7 @@ const posts = [
 
 const Courses = () => {
   const { locale } = useLocale();
+  const router = useRouter();
 
   return (
     <div className={cx("manage-posts")}>
@@ -35,13 +32,17 @@ const Courses = () => {
         <div className={cx("page-header")}>
           <div className={cx("page-title")}>
             <h1>Danh sách khoá học</h1>
-            <div className={cx("amount")}>{`(${posts?.length})`}</div>
+            {/* <div className={cx("amount")}>{`(${posts?.length})`}</div> */}
           </div>
         </div>
 
         <div className={cx("list-post")}>
           {posts.map((item, id) => (
-            <div className={cx("post")} key={id}>
+            <div
+              className={cx("post")}
+              key={id}
+              onClick={() => router.push(`/courses/${item.url}`)}
+            >
               <div className={cx("text")}>
                 <Link href={`/courses/${item.url}`}>
                   <div className={cx("title")}>
