@@ -5,7 +5,7 @@ import { ENDPOINT } from "consts";
 import axios from "axios";
 import styles from "./index.module.scss";
 import cn from "classnames/bind";
-import { Grid } from "@mui/material";
+import { Grid, Pagination } from "@mui/material";
 import moment from "moment";
 
 const cx = cn.bind(styles);
@@ -20,6 +20,8 @@ const UserInfoTab = () => {
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
+  const NUM_PER_PAGE = 30;
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     getData();
@@ -43,7 +45,7 @@ const UserInfoTab = () => {
             ? moment(user.dateOfBirth).format("L")
             : "";
           obj["createdAt"] = user.createdAt
-            ? moment(user.createdAt).format("MM/DD/YYYY, hh:mm:ss a")
+            ? moment(user.createdAt).format("DD/MM/YYYY, hh:mm:ss a")
             : "";
 
           const userData = { ...user, ...obj };
@@ -60,6 +62,7 @@ const UserInfoTab = () => {
   return (
     <div>
       <ExcelFile
+        filename="orai-hackathon-user-info"
         element={
           <button
             style={{
@@ -89,7 +92,7 @@ const UserInfoTab = () => {
       <div className={cx("table")}>
         <Grid container className={cx("table-header")}>
           <Grid item xs={2}>
-            Name
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name
           </Grid>
           <Grid item xs={1}>
             Phone
@@ -114,34 +117,57 @@ const UserInfoTab = () => {
           </Grid>
         </Grid>
         <div className={cx("table-body")}>
-          {data?.map((user, id) => (
-            <Grid container className={cx("table-row")} key={`user-${id}`}>
-              <Grid item xs={2}>
-                {user.name}
+          {data
+            ?.slice(
+              (currentPage - 1) * NUM_PER_PAGE,
+              currentPage * NUM_PER_PAGE
+            )
+            .map((user, id) => (
+              <Grid container className={cx("table-row")} key={`user-${id}`}>
+                <Grid item xs={2}>
+                  {(currentPage - 1) * NUM_PER_PAGE + id + 1} &nbsp;&nbsp;&nbsp;
+                  {user.name}
+                </Grid>
+                <Grid item xs={1}>
+                  {user.phoneNumber}
+                </Grid>
+                <Grid item xs={3} style={{ paddingLeft: "16px" }}>
+                  {user.email}
+                </Grid>
+                <Grid item xs={1}>
+                  {user.dateOfBirth}
+                </Grid>
+                <Grid item xs={1}>
+                  {user.jobRole}
+                </Grid>
+                <Grid item xs={2}>
+                  {user.placeOfWork}
+                </Grid>
+                <Grid item xs={1}>
+                  {user.townCity}
+                </Grid>
+                <Grid item xs={1}>
+                  {user.createdAt}
+                </Grid>
               </Grid>
-              <Grid item xs={1}>
-                {user.phoneNumber}
-              </Grid>
-              <Grid item xs={3} style={{ paddingLeft: "16px" }}>
-                {user.email}
-              </Grid>
-              <Grid item xs={1}>
-                {user.dateOfBirth}
-              </Grid>
-              <Grid item xs={1}>
-                {user.jobRole}
-              </Grid>
-              <Grid item xs={2}>
-                {user.placeOfWork}
-              </Grid>
-              <Grid item xs={1}>
-                {user.townCity}
-              </Grid>
-              <Grid item xs={1}>
-                {user.createdAt}
-              </Grid>
-            </Grid>
-          ))}
+            ))}
+
+          {data?.length > NUM_PER_PAGE ? (
+            <div
+              style={{
+                marginTop: 20,
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
+              <Pagination
+                count={Math.ceil(data?.length / NUM_PER_PAGE)}
+                onChange={(e, p) => setCurrentPage(p)}
+              />
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </div>

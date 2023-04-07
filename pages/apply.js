@@ -7,6 +7,7 @@ import {
   Chip,
   CircularProgress,
   Grid,
+  InputAdornment,
   OutlinedInput,
   TextareaAutosize,
 } from "@mui/material";
@@ -20,6 +21,7 @@ import { ENDPOINT } from "consts";
 import refreshToken from "utils/refresh-token";
 import { toast } from "react-toastify";
 import { AUTH_STATUS } from "hooks/useAuth";
+import moment from "moment";
 
 const cx = cn.bind(styles);
 
@@ -40,6 +42,11 @@ export default function Apply() {
         // discordUsername: "",
         name: "",
         position: "",
+        phoneNumber: "",
+        dateOfBirth: "",
+        jobRole: "",
+        placeOfWork: "",
+        townCity: "",
       },
     ],
   });
@@ -47,7 +54,7 @@ export default function Apply() {
     .object()
     .shape({
       name: yup.string().required("apply.error.team-name.required"),
-      phoneNumber: yup.string().required("apply.error.phone.required"),
+      // phoneNumber: yup.string().required("apply.error.phone.required"),
       email: yup
         .string()
         .email("apply.error.team-email.invalid")
@@ -70,6 +77,13 @@ export default function Apply() {
         yup.object().shape({
           name: yup.string().required("apply.error.name.required"),
           position: yup.string().required("apply.error.position.required"),
+          phoneNumber: yup.string().required("apply.error.phone.required"),
+          dateOfBirth: yup.date().required("apply.error.dateOfBirth.required"),
+          jobRole: yup.string().required("apply.error.jobRole.required"),
+          placeOfWork: yup
+            .string()
+            .required("apply.error.placeOfWork.required"),
+          townCity: yup.string().required("apply.error.townCity.required"),
           // discordUsername: yup
           //   .string()
           //   .required("apply.error.username.required"),
@@ -117,7 +131,15 @@ export default function Apply() {
     const oldVal = fields.length;
     if (newVal > oldVal) {
       for (let i = oldVal; i < newVal; i++) {
-        append({ name: "", position: "" });
+        append({
+          name: "",
+          position: "",
+          phoneNumber: "",
+          dateOfBirth: "",
+          jobRole: "",
+          placeOfWork: "",
+          townCity: "",
+        });
       }
     } else {
       for (let i = oldVal; i > newVal; i--) {
@@ -208,7 +230,7 @@ export default function Apply() {
       });
 
       setCurrentTeam(res.data);
-      console.log("res :>> ", res);
+  
       delete res.data.createdBy;
       delete res.data.id;
       Object.keys(res.data).forEach((key) => {
@@ -220,6 +242,11 @@ export default function Apply() {
             append({
               name: item.name,
               position: item.position,
+              phoneNumber: item.phoneNumber,
+              dateOfBirth: item.dateOfBirth,
+              jobRole: item.jobRole,
+              placeOfWork: item.placeOfWork,
+              townCity: item.townCity,
               // discordUsername: item.discordUsername,
             });
           });
@@ -236,13 +263,14 @@ export default function Apply() {
   };
 
   const onSubmit = async (values) => {
-    console.log("values :>> ", values);
     try {
       const body = { ...values };
       setLoading(true);
 
       delete body.noOfMembers;
       delete body.attachment;
+      delete body.teamId;
+      delete body.updated;
 
       body.members = JSON.stringify(body.members);
       const formData = new FormData();
@@ -303,7 +331,6 @@ export default function Apply() {
   const authStatus = useAuth(true);
 
   const handleDeleteOriginFile = async (file) => {
-    console.log("Origin", file);
     try {
       const res = await axios.delete(
         `${ENDPOINT}/teams/attachments/${file.id}`,
@@ -372,19 +399,39 @@ export default function Apply() {
           >
             <Grid item md={6} xs={12}>
               <div className={cx("title")}>{t("apply.info")}</div>
-              <div className={cx("label")}>{t("apply.teamName")}</div>
+              {currentTeam?.teamId && (
+                <div className={cx("label")} style={{ marginBottom: 17.5 }}>
+                  {t("apply.teamId")}
+                  {": " + currentTeam.teamId}
+                </div>
+              )}
+              <div className={cx("label")}>
+                {t("apply.teamName")}{" "}
+                <span style={{ color: "#f25c41" }}>*</span>{" "}
+              </div>
               <OutlinedInput className={cx("input")} {...register(`name`)} />
               {errors.name && firstError === "name" && (
                 <div className={cx("error")}>{t(errors.name.message)}</div>
               )}
 
-              <div className={cx("label")}>{t("apply.teamPhonenumber")}</div>
-              <OutlinedInput className={cx("input")} {...register(`phoneNumber`)} />
+              {/* <div className={cx("label")}>
+                {t("apply.teamPhonenumber")}{" "}
+                <span style={{ color: "#f25c41" }}>*</span>
+              </div>
+              <OutlinedInput
+                className={cx("input")}
+                {...register(`phoneNumber`)}
+              />
               {errors.phoneNumber && firstError === "phoneNumber" && (
-                <div className={cx("error")}>{t(errors.phoneNumber.message)}</div>
-              )}
+                <div className={cx("error")}>
+                  {t(errors.phoneNumber.message)}
+                </div>
+              )} */}
 
-              <div className={cx("label")}>{t("apply.teamEmail")}</div>
+              <div className={cx("label")}>
+                {t("apply.teamEmail")}{" "}
+                <span style={{ color: "#f25c41" }}>*</span>
+              </div>
               <OutlinedInput
                 className={cx("input")}
                 {...register(`email`)}
@@ -393,7 +440,11 @@ export default function Apply() {
               {errors.email && firstError === "email" && (
                 <div className={cx("error")}>{t(errors.email.message)}</div>
               )}
-              <div className={cx("label")}>{t("apply.noOfMembers")}</div>
+
+              <div className={cx("label")}>
+                {t("apply.noOfMembers")}{" "}
+                <span style={{ color: "#f25c41" }}>*</span>
+              </div>
               <OutlinedInput
                 className={cx("input")}
                 type="number"
@@ -413,7 +464,9 @@ export default function Apply() {
               {errors.country && firstError === "country" && (
                 <div className={cx("error")}>{t(errors.country.message)}</div>
               )} */}
-              <div className={cx("label")}>{t("apply.story")}</div>
+              <div className={cx("label")}>
+                {t("apply.story")} <span style={{ color: "#f25c41" }}>*</span>
+              </div>
               <TextareaAutosize
                 className={cx("textarea")}
                 minRows={5}
@@ -433,6 +486,12 @@ export default function Apply() {
               )} */}
 
               <div className={cx("label")}>{t("apply.document")}</div>
+              <i style={{ fontSize: "14px" }}>
+                Lưu ý: Ban Tổ chức ghi nhận và đánh giá dựa trên thông tin thành
+                viên và các tài liệu của lần cập nhật gần nhất.
+              </i>
+              <br />
+              <br />
               {/* <div
                 style={{
                   display: "flex",
@@ -489,7 +548,6 @@ export default function Apply() {
                       </div>
                     ))
                   : ""}
-                {console.log("attachment :>> ", attachment)}
                 {attachment?.length > 0
                   ? attachment.map((file, index) => (
                       <div className={cx("oneFile")} key={index}>
@@ -516,8 +574,13 @@ export default function Apply() {
                   <div className={cx("sub-title")}>
                     {t("apply.team.no")}
                     {idx + 1}
+                    {idx === 0 && " (" + t("apply.captain") + ")"}
                   </div>
-                  <div className={cx("label")}>{t("apply.team.name")}</div>
+                  <div className={cx("label")}>
+                    {t("apply.team.name")}{" "}
+                    {idx === 0 ? t("apply.captain") : t("apply.team.members")}{" "}
+                    <span style={{ color: "#f25c41" }}>*</span>
+                  </div>
                   <OutlinedInput
                     className={cx("input")}
                     {...register(`members.${idx}.name`)}
@@ -528,7 +591,11 @@ export default function Apply() {
                         {t(errors.members[idx].name.message)}
                       </div>
                     )}
-                  <div className={cx("label")}>{t("apply.team.position")}</div>
+
+                  <div className={cx("label")}>
+                    {t("apply.team.position")}{" "}
+                    <span style={{ color: "#f25c41" }}>*</span>
+                  </div>
                   <OutlinedInput
                     className={cx("input")}
                     {...register(`members.${idx}.position`)}
@@ -539,6 +606,90 @@ export default function Apply() {
                         {t(errors.members[idx].position.message)}
                       </div>
                     )}
+
+                  <div className={cx("label")}>
+                    {t("apply.team.phoneNumber")}{" "}
+                    <span style={{ color: "#f25c41" }}>*</span>
+                  </div>
+                  <OutlinedInput
+                    className={cx("input")}
+                    {...register(`members.${idx}.phoneNumber`)}
+                  />
+                  {errors?.members?.[idx]?.phoneNumber &&
+                    firstError === `members.${idx}.phoneNumber` && (
+                      <div className={cx("error")}>
+                        {t(errors.members[idx].phoneNumber.message)}
+                      </div>
+                    )}
+
+                  <div className={cx("label")}>
+                    {t("apply.team.dateOfBirth")}{" "}
+                    <span style={{ color: "#f25c41" }}>*</span>
+                  </div>
+                  <div>
+                    {currentTeam?.members[idx]?.dateOfBirth
+                      ? moment(currentTeam?.members[idx].dateOfBirth).format(
+                          "DD/MM/YYYY"
+                        )
+                      : ""}
+                  </div>
+                  <OutlinedInput
+                    className={cx("input")}
+                    {...register(`members.${idx}.dateOfBirth`)}
+                    type="date"
+                  />
+                  {errors?.members?.[idx]?.dateOfBirth &&
+                    firstError === `members.${idx}.dateOfBirth` && (
+                      <div className={cx("error")}>
+                        {t(errors.members[idx].dateOfBirth.message)}
+                      </div>
+                    )}
+
+                  <div className={cx("label")}>
+                    {t("apply.team.jobRole")}{" "}
+                    <span style={{ color: "#f25c41" }}>*</span>
+                  </div>
+                  <OutlinedInput
+                    className={cx("input")}
+                    {...register(`members.${idx}.jobRole`)}
+                  />
+                  {errors?.members?.[idx]?.jobRole &&
+                    firstError === `members.${idx}.jobRole` && (
+                      <div className={cx("error")}>
+                        {t(errors.members[idx].jobRole.message)}
+                      </div>
+                    )}
+
+                  <div className={cx("label")}>
+                    {t("apply.team.placeOfWork")}{" "}
+                    <span style={{ color: "#f25c41" }}>*</span>
+                  </div>
+                  <OutlinedInput
+                    className={cx("input")}
+                    {...register(`members.${idx}.placeOfWork`)}
+                  />
+                  {errors?.members?.[idx]?.placeOfWork &&
+                    firstError === `members.${idx}.placeOfWork` && (
+                      <div className={cx("error")}>
+                        {t(errors.members[idx].placeOfWork.message)}
+                      </div>
+                    )}
+
+                  <div className={cx("label")}>
+                    {t("apply.team.townCity")}{" "}
+                    <span style={{ color: "#f25c41" }}>*</span>
+                  </div>
+                  <OutlinedInput
+                    className={cx("input")}
+                    {...register(`members.${idx}.townCity`)}
+                  />
+                  {errors?.members?.[idx]?.townCity &&
+                    firstError === `members.${idx}.townCity` && (
+                      <div className={cx("error")}>
+                        {t(errors.members[idx].townCity.message)}
+                      </div>
+                    )}
+
                   {/* <div className={cx("label")}>{t("apply.team.username")}</div> */}
                   {/* <OutlinedInput
                     className={cx("input")}
